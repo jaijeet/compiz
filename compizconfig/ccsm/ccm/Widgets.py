@@ -83,7 +83,7 @@ class CellRendererColor(Gtk.CellRenderer):
     def _parse_color(self):
         color = Gdk.Color.parse(self._text[:-4])
         alpha = int("0x%s" % self._text[-4:], base=16)
-        self._color = [color.red/65535.0, color.green/65535.0, color.blue/65535.0, alpha/65535.0]
+        self._color = [color.color.red/65535.0, color.color.green/65535.0, color.color.blue/65535.0, alpha/65535.0]
 
     def do_set_property(self, property, value):
         if property.name == 'text':
