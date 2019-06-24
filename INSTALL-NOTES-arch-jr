@@ -1,0 +1,69 @@
+compiz uses libstartup-notification which is available at
+ftp://ftp.gnome.org/pub/GNOME/sources/startup-notification/
+
+compiz uses out-of-tree builds with cmake, in order to generate the Makefiles for compiz use:
+
+    # apply arch patches (may not be necessary)
+    # Reverse Unity specific configuration patches
+    APPLIED SUCCESSFULLY: patch -p1 -i "arch-patches/reverse-unity-config.patch"
+
+    # Set focus prevention level to off which means that new windows will always get focus
+    APPLIED SUCCESSFULLY: patch -p1 -i "arch-patches/focus-prevention-disable.patch"
+
+    # Fix incorrect extents for GTK+ tooltips, csd etc
+    APPLIED SUCCESSFULLY: patch -p1 -i "arch-patches/gtk-extents.patch"
+
+    # Fix application launching for the screenshot plugin
+    APPLIED SUCCESSFULLY: patch -p1 -i "arch-patches/screenshot-launch-fix.patch"
+
+    # Don't try to compile gschemas during make install
+    APPLIED SUCCESSFULLY: patch -p1 -i "arch-patches/no-compile-gschemas.patch"
+
+    # Fix unicode related ccsm crashes #1816629
+    WAS ALREADY APPLIED: patch -p1 -i "arch-patches/ccsm-unicode-fix.patch"
+
+	$ mkdir build
+	$ cd build
+    # from arch pkgbuild
+    INSTALLDIR="/home/jr/local/pkgs/compiz-0.9-github-jaijeet--arch-x86_64"
+    cmake .. \
+    -DCMAKE_BUILD_TYPE="Release" \
+    -DCMAKE_INSTALL_PREFIX="${INSTALLDIR}"\
+    -DCMAKE_INSTALL_LIBDIR="${INSTALLDIR}/lib" \
+    -DCOMPIZ_DISABLE_SCHEMAS_INSTALL=On \
+    -DCOMPIZ_BUILD_WITH_RPATH=Off \
+    -DCOMPIZ_PACKAGING_ENABLED=On \
+    -DBUILD_GTK=On \
+    -DBUILD_METACITY=On \
+    -DBUILD_KDE4=Off \
+    -DCOMPIZ_BUILD_TESTING=Off \
+    -DCOMPIZ_WERROR=Off \
+    -DCOMPIZ_DEFAULT_PLUGINS="composite,opengl,decor,resize,place,move,compiztoolbox,staticswitcher,regex,animation,wall,ccp"
+
+
+After that, standard build procedures apply:
+	$ make
+	# make install
+
+In order to build other plugins, you will need to install the compiz cmake set
+
+  # findcompiz_install needs COMPIZ_DESTDIR and install needs DESTDIR
+  # make findcompiz_install
+  pkgdir=
+  CMAKE_DIR=$(cmake --system-information | grep '^CMAKE_ROOT' | awk -F\" '{print $2}')
+  install -dm755 "${pkgdir}${CMAKE_DIR}/Modules/"
+  install -m644 ../cmake/FindCompiz.cmake "${pkgdir}${CMAKE_DIR}/Modules/"
+
+  # Add documentation
+  install -dm755 "${pkgdir}/share/doc/compiz/"
+  install ../{AUTHORS,NEWS,README} "${pkgdir}/share/doc/compiz/"
+
+  # Add the gsettings schema files
+  if ls generated/glib-2.0/schemas/ | grep -qm1 .gschema.xml; then
+    install -dm755 "${pkgdir}/share/glib-2.0/schemas/"
+    install -m644 generated/glib-2.0/schemas/*.gschema.xml "${pkgdir}/share/glib-2.0/schemas/"
+  fi
+
+  # Install licenses
+  install -dm755 "${pkgdir}/share/licenses/${pkgname}"
+  install -m644 "${srcdir}/${pkgname}-${pkgver}"/{COPYING,COPYING.GPL,COPYING.LGPL,COPYING.MIT} "${pkgdir}/share/licenses/${pkgname}"
