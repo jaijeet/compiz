@@ -444,9 +444,9 @@ WallpaperWindow::drawBackgrounds (const GLMatrix            &transform,
     tmpMatrixList[0] = back->fillTexMatrix[0];
 
     if (back->fillType == WallpaperOptions::BgFillTypeVerticalGradient)
-	tmpMatrixList[0].yy /= (float) screen->height () / 2.0;
+	    tmpMatrixList[0].yy /= (float) screen->height () / 2.0;
     else if (back->fillType == WallpaperOptions::BgFillTypeHorizontalGradient)
-	tmpMatrixList[0].xx /= (float) screen->width () / 2.0;
+	    tmpMatrixList[0].xx /= (float) screen->width () / 2.0;
 
     gWindow->glAddGeometry (tmpMatrixList, screen->region (),
 			    (mask & PAINT_WINDOW_TRANSFORMED_MASK) ?
@@ -470,6 +470,9 @@ WallpaperWindow::drawBackgrounds (const GLMatrix            &transform,
 	vb->begin ();
 	tmpMatrixList[0] = back->imgTex[0]->matrix ();
 
+    // float pan = ws->optionGetBgPan();
+    float pan = 0.5;
+
 	if (back->imagePos == WallpaperOptions::BgImagePosScaleAndCropToFillKeepingAspect)
 	{
 	    s1 = (float) screen->width () / back->imgSize.width ();
@@ -481,9 +484,10 @@ WallpaperWindow::drawBackgrounds (const GLMatrix            &transform,
 	    tmpMatrixList[0].yy /= s1;
 
 	    x = (screen->width () - ((int)back->imgSize.width () * s1)) / 2.0;
-	    tmpMatrixList[0].x0 -= x * tmpMatrixList[0].xx;
+	    tmpMatrixList[0].x0 -= 2*pan*x * tmpMatrixList[0].xx;
 	    y = (screen->height () - ((int)back->imgSize.height () * s1)) / 2.0;
-	    tmpMatrixList[0].y0 -= y * tmpMatrixList[0].yy;
+	    tmpMatrixList[0].y0 -= 2*pan*y * tmpMatrixList[0].yy;
+        
 	}
 	else if (back->imagePos == WallpaperOptions::BgImagePosScaleXYToFillIgnoringAspect)
 	{
