@@ -19,8 +19,9 @@
  * GNU General Public License for more details.
  *
  */
-
+ 
 #include "wallpaper.h"
+#include <iostream>
 
 COMPIZ_PLUGIN_20090315 (wallpaper, WallpaperPluginVTable);
 
@@ -232,6 +233,7 @@ WallpaperScreen::updateBackgrounds ()
     GET_OPTION (BgFillType);
     GET_OPTION (BgColor1);
     GET_OPTION (BgColor2);
+    GET_OPTION (BgPan);
 #undef GET_OPTION
 
     if (!((cBgImagePos.size ()  == cBgImage.size ()) &&
@@ -254,10 +256,11 @@ WallpaperScreen::updateBackgrounds ()
 	backgroundsPrimary[i].image    = cBgImage[i].s ();
 	backgroundsPrimary[i].imagePos = cBgImagePos[i].i ();
 	backgroundsPrimary[i].fillType = cBgFillType[i].i ();
-	memcpy (backgroundsPrimary[i].color1, cBgColor1[i].c (),
-		4 * sizeof(unsigned short));
-	memcpy (backgroundsPrimary[i].color2, cBgColor2[i].c (),
-		4 * sizeof(unsigned short));
+	memcpy(backgroundsPrimary[i].color1, cBgColor1[i].c (), 4 * sizeof(unsigned short));
+	memcpy(backgroundsPrimary[i].color2, cBgColor2[i].c (), 4 * sizeof(unsigned short));
+	backgroundsPrimary[i].panValue = cBgPan[i].f(); // segfaults here, why?
+	//backgroundsPrimary[i].panValue = 0.5;
+
 
 	initBackground (&backgroundsPrimary[i]);
     }
@@ -471,7 +474,9 @@ WallpaperWindow::drawBackgrounds (const GLMatrix            &transform,
 	tmpMatrixList[0] = back->imgTex[0]->matrix ();
 
     // float pan = ws->optionGetBgPan();
-    float pan = 0.5;
+    // float pan = cBgPan;
+    // float pan = 0.5;
+    float pan = back->panValue;
 
 	if (back->imagePos == WallpaperOptions::BgImagePosScaleAndCropToFillKeepingAspect)
 	{
@@ -684,6 +689,8 @@ WallpaperScreen::WallpaperScreen (CompScreen *screen) :
     optionSetBgImageNotify    (boost::bind (&WallpaperScreen::
 				wallpaperBackgroundsChanged, this, _1, _2));
     optionSetBgImagePosNotify (boost::bind (&WallpaperScreen::
+				wallpaperBackgroundsChanged, this, _1, _2));
+    optionSetBgPanNotify (boost::bind (&WallpaperScreen::
 				wallpaperBackgroundsChanged, this, _1, _2));
     optionSetBgFillTypeNotify (boost::bind (&WallpaperScreen::
 				wallpaperBackgroundsChanged, this, _1, _2));

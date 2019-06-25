@@ -1,0 +1,49 @@
+Notes on hacking compiz's wallpaper plugin:
+
+- the wallpaper plugin code is under ./plugins/wallpaper/
+  - wallpaper.xml.in, wallpaper.cpp and wallpaper.h
+
+- wallpaper.xml.in is an XML description file that is used in two independent ways:
+  - by CCSM to set up the (purely python based) GUI that writes compiz settings in ~/.config/compiz-1/compizconfig/Default.ini. These are then read immediately by compiz. (Ie, ccsm and compiz do not seem to communicate in any other way).
+    - the way in which the XML file translates to the ccsm GUI is controlled by the python files in ./compizconfig/ccsm/ccm/, in particular Settings.py
+      - it supports abstruse hacks like making a special GUI for <subgroups> that contain only "list" type entries, via Settings.py:1488 (search for # create a special widget for list subGroups)
+        - this is used in wallpaper to make a per-image Edit menu with per-image mode, pan, etc., settings. See wallpaper.xml.in:23 (the Desktop Backgrounds subgroup)
+      - as as result, making innocuous changes to wallpaper.xml.in, eg, adding an entry like <option type="float"> completely messes up the ccsm GUI and logic.
+      - but it gets even worse: see below.
+  - by compiz
+    - the cmake+make process uses wallpaper.xml.in to create build/generated/wallpaper_options.{cpp,h} (which are used for compiled) and build/generated/wallpaper.xml
+      - the way it is done is by calling /usr/bin/xsltproc. It using the xslt parse specification in xslt/bcop.xslt to parse wallpaper.xml.in and create build/generated/wallpaper_options.{cpp,h}, etc..
+      - xslt/bcop.xslt (hence the format for wallpaper.xml.in) is also rife with obscure and extremely confusing hacks. For example, if you have (in wallpaper.xml.in:68) something like
+            -----------------------------------------------------
+            68 <option name="bg_pan" type="list">
+            69     <_short>Pan value</_short>
+            70     <_long>Pan value for Scale/Crop w aspect: 0=left,0.5=center, 1=right</_long>
+            71     <type>float</type>
+            72     <min>0.0</min>
+            73     <max>1.0</max>
+            74     <precision>0.01</precision>
+            75 </option>
+            -----------------------------------------------------
+         it uses the parse code (in bcop.xslt:1349)
+            -----------------------------------------------------
+            1349                 <xsl:when test="@type='list'">
+            1350                     <xsl:if test="not (./default[1])">
+            1351                         <xsl:text>    value.set (</xsl:text>
+            -----------------------------------------------------
+         which matches because the XML block does not specify a <default>,
+         to produce code in wallpaper_options.{cpp,h} suitable for per-image properties, eg,
+            -----------------------------------------------------
+            42     // bg_pan
+            43     mOptions[WallpaperOptions::BgPan].setName ("bg_pan", CompOption::                 TypeList);
+            44     value.set (CompOption::TypeFloat, CompOption::Value::Vector (0));
+            45     mOptions[WallpaperOptions::BgPan].set (value);
+            46     mOptions[WallpaperOptions::BgPan].rest ().set (0.0, 1.0, 0.01);
+            -----------------------------------------------------
+
+        But if you just add a <default>0.5</default> to the XML block above, then this code does not execute, and it produces this wrong code below that does not support per-image properties and leads to a sefgault:
+                 // cycle_timeout
+                 mOptions[WallpaperOptions::BgPan].setName ("bg_pan",                CompOption::TypeFloat);
+                 mOptions[WallpaperOptions::BgPan].rest ().set (0.0, 0.1, 0.01f);
+                 mOptions[WallpaperOptions::BgPan].value().set((float) 0.5);
+
+      - the definitions in wallpaper_options.{h,cpp} are used by the code in plugins/wallpaper/src/wallpaper.{cpp,h}.

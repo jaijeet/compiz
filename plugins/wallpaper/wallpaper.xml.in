@@ -65,6 +65,14 @@
 						<_name>Center Tile after Fit to Screen</_name>
 					</desc>
 				</option>
+				<option name="bg_pan" type="list">
+					<_short>Pan value</_short>
+					<_long>Pan value for Scale/Crop w aspect: 0=left, 0.5=center, 1=right</_long>
+                    <type>float</type>
+					<min>0.0</min>
+					<max>1.0</max>
+                    <precision>0.01</precision>
+				</option>
 				<option name="bg_fill_type" type="list">
 					<_short>Background Fill Type</_short>
 					<_long>The background fill type used if no image file is defined.</_long>
