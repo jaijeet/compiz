@@ -52,11 +52,6 @@ set (
 set (COMMON_FLAGS "-fPIC -Wall")
 set (COMMON_CXX_FLAGS "-std=c++11")
 
-option (COMPIZ_UNUSED_PRIVATE_FIELD_WARNINGS "Warn unused private fields" OFF)
-if (NOT COMPIZ_UNUSED_PRIVATE_FIELD_WARNINGS)
-    set (COMMON_FLAGS "${COMMON_FLAGS} -Wno-unused-private-field")
-endif ()
-
 option (COMPIZ_SUBOBJECT_LINKAGE_WARNINGS "Warn about subobject linkage" OFF)
 if (NOT COMPIZ_SUBOBJECT_LINKAGE_WARNINGS)
     set (COMMON_CXX_FLAGS "${COMMON_CXX_FLAGS} -Wno-subobject-linkage")

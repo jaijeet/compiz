@@ -65,11 +65,11 @@ OutputDevices::adoptDevices (unsigned int nOutput,
     if (outputDevs.size () > nOutput)
 	outputDevs.resize (nOutput);
 
-    char str[10];
+    char str[18];
     /* set name, width, height and update rect pointers in all regions */
     for (unsigned int i = 0; i < nOutput; ++i)
     {
-	snprintf(str, 10, "Output %u", i);
+	snprintf(str, 18, "Output %u", i);
 	outputDevs[i].setId (str, i);
     }
 
