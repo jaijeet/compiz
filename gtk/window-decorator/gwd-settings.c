@@ -155,7 +155,7 @@ append_to_notify_funcs (GWDSettings *settings,
     GList *link = g_list_find (settings->notify_funcs, func);
 
     if (link)
-        settings->notify_funcs = g_list_remove_link (settings->notify_funcs, link);
+        return;
 
     settings->notify_funcs = g_list_append (settings->notify_funcs, (gpointer) func);
 }
