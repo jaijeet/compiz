@@ -33,7 +33,7 @@
 
 struct _GWDThemeCairo
 {
-    GObject       parent;
+    GWDTheme      parent;
 
     decor_color_t title_color[2];
 };

@@ -35,7 +35,7 @@
 
 struct _GWDThemeMetacity
 {
-    GObject    parent;
+    GWDTheme   parent;
 
     MetaTheme *theme;
 
