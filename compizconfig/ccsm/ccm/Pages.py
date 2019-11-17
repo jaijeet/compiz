@@ -33,8 +33,6 @@ from ccm.Conflicts import PluginConflict
 from ccm.Utils import gtk_process_events, getScreens, Image, PrettyButton, Label, NotFoundBox, GlobalUpdater, CategoryKeyFunc, GroupIndexKeyFunc, PluginKeyFunc, GetSettings, GetAcceleratorName
 from ccm.Widgets import ClearEntry, PluginView, GroupView, SelectorButtons, ScrolledList, Popup, KeyGrabber, AboutDialog, PluginWindow
 
-from cgi import escape as protect_pango_markup
-
 import os
 
 import locale
@@ -397,7 +395,7 @@ class FilterPage(GenericPage):
         for index, n in enumerate(context.Plugins):
             plugin = context.Plugins[n]
             bar.set_fraction((index+1)/float(length))
-            label.set_markup("<i>%s</i>" %protect_pango_markup(plugin.ShortDesc))
+            label.set_markup("<i>%s</i>" % GLib.markup_escape_text(plugin.ShortDesc))
             gtk_process_events()
 
             groups = []
@@ -1383,7 +1381,7 @@ class GroupPage(Page):
         self.VisibleAreas = self.subGroupAreas = []
         self.Label = Gtk.Alignment(xalign=0.0, yalign=0.5)
         self.Label.set_padding(4, 4, 4, 4)
-        label = Gtk.Label(label="<b>%s</b>" % (protect_pango_markup(name or _('General'))))
+        label = Gtk.Label(label="<b>%s</b>" % (GLib.markup_escape_text(name or _('General'))))
         label.set_use_markup(True)
         label.set_xalign(0.0)
         self.Label.add(label)
