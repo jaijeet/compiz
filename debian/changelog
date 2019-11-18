@@ -1,3 +1,17 @@
+compiz (1:0.9.14.0+20.04.20191118-0ubuntu1) focal; urgency=medium
+
+  [ Alberts Muktupāvels ]
+  * gtk-window-decorator: fix crash with Cairo theme (LP: #1847129)
+  * Remove MATE configuration.
+
+  [ Dmitry Shachnev ]
+  * Use GLib.markup_escape_text instead of cgi.escape which was removed
+    in Python 3.8.
+  * Fix build with latest googletest, by using static libraries shipped
+    by distro.
+
+ -- Dmitry Shachnev <mitya57@ubuntu.com>  Mon, 18 Nov 2019 07:01:26 +0000
+
 compiz (1:0.9.14.0+19.10.20190918-0ubuntu2) focal; urgency=medium
 
   * No-change rebuild to build with python3.8.
