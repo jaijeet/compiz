@@ -27,7 +27,6 @@ from gi.repository import GObject
 import weakref
 
 from ccm.Constants import ImageNone, ImagePlugin, ImageCategory, ImageThemed, ImageStock, DataDir, IconDir
-from cgi import escape as protect_pango_markup
 import operator
 
 import locale
@@ -57,7 +56,7 @@ def getDefaultScreen():
     return Gdk.Screen.get_default().get_number()
 
 def protect_markup_dict (dict_):
-    return dict((k, protect_pango_markup (v)) for (k, v) in dict_.items())
+    return {k: GLib.markup_escape_text(v) for k, v in dict_.items()}
 
 class Image (Gtk.Image):
 
@@ -187,7 +186,7 @@ class NotFoundBox(Gtk.Alignment):
         box = Gtk.HBox()
         self.Warning = Gtk.Label()
         self.Markup = _("<span size=\"large\"><b>No matches found.</b> </span><span>\n\n Your filter \"<b>%s</b>\" does not match any items.</span>")
-        value = protect_pango_markup(value)
+        value = GLib.markup_escape_text(value)
         self.Warning.set_markup(self.Markup % value)
         image = Image("face-surprise", ImageThemed, 48)
             
@@ -196,7 +195,7 @@ class NotFoundBox(Gtk.Alignment):
         self.add(box)
 
     def update(self, value):
-        value = protect_pango_markup(value)
+        value = GLib.markup_escape_text(value)
         self.Warning.set_markup(self.Markup % value)
 
 class IdleSettingsParser:

@@ -27,7 +27,6 @@ from gi.repository import GObject
 from gi.repository import PangoCairo
 from gi.repository import GdkPixbuf
 import cairo
-from cgi import escape as protect_pango_markup
 from math import pi, sqrt
 import time
 import os
@@ -295,7 +294,7 @@ class SelectorBox(Gtk.ScrolledWindow):
     def add_item(self, item, callback, markup="%s", image=None, info=None):
         button = Gtk.Button()
         label = Label(wrap=170)
-        text = protect_pango_markup(item)
+        text = GLib.markup_escape_text(item)
         label.set_markup(markup % text or _("General"))
         labelBox = Gtk.VBox()
         labelBox.set_spacing(5)
