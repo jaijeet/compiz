@@ -9,14 +9,14 @@ msgstr ""
 "Project-Id-Version: @PACKAGE@\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-02-19 16:05+0300\n"
-"PO-Revision-Date: 2019-02-21 23:19+0000\n"
-"Last-Translator: Tobias Bannert <tobannert@gmail.com>\n"
+"PO-Revision-Date: 2019-03-19 14:34+0000\n"
+"Last-Translator: Dan Cooper <Unknown>\n"
 "Language-Team: Novell Language <language@novell.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2019-02-23 07:59+0000\n"
-"X-Generator: Launchpad (build 18886)\n"
+"X-Launchpad-Export-Date: 2019-11-26 17:49+0000\n"
+"X-Generator: Launchpad (build c597c3229eb023b1e626162d5947141bf7befb13)\n"
 
 #: ../gtk/gnome/compiz.desktop.in.h:1
 msgid "Compiz"
@@ -3035,11 +3035,11 @@ msgstr ""
 
 #: ../plugins/composite/composite.xml.in.h:1
 msgid "Composite"
-msgstr "Composite"
+msgstr "Komposit"
 
 #: ../plugins/composite/composite.xml.in.h:2
 msgid "Composite plugin"
-msgstr "Composite-Erweiterung"
+msgstr "Kompositerweiterung"
 
 #: ../plugins/composite/composite.xml.in.h:3
 msgid "Slow Animations"
@@ -3364,7 +3364,7 @@ msgstr ""
 
 #: ../plugins/cubeaddon/cubeaddon.xml.in.h:3
 msgid "Cube Caps"
-msgstr ""
+msgstr "Würfeloberseiten"
 
 #: ../plugins/cubeaddon/cubeaddon.xml.in.h:5
 msgid "Next Top Image Key"
@@ -3900,7 +3900,7 @@ msgstr "Y-Versatz"
 
 #: ../plugins/expo/expo.xml.in.h:41
 msgid "Vertical offset (in pixels)."
-msgstr ""
+msgstr "Senkrechter Versatz (in Pixel)"
 
 #: ../plugins/expo/expo.xml.in.h:42 ../plugins/scale/scale.xml.in.h:10
 msgid "Y Bottom Offset"
@@ -5657,7 +5657,7 @@ msgstr ""
 
 #: ../plugins/grid/grid.xml.in.h:82 ../plugins/resize/resize.xml.in.h:20
 msgid "Disable Transparency"
-msgstr ""
+msgstr "Durchsichtigkeit deaktivieren"
 
 #: ../plugins/grid/grid.xml.in.h:83 ../plugins/resize/resize.xml.in.h:21
 msgid "Disable blending."
@@ -6432,7 +6432,7 @@ msgstr ""
 
 #: ../plugins/matecompat/matecompat.xml.in.h:1
 msgid "MATE Compatibility"
-msgstr ""
+msgstr "MATE-Kompatibilität"
 
 #: ../plugins/matecompat/matecompat.xml.in.h:2
 msgid "Options that keep Compiz compatible with the MATE desktop environment"
@@ -6869,7 +6869,7 @@ msgstr ""
 
 #: ../plugins/move/move.xml.in.h:23
 msgid "Default mode used for window moving."
-msgstr ""
+msgstr "Standardmodus zum Fensterverschieben"
 
 #: ../plugins/move/move.xml.in.h:25 ../plugins/resize/resize.xml.in.h:9
 msgid "Outline"
@@ -6885,7 +6885,7 @@ msgstr ""
 
 #: ../plugins/move/move.xml.in.h:28 ../plugins/resize/resize.xml.in.h:13
 msgid "Increase the contrast of the border using a lighter color."
-msgstr ""
+msgstr "Kontrast der Kante durch Nutzung einer helleren Farbe erhöhen."
 
 #: ../plugins/move/move.xml.in.h:29 ../plugins/resize/resize.xml.in.h:14
 msgid "Use Desktop average colors"
@@ -6915,7 +6915,7 @@ msgstr ""
 
 #: ../plugins/move/move.xml.in.h:35
 msgid "Enable Transparency"
-msgstr "Transparenz aktivieren"
+msgstr "Durchsichtigkeit aktivieren"
 
 #: ../plugins/move/move.xml.in.h:36
 msgid "Enable or disable blending."
@@ -11891,6 +11891,8 @@ msgstr ""
 #: ../plugins/winrules/winrules.xml.in.h:19
 msgid "Windows that should be treated as not supporting transparency"
 msgstr ""
+"Fenster welche behandelt werden sollen, als würden sie keine "
+"Durchsichtigkeit unterstützen"
 
 #: ../plugins/winrules/winrules.xml.in.h:20
 msgid "Non movable windows"
