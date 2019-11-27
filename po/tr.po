@@ -14,14 +14,14 @@ msgstr ""
 "Project-Id-Version: compiz-new\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-02-19 16:05+0300\n"
-"PO-Revision-Date: 2019-02-21 23:39+0000\n"
-"Last-Translator: Şâkir Aşçı <Unknown>\n"
+"PO-Revision-Date: 2019-03-17 16:43+0000\n"
+"Last-Translator: Butterfly <Unknown>\n"
 "Language-Team: <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2019-02-23 07:57+0000\n"
-"X-Generator: Launchpad (build 18886)\n"
+"X-Launchpad-Export-Date: 2019-11-26 17:49+0000\n"
+"X-Generator: Launchpad (build c597c3229eb023b1e626162d5947141bf7befb13)\n"
 
 #: ../gtk/gnome/compiz.desktop.in.h:1
 msgid "Compiz"
@@ -675,17 +675,17 @@ msgstr ""
 #: ../plugins/opacify/opacify.xml.in.h:6 ../plugins/put/put.xml.in.h:69
 #: ../plugins/td/td.xml.in.h:3
 msgid "Misc. Options"
-msgstr ""
+msgstr "Diğer Seçenekler"
 
 #: ../plugins/addhelper/addhelper.xml.in.h:7
 #: ../plugins/showdesktop/showdesktop.xml.in.h:23
 #: ../plugins/trailfocus/trailfocus.xml.in.h:4
 msgid "Window Types"
-msgstr ""
+msgstr "Pencere Türleri"
 
 #: ../plugins/addhelper/addhelper.xml.in.h:8
 msgid "Window types that should be Opacified."
-msgstr ""
+msgstr "Matlaştırılması gereken pencere tipleri."
 
 #: ../plugins/addhelper/addhelper.xml.in.h:9
 msgid "Enable ADD Helper on start"
@@ -707,7 +707,7 @@ msgstr "Parlaklık"
 
 #: ../plugins/addhelper/addhelper.xml.in.h:12
 msgid "Brightness of faded windows"
-msgstr ""
+msgstr "Etkin olmayan pencerelerin parlaklığı"
 
 #: ../plugins/addhelper/addhelper.xml.in.h:13
 #: ../plugins/animationjc/animationjc.xml.in.h:10
@@ -722,7 +722,7 @@ msgstr "Doygunluk"
 
 #: ../plugins/addhelper/addhelper.xml.in.h:14
 msgid "Saturation of faded windows"
-msgstr ""
+msgstr "Etkin olmayan pencerelerin doygunluğu"
 
 #: ../plugins/addhelper/addhelper.xml.in.h:15
 #: ../plugins/group/group.xml.in.h:50 ../plugins/loginout/loginout.xml.in.h:12
@@ -735,11 +735,11 @@ msgstr "Matlık"
 
 #: ../plugins/addhelper/addhelper.xml.in.h:16
 msgid "Opacity of faded windows"
-msgstr ""
+msgstr "Etkin olmayan pencerelerin matlığı"
 
 #: ../plugins/animation/animation.xml.in.h:1
 msgid "Animations"
-msgstr ""
+msgstr "Canlandırmalar"
 
 #: ../plugins/animation/animation.xml.in.h:2
 msgid "Use various animations as window effects"
@@ -747,15 +747,15 @@ msgstr ""
 
 #: ../plugins/animation/animation.xml.in.h:3
 msgid "Open Animation"
-msgstr ""
+msgstr "Açış Canlandırması"
 
 #: ../plugins/animation/animation.xml.in.h:4
 msgid "Animation Selection"
-msgstr ""
+msgstr "Canlandırma Seçimi"
 
 #: ../plugins/animation/animation.xml.in.h:5
 msgid "Open Effect"
-msgstr ""
+msgstr "Açış Efekti"
 
 #: ../plugins/animation/animation.xml.in.h:6
 msgid "The animation effect shown when creating a window."
@@ -763,17 +763,17 @@ msgstr ""
 
 #: ../plugins/animation/animation.xml.in.h:7 ../plugins/trip/trip.xml.in.h:18
 msgid "Duration"
-msgstr ""
+msgstr "Süre"
 
 #: ../plugins/animation/animation.xml.in.h:8
 msgid "Animation duration in milliseconds for open effect."
-msgstr ""
+msgstr "Açış efekti için milisaniye olarak canlandırma süresi."
 
 #: ../plugins/animation/animation.xml.in.h:9
 #: ../plugins/fadedesktop/fadedesktop.xml.in.h:5
 #: ../plugins/opacify/opacify.xml.in.h:19 ../plugins/td/td.xml.in.h:4
 msgid "Window Match"
-msgstr ""
+msgstr "Pencere Eşleşmesi"
 
 #: ../plugins/animation/animation.xml.in.h:10
 msgid "The windows that will be animated."
@@ -783,7 +783,7 @@ msgstr ""
 #: ../plugins/group/group.xml.in.h:49
 #: ../plugins/maximumize/maximumize.xml.in.h:3
 msgid "Options"
-msgstr ""
+msgstr "Seçenekler"
 
 #: ../plugins/animation/animation.xml.in.h:12
 msgid ""
@@ -793,11 +793,11 @@ msgstr ""
 
 #: ../plugins/animation/animation.xml.in.h:13
 msgid "Random Effects"
-msgstr ""
+msgstr "Rastgele Efektler"
 
 #: ../plugins/animation/animation.xml.in.h:14
 msgid "Pool"
-msgstr ""
+msgstr "Havuz"
 
 #: ../plugins/animation/animation.xml.in.h:15
 msgid ""
@@ -807,11 +807,11 @@ msgstr ""
 
 #: ../plugins/animation/animation.xml.in.h:16
 msgid "Close Animation"
-msgstr ""
+msgstr "Kapatma Canlandırması"
 
 #: ../plugins/animation/animation.xml.in.h:17
 msgid "Close Effect"
-msgstr ""
+msgstr "Kapatma Efekti"
 
 #: ../plugins/animation/animation.xml.in.h:18
 msgid "The animation effect shown when closing a window."
@@ -823,7 +823,7 @@ msgstr ""
 
 #: ../plugins/animation/animation.xml.in.h:20
 msgid "Minimize Animation"
-msgstr ""
+msgstr "Küçültme Canlandırması"
 
 # clients/inst_target_part.ycp:387
 #: ../plugins/animation/animation.xml.in.h:21
@@ -832,11 +832,11 @@ msgstr "Küçültme Efekti"
 
 #: ../plugins/animation/animation.xml.in.h:22
 msgid "The animation effect shown when minimizing a window."
-msgstr ""
+msgstr "Bir pencere küçültülürken gösterilen canlandırma efekti."
 
 #: ../plugins/animation/animation.xml.in.h:23
 msgid "Animation duration in milliseconds for minimize effect."
-msgstr ""
+msgstr "Küçültürken efekti için milisaniye cinsinden canlandırma süresi."
 
 #: ../plugins/animation/animation.xml.in.h:24
 msgid "Unminimize Animation"

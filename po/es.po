@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: Compiz\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-02-19 16:05+0300\n"
-"PO-Revision-Date: 2019-02-21 23:22+0000\n"
-"Last-Translator: Paco Molinero <paco@byasl.com>\n"
+"PO-Revision-Date: 2019-10-30 20:29+0000\n"
+"Last-Translator: Toni Estevez <toni.estevez@gmail.com>\n"
 "Language-Team: Novell Language <language@novell.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2019-02-23 07:59+0000\n"
-"X-Generator: Launchpad (build 18886)\n"
+"X-Launchpad-Export-Date: 2019-11-26 17:49+0000\n"
+"X-Generator: Launchpad (build c597c3229eb023b1e626162d5947141bf7befb13)\n"
 
 #: ../gtk/gnome/compiz.desktop.in.h:1
 msgid "Compiz"
@@ -630,12 +630,14 @@ msgstr "Multiplicador de tamaño de pantalla para el tamaño vertical virtual"
 
 #: ../plugins/addhelper/addhelper.xml.in.h:1
 msgid "Dim Inactive"
-msgstr ""
+msgstr "Oscurecer la ventana inactiva"
 
 #: ../plugins/addhelper/addhelper.xml.in.h:2
 msgid ""
 "Make it slightly easier to concentrate by dimming all but the active window."
 msgstr ""
+"Hace que sea más fácil concentrarse oscureciendo todas las ventanas excepto "
+"la ventana activa."
 
 #: ../plugins/addhelper/addhelper.xml.in.h:3
 #: ../plugins/cubeaddon/cubeaddon.xml.in.h:4 ../plugins/expo/expo.xml.in.h:3
@@ -655,35 +657,37 @@ msgstr "Vínculos"
 
 #: ../plugins/addhelper/addhelper.xml.in.h:4
 msgid "Toggle AddHelper"
-msgstr ""
+msgstr "Activar/desactivar la ayuda a la concentración"
 
 #: ../plugins/addhelper/addhelper.xml.in.h:5
 msgid "Use this to enable/disable AddHelper on the fly."
 msgstr ""
+"Use esta opción para activar o desactivar la ayuda a la concentración "
+"rápidamente."
 
 #: ../plugins/addhelper/addhelper.xml.in.h:6 ../plugins/group/group.xml.in.h:63
 #: ../plugins/opacify/opacify.xml.in.h:6 ../plugins/put/put.xml.in.h:69
 #: ../plugins/td/td.xml.in.h:3
 msgid "Misc. Options"
-msgstr ""
+msgstr "Opciones varias"
 
 #: ../plugins/addhelper/addhelper.xml.in.h:7
 #: ../plugins/showdesktop/showdesktop.xml.in.h:23
 #: ../plugins/trailfocus/trailfocus.xml.in.h:4
 msgid "Window Types"
-msgstr ""
+msgstr "Tipos de ventanas"
 
 #: ../plugins/addhelper/addhelper.xml.in.h:8
 msgid "Window types that should be Opacified."
-msgstr ""
+msgstr "Tipos de ventanas de deben ser opacas."
 
 #: ../plugins/addhelper/addhelper.xml.in.h:9
 msgid "Enable ADD Helper on start"
-msgstr ""
+msgstr "Activar el ayudante al iniciar"
 
 #: ../plugins/addhelper/addhelper.xml.in.h:10
 msgid "Enables ADD helper when it is first loaded."
-msgstr ""
+msgstr "Activa el ayudante cuando se carga por primera vez."
 
 #: ../plugins/addhelper/addhelper.xml.in.h:11 ../plugins/expo/expo.xml.in.h:58
 #: ../plugins/group/group.xml.in.h:54 ../plugins/loginout/loginout.xml.in.h:10
@@ -696,7 +700,7 @@ msgstr "Brillo"
 
 #: ../plugins/addhelper/addhelper.xml.in.h:12
 msgid "Brightness of faded windows"
-msgstr ""
+msgstr "Brillo de las ventanas semitransparentes"
 
 #: ../plugins/addhelper/addhelper.xml.in.h:13
 #: ../plugins/animationjc/animationjc.xml.in.h:10
@@ -711,7 +715,7 @@ msgstr "Saturación"
 
 #: ../plugins/addhelper/addhelper.xml.in.h:14
 msgid "Saturation of faded windows"
-msgstr ""
+msgstr "Saturación de las ventanas semitransparentes"
 
 #: ../plugins/addhelper/addhelper.xml.in.h:15
 #: ../plugins/group/group.xml.in.h:50 ../plugins/loginout/loginout.xml.in.h:12
@@ -724,95 +728,100 @@ msgstr "Opacidad"
 
 #: ../plugins/addhelper/addhelper.xml.in.h:16
 msgid "Opacity of faded windows"
-msgstr ""
+msgstr "Opacidad de las ventanas semitransparentes"
 
 #: ../plugins/animation/animation.xml.in.h:1
 msgid "Animations"
-msgstr ""
+msgstr "Animaciones"
 
 #: ../plugins/animation/animation.xml.in.h:2
 msgid "Use various animations as window effects"
-msgstr ""
+msgstr "Usar varias animaciones como efectos de ventana"
 
 #: ../plugins/animation/animation.xml.in.h:3
 msgid "Open Animation"
-msgstr ""
+msgstr "Animación de apertura"
 
 #: ../plugins/animation/animation.xml.in.h:4
 msgid "Animation Selection"
-msgstr ""
+msgstr "Selección de la animación"
 
 #: ../plugins/animation/animation.xml.in.h:5
 msgid "Open Effect"
-msgstr ""
+msgstr "Efecto de apertura"
 
 #: ../plugins/animation/animation.xml.in.h:6
 msgid "The animation effect shown when creating a window."
-msgstr ""
+msgstr "Efecto de animación que se muestra al crear una ventana."
 
 #: ../plugins/animation/animation.xml.in.h:7 ../plugins/trip/trip.xml.in.h:18
 msgid "Duration"
-msgstr ""
+msgstr "Duración"
 
 #: ../plugins/animation/animation.xml.in.h:8
 msgid "Animation duration in milliseconds for open effect."
-msgstr ""
+msgstr "Duración de la animación en milisegundos para el efecto de abrir."
 
 #: ../plugins/animation/animation.xml.in.h:9
 #: ../plugins/fadedesktop/fadedesktop.xml.in.h:5
 #: ../plugins/opacify/opacify.xml.in.h:19 ../plugins/td/td.xml.in.h:4
 msgid "Window Match"
-msgstr ""
+msgstr "Coincidencia de ventanas"
 
 #: ../plugins/animation/animation.xml.in.h:10
 msgid "The windows that will be animated."
-msgstr ""
+msgstr "Ventanas que se animarán."
 
 #: ../plugins/animation/animation.xml.in.h:11
 #: ../plugins/group/group.xml.in.h:49
 #: ../plugins/maximumize/maximumize.xml.in.h:3
 msgid "Options"
-msgstr ""
+msgstr "Opciones"
 
 #: ../plugins/animation/animation.xml.in.h:12
 msgid ""
 "Comma separated list of option value assignments to override effect "
 "settings, e.g.: fire_color=#0080ffff, fire_particles=700, fire_smoke=1"
 msgstr ""
+"Lista de asignaciones de valores de la opción, separadas por comas, para "
+"anular los ajustes del efecto, por ejemplo: fire_color=#0080ffff, "
+"fire_particles=700, fire_smoke=1"
 
 #: ../plugins/animation/animation.xml.in.h:13
 msgid "Random Effects"
-msgstr ""
+msgstr "Efectos aleatorios"
 
 #: ../plugins/animation/animation.xml.in.h:14
 msgid "Pool"
-msgstr ""
+msgstr "Conjunto"
 
 #: ../plugins/animation/animation.xml.in.h:15
 msgid ""
 "Pool of effects to be chosen from if Random effect is selected. Click reset "
 "to use all effects."
 msgstr ""
+"Conjunto de efectos entre los que elegir si se selecciona el efecto "
+"aleatorio. Haga clic en restablecer para utilizar todos los efectos."
 
 #: ../plugins/animation/animation.xml.in.h:16
 msgid "Close Animation"
-msgstr ""
+msgstr "Animación de cierre"
 
 #: ../plugins/animation/animation.xml.in.h:17
 msgid "Close Effect"
-msgstr ""
+msgstr "Efecto de cierre"
 
 #: ../plugins/animation/animation.xml.in.h:18
 msgid "The animation effect shown when closing a window."
-msgstr ""
+msgstr "Efecto de animación que se muestra al cerrar una ventana."
 
 #: ../plugins/animation/animation.xml.in.h:19
 msgid "Animation duration in milliseconds for close effect."
-msgstr ""
+msgstr "Duración de la animación en milisegundos para el efecto de cerrar."
 
 #: ../plugins/animation/animation.xml.in.h:20
 msgid "Minimize Animation"
-msgstr ""
+msgstr "Animación de minimizar"
 
 #: ../plugins/animation/animation.xml.in.h:21
 msgid "Minimize Effect"
@@ -820,51 +829,53 @@ msgstr "Efecto Minimizar"
 
 #: ../plugins/animation/animation.xml.in.h:22
 msgid "The animation effect shown when minimizing a window."
-msgstr ""
+msgstr "Efecto de animación cuando se minimiza una ventana."
 
 #: ../plugins/animation/animation.xml.in.h:23
 msgid "Animation duration in milliseconds for minimize effect."
 msgstr ""
+"Duración de la animación en milisegundos para el efecto de minimizar."
 
 #: ../plugins/animation/animation.xml.in.h:24
 msgid "Unminimize Animation"
-msgstr ""
+msgstr "Animación de restaurar"
 
 #: ../plugins/animation/animation.xml.in.h:25
 msgid "Unminimize Effect"
-msgstr ""
+msgstr "Efecto de restaurar"
 
 #: ../plugins/animation/animation.xml.in.h:26
 msgid "The animation effect shown when unminimizing a window."
-msgstr ""
+msgstr "Efecto de animación que se muestra al restaurar una ventana."
 
 #: ../plugins/animation/animation.xml.in.h:27
 msgid "Animation duration in milliseconds for unminimize effect."
 msgstr ""
+"Duración en milisegundos del la animación  para el efecto de restaurar"
 
 #: ../plugins/animation/animation.xml.in.h:28
 msgid "Shade Animation"
-msgstr ""
+msgstr "Animación de la sombra"
 
 #: ../plugins/animation/animation.xml.in.h:29
 msgid "Shade Effect"
-msgstr ""
+msgstr "Efecto de sombra"
 
 #: ../plugins/animation/animation.xml.in.h:30
 msgid "The animation effect shown when shading a window."
-msgstr ""
+msgstr "El efecto de animación que se muestra al sombrear una ventana."
 
 #: ../plugins/animation/animation.xml.in.h:31
 msgid "Animation duration in milliseconds for shade effect."
-msgstr ""
+msgstr "Duración de la animación en milisegundos para el efecto de sombrear."
 
 #: ../plugins/animation/animation.xml.in.h:32
 msgid "Window that should animate with this effect when shaded."
-msgstr ""
+msgstr "Ventanas que deben animarse con este efecto al sombrearse."
 
 #: ../plugins/animation/animation.xml.in.h:33
 msgid "Focus Animation"
-msgstr ""
+msgstr "Animación del enfoque"
 
 #: ../plugins/animation/animation.xml.in.h:34
 #: ../plugins/wobbly/wobbly.xml.in.h:20
@@ -873,15 +884,15 @@ msgstr "Efecto Enfocar"
 
 #: ../plugins/animation/animation.xml.in.h:35
 msgid "The animation effect shown when focusing a window."
-msgstr ""
+msgstr "Efecto de animación que se muestra al enfocar una ventana."
 
 #: ../plugins/animation/animation.xml.in.h:36
 msgid "Animation duration in milliseconds for focus effect."
-msgstr ""
+msgstr "Duración de la animación en milisegundos para el efecto de enfocar."
 
 #: ../plugins/animation/animation.xml.in.h:37
 msgid "Window that should animate with this effect when focused."
-msgstr ""
+msgstr "Ventanas que deben animarse con este efecto al obtener el foco."
 
 #: ../plugins/animation/animation.xml.in.h:38
 #: ../plugins/animationaddon/animationaddon.xml.in.h:3
@@ -890,41 +901,47 @@ msgstr ""
 #: ../plugins/simple-animations/animationsim.xml.in.h:3
 #: ../plugins/trip/trip.xml.in.h:13
 msgid "Effect Settings"
-msgstr ""
+msgstr "Configuración del efecto"
 
 #: ../plugins/animation/animation.xml.in.h:39
 msgid "Random Animations For All Events"
-msgstr ""
+msgstr "Animaciones aleatorias para todos los eventos"
 
 #: ../plugins/animation/animation.xml.in.h:40
 msgid ""
 "All effects are chosen randomly, ignoring the selected effect. If None is "
 "selected for an event, that event won't be animated."
 msgstr ""
+"Todos los efectos se seleccionan aleatoriamente, ignorando el efecto "
+"elegido. Si se ha elegido «Ninguno» para un evento, ese evento no se animará."
 
 #: ../plugins/animation/animation.xml.in.h:41
 msgid "Animation Time Step"
-msgstr ""
+msgstr "Velocidad de la animación"
 
 #: ../plugins/animation/animation.xml.in.h:42
 msgid ""
 "The amount of time in milliseconds between each render of the animation. The "
 "higher the number, the jerkier the movements become."
 msgstr ""
+"La cantidad de tiempo en milisegundos entre cada representación de la "
+"animación. Cuanto más alto es el número, más bruscos serán los movimientos."
 
 #: ../plugins/animation/animation.xml.in.h:43
 msgid "Curved Fold"
-msgstr ""
+msgstr "Plegado curvo"
 
 #: ../plugins/animation/animation.xml.in.h:44
 msgid "Amplitude Multiplier"
-msgstr ""
+msgstr "Multiplicador de amplitud"
 
 #: ../plugins/animation/animation.xml.in.h:45
 msgid ""
 "Fold amplitude (size) is multiplied by this number. Negative values fold "
 "outward."
 msgstr ""
+"La amplitud del pliegue (tamaño) se multiplica por este número. Los valores "
+"negativos pliegan hacia afuera."
 
 #: ../plugins/animation/animation.xml.in.h:46
 msgid "Zoom to TaskBar on Minimize"
@@ -3899,7 +3916,7 @@ msgstr "Desplazamiento en Y"
 
 #: ../plugins/expo/expo.xml.in.h:41
 msgid "Vertical offset (in pixels)."
-msgstr ""
+msgstr "Desplazamiento vertical (en píxeles)."
 
 #: ../plugins/expo/expo.xml.in.h:42 ../plugins/scale/scale.xml.in.h:10
 msgid "Y Bottom Offset"
