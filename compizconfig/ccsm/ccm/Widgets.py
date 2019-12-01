@@ -27,7 +27,8 @@ from gi.repository import GObject
 from gi.repository import PangoCairo
 from gi.repository import GdkPixbuf
 import cairo
-from cgi import escape as protect_pango_markup
+#from cgi import escape as protect_pango_markup # JR, 2019/11/30
+from html import escape as protect_pango_markup # JR, 2019/11/30
 from math import pi, sqrt
 import time
 import os
