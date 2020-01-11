@@ -61,6 +61,7 @@ namespace Atoms {
     extern Atom winDesktop;
 
     extern Atom workarea;
+    extern Atom workareas;
 
     extern Atom desktopViewport;
     extern Atom desktopGeometry;

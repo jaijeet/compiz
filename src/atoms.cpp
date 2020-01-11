@@ -58,6 +58,7 @@ namespace Atoms {
     Atom winDesktop;
 
     Atom workarea;
+    Atom workareas;
 
     Atom desktopViewport;
     Atom desktopGeometry;
@@ -199,6 +200,7 @@ namespace Atoms {
 	winActive  = XInternAtom (dpy, "_NET_ACTIVE_WINDOW", 0);
 	winDesktop = XInternAtom (dpy, "_NET_WM_DESKTOP", 0);
 	workarea   = XInternAtom (dpy, "_NET_WORKAREA", 0);
+	workareas  = XInternAtom (dpy, "_GTK_WORKAREAS", 0);
 
 	desktopViewport  = XInternAtom (dpy, "_NET_DESKTOP_VIEWPORT", 0);
 	desktopGeometry  = XInternAtom (dpy, "_NET_DESKTOP_GEOMETRY", 0);

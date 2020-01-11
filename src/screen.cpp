@@ -2050,6 +2050,47 @@ PrivateScreen::desktopHintEqual (unsigned long *data,
 }
 
 void
+PrivateScreen::setWorkareasHint ()
+{
+    int hintSize;
+    unsigned long *data;
+
+    hintSize = outputDevices.getOutputDevs ().size () * 4;
+    data = (unsigned long *) malloc (sizeof (unsigned long) * hintSize);
+
+    if (!data)
+	return;
+
+    for (unsigned int i = 0; i < nDesktop; i++)
+    {
+	char buf[128];
+	Atom workarea_atom;
+
+	for (unsigned int j = 0; j < outputDevices.getOutputDevs ().size (); j++)
+	{
+	    CompRect outputWorkArea;
+
+	    outputWorkArea = screen->getWorkareaForOutput (j);
+
+	    data[j * 4 + 0] = outputWorkArea.x ();
+	    data[j * 4 + 1] = outputWorkArea.y ();
+	    data[j * 4 + 2] = outputWorkArea.width ();
+	    data[j * 4 + 3] = outputWorkArea.height ();
+	}
+
+	snprintf (buf, 128, "_GTK_WORKAREAS_D%d", i);
+	workarea_atom = XInternAtom (dpy, buf, 0);
+
+	XChangeProperty (dpy, rootWindow(),
+			 workarea_atom,
+			 XA_CARDINAL, 32, PropModeReplace,
+			 (unsigned char *) data, hintSize);
+    }
+
+    free (data);
+}
+
+void
 PrivateScreen::setDesktopHints ()
 {
     unsigned long *data;
@@ -2106,6 +2147,8 @@ PrivateScreen::setDesktopHints ()
 			 Atoms::workarea,
 			 XA_CARDINAL, 32, PropModeReplace,
 			 (unsigned char *) &data[offset], hintSize);
+
+    setWorkareasHint ();
 
     offset += hintSize;
 
@@ -2529,6 +2572,7 @@ CompScreenImpl::_addSupportedAtoms (std::vector<Atom> &atoms)
     atoms.push_back (Atoms::showingDesktop);
 
     atoms.push_back (Atoms::workarea);
+    atoms.push_back (Atoms::workareas);
 
     atoms.push_back (Atoms::wmName);
 /*
@@ -3830,18 +3874,12 @@ CompScreenImpl::updateWorkarea ()
 	    allWorkArea,
 	    windowManager.getWindows());
 
-    workArea = allWorkArea.boundingRect ();
-
-    if (privateScreen.workArea != workArea)
-    {
-	workAreaChanged = true;
-	privateScreen.workArea = workArea;
-
-	privateScreen.setDesktopHints ();
-    }
-
     if (workAreaChanged)
     {
+	privateScreen.workArea = allWorkArea.boundingRect ();
+
+	privateScreen.setDesktopHints ();
+
 	/* as work area changed, update all maximized windows on this
 	   screen to snap to the new work area */
 	windowManager.updateWindowSizes();
