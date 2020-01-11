@@ -97,6 +97,7 @@ namespace Atoms {
 
     Atom wmStrut;
     Atom wmStrutPartial;
+    Atom wmStrutArea;
 
     Atom wmUserTime;
 
@@ -263,6 +264,7 @@ namespace Atoms {
 
 	wmStrut        = XInternAtom (dpy, "_NET_WM_STRUT", 0);
 	wmStrutPartial = XInternAtom (dpy, "_NET_WM_STRUT_PARTIAL", 0);
+	wmStrutArea    = XInternAtom (dpy, "_GNOME_WM_STRUT_AREA", 0);
 
 	wmUserTime = XInternAtom (dpy, "_NET_WM_USER_TIME", 0);
 

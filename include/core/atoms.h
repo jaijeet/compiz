@@ -100,6 +100,7 @@ namespace Atoms {
 
     extern Atom wmStrut;
     extern Atom wmStrutPartial;
+    extern Atom wmStrutArea;
 
     extern Atom wmUserTime;
 
