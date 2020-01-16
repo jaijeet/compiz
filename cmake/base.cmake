@@ -37,16 +37,3 @@ function (_check_compiz_cmake_macro)
 	${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/compizconfig/libcompizconfig/cmake/FindCompizConfig.cmake ${CMAKE_ROOT}/Modules
     )
 endfunction ()
-
-# add install prefix to pkgconfig search path if needed
-string (REGEX REPLACE "([\\+\\(\\)\\^\\\$\\.\\-\\*\\?\\|])" "\\\\\\1" PKGCONFIG_REGEX ${CMAKE_INSTALL_PREFIX})
-set (PKGCONFIG_REGEX ".*${PKGCONFIG_REGEX}/lib/pkgconfig:${PKGCONFIG_REGEX}/share/pkgconfig.*")
-
-if (NOT "$ENV{PKG_CONFIG_PATH}" MATCHES "${PKGCONFIG_REGEX}")
-    if ("" STREQUAL "$ENV{PKG_CONFIG_PATH}")
-	set (ENV{PKG_CONFIG_PATH} "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig:${CMAKE_INSTALL_PREFIX}/share/pkgconfig")
-    else ()
-	set (ENV{PKG_CONFIG_PATH}
-	    "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig:${CMAKE_INSTALL_PREFIX}/share/pkgconfig:$ENV{PKG_CONFIG_PATH}")
-    endif ()
-endif ()
