@@ -53,23 +53,6 @@ if (NOT _COMPIZ_INTERNAL)
 	    endif ()
 	endif ()
 
-	# add install prefix to pkgconfig search path if needed
-        string (REGEX REPLACE "([\\+\\(\\)\\^\\\$\\.\\-\\*\\?\\|])" "\\\\\\1" PKGCONFIG_REGEX ${CMAKE_INSTALL_PREFIX})
-	set (PKGCONFIG_REGEX ".*${PKGCONFIG_REGEX}/lib/pkgconfig:${PKGCONFIG_REGEX}/share/pkgconfig.*")
-
-	if (NOT CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
-
-	    if (NOT "$ENV{PKG_CONFIG_PATH}" MATCHES "${PKGCONFIG_REGEX}")
-		if ("" STREQUAL "$ENV{PKG_CONFIG_PATH}")
-		    set (ENV{PKG_CONFIG_PATH} "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig:${CMAKE_INSTALL_PREFIX}/share/pkgconfig")
-	    	else ()
-		    set (ENV{PKG_CONFIG_PATH}
-		         "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig:${CMAKE_INSTALL_PREFIX}/share/pkgconfig:$ENV{PKG_CONFIG_PATH}")
-		endif ()
-	    endif ()
-
-	endif (NOT CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
-
 	# look for compiz
 	pkg_check_modules (COMPIZ ${_req} "compiz${_comp_ver}")
 
