@@ -1,3 +1,10 @@
+compiz (1:0.9.14.1+20.04.20200117-0ubuntu1) focal; urgency=medium
+
+  [ Alberts Muktupāvels ]
+  * don't change pkg-config search path (LP: #1859778)
+
+ -- Dmitry Shachnev <mitya57@ubuntu.com>  Fri, 17 Jan 2020 18:25:29 +0000
+
 compiz (1:0.9.14.1+20.04.20191127-0ubuntu1) focal; urgency=medium
 
   * Bump upstream version number to 0.9.14.1.
