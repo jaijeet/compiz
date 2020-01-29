@@ -1,3 +1,9 @@
+compiz (1:0.9.14.1+20.04.20200117-0ubuntu2) focal; urgency=medium
+
+  * No-change rebuild to build with python3.8.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 25 Jan 2020 04:25:42 +0000
+
 compiz (1:0.9.14.1+20.04.20200117-0ubuntu1) focal; urgency=medium
 
   [ Alberts Muktupāvels ]
