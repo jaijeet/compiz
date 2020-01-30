@@ -227,7 +227,8 @@ PlaceScreen::handleEvent (XEvent *event)
 	    break;
 	case PropertyNotify:
 	    if (event->xproperty.atom == Atoms::wmStrut ||
-	        event->xproperty.atom == Atoms::wmStrutPartial)
+	        event->xproperty.atom == Atoms::wmStrutPartial ||
+	        event->xproperty.atom == Atoms::wmStrutArea)
 	    {
 	        CompWindow *w;
 

@@ -2581,6 +2581,7 @@ CompScreenImpl::_addSupportedAtoms (std::vector<Atom> &atoms)
 
     atoms.push_back (Atoms::wmStrut);
     atoms.push_back (Atoms::wmStrutPartial);
+    atoms.push_back (Atoms::wmStrutArea);
 
 /*
     atoms.push_back (Atoms::wmPid);
