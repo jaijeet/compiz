@@ -216,13 +216,7 @@ update_event_windows (WnckWindow *win)
 	    WNCK_WINDOW_ACTION_CLOSE,
 	    WNCK_WINDOW_ACTION_MAXIMIZE,
 	    WNCK_WINDOW_ACTION_MINIMIZE,
-	    0,
-	    WNCK_WINDOW_ACTION_SHADE,
-	    WNCK_WINDOW_ACTION_ABOVE,
-	    WNCK_WINDOW_ACTION_STICK,
-	    WNCK_WINDOW_ACTION_UNSHADE,
-	    WNCK_WINDOW_ACTION_ABOVE,
-	    WNCK_WINDOW_ACTION_UNSTICK
+	    0
 	};
 
 	/* Pixmap mode - if a box was set and we no longer need it unmap its window */
@@ -1061,7 +1055,7 @@ populate_frame_actions (decor_t *d)
         return frame_actions;
 
     WnckWindowActions win_actions = wnck_window_get_actions (d->win);
-    const unsigned int n_action_bits = 16;
+    const unsigned int n_action_bits = 10;
     unsigned int i;
     struct typestrings {
         unsigned int decor_flag;
@@ -1077,13 +1071,7 @@ populate_frame_actions (decor_t *d)
         { DECOR_WINDOW_ACTION_MAXIMIZE_VERT, WNCK_WINDOW_ACTION_MAXIMIZE_VERTICALLY },
         { DECOR_WINDOW_ACTION_UNMAXIMIZE_HORZ, WNCK_WINDOW_ACTION_UNMAXIMIZE_HORIZONTALLY },
         { DECOR_WINDOW_ACTION_UNMAXIMIZE_VERT, WNCK_WINDOW_ACTION_UNMAXIMIZE_VERTICALLY },
-        { DECOR_WINDOW_ACTION_SHADE, WNCK_WINDOW_ACTION_SHADE },
-        { DECOR_WINDOW_ACTION_UNSHADE, WNCK_WINDOW_ACTION_UNSHADE },
-        { DECOR_WINDOW_ACTION_STICK, WNCK_WINDOW_ACTION_STICK },
-        { DECOR_WINDOW_ACTION_UNSTICK, WNCK_WINDOW_ACTION_UNSTICK },
-        { DECOR_WINDOW_ACTION_FULLSCREEN, WNCK_WINDOW_ACTION_FULLSCREEN },
-        { DECOR_WINDOW_ACTION_ABOVE, WNCK_WINDOW_ACTION_ABOVE },
-        { DECOR_WINDOW_ACTION_BELOW, WNCK_WINDOW_ACTION_BELOW },
+        { DECOR_WINDOW_ACTION_FULLSCREEN, WNCK_WINDOW_ACTION_FULLSCREEN }
     };
 
     for (i = 0; i < n_action_bits; ++i)

@@ -130,13 +130,7 @@ extern struct _cursor cursor[3][3];
 #define BUTTON_MAX     1
 #define BUTTON_MIN     2
 #define BUTTON_MENU    3
-#define BUTTON_SHADE   4
-#define BUTTON_ABOVE   5
-#define BUTTON_STICK   6
-#define BUTTON_UNSHADE 7
-#define BUTTON_UNABOVE 8
-#define BUTTON_UNSTICK 9
-#define BUTTON_NUM     10
+#define BUTTON_NUM     4
 
 struct _pos {
     int x, y, w, h;
@@ -538,35 +532,6 @@ void
 menu_button_event (WnckWindow *win,
 		   decor_event *gtkwd_event,
 		   decor_event_type gtkwd_type);
-
-void
-shade_button_event (WnckWindow *win,
-		    decor_event *gtkwd_event,
-		    decor_event_type gtkwd_type);
-
-void
-above_button_event (WnckWindow *win,
-		    decor_event *gtkwd_event,
-		    decor_event_type gtkwd_type);
-
-void
-stick_button_event (WnckWindow *win,
-		    decor_event *gtkwd_event,
-		    decor_event_type gtkwd_type);
-void
-unshade_button_event (WnckWindow *win,
-		      decor_event *gtkwd_event,
-		      decor_event_type gtkwd_type);
-
-void
-unabove_button_event (WnckWindow *win,
-		      decor_event *gtkwd_event,
-		      decor_event_type gtkwd_type);
-
-void
-unstick_button_event (WnckWindow *win,
-		      decor_event *gtkwd_event,
-		      decor_event_type gtkwd_type);
 
 void
 title_event (WnckWindow       *win,
