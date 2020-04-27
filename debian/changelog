@@ -1,3 +1,11 @@
+compiz (1:0.9.14.1+20.10.20200427-0ubuntu1) groovy; urgency=medium
+
+  [ Alberts Muktupāvels ]
+  * ccsm: remove HeaderStyleSet (LP: #1863561)
+  * window-decorator: remove shade, stick and above buttons
+
+ -- Dmitry Shachnev <mitya57@ubuntu.com>  Mon, 27 Apr 2020 10:22:52 +0000
+
 compiz (1:0.9.14.1+20.04.20200211-0ubuntu1) focal; urgency=medium
 
   * No-change rebuild to pick up cmake 3.16 path.
