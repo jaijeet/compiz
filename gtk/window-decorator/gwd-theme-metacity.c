@@ -95,18 +95,6 @@ meta_button_state_for_button_type (decor_t        *decor,
             return meta_button_state (decor->button_states[BUTTON_MIN]);
         case META_BUTTON_TYPE_MENU:
             return meta_button_state (decor->button_states[BUTTON_MENU]);
-        case META_BUTTON_TYPE_SHADE:
-            return meta_button_state (decor->button_states[BUTTON_SHADE]);
-        case META_BUTTON_TYPE_ABOVE:
-            return meta_button_state (decor->button_states[BUTTON_ABOVE]);
-        case META_BUTTON_TYPE_STICK:
-            return meta_button_state (decor->button_states[BUTTON_STICK]);
-        case META_BUTTON_TYPE_UNSHADE:
-            return meta_button_state (decor->button_states[BUTTON_UNSHADE]);
-        case META_BUTTON_TYPE_UNABOVE:
-            return meta_button_state (decor->button_states[BUTTON_UNABOVE]);
-        case META_BUTTON_TYPE_UNSTICK:
-            return meta_button_state (decor->button_states[BUTTON_UNSTICK]);
         default:
             break;
     }
@@ -553,18 +541,6 @@ button_type_to_meta_button_type (gint button_type)
             return META_BUTTON_TYPE_MAXIMIZE;
         case BUTTON_CLOSE:
             return META_BUTTON_TYPE_CLOSE;
-        case BUTTON_SHADE:
-            return META_BUTTON_TYPE_SHADE;
-        case BUTTON_ABOVE:
-            return META_BUTTON_TYPE_ABOVE;
-        case BUTTON_STICK:
-            return META_BUTTON_TYPE_STICK;
-        case BUTTON_UNSHADE:
-            return META_BUTTON_TYPE_UNSHADE;
-        case BUTTON_UNABOVE:
-            return META_BUTTON_TYPE_UNABOVE;
-        case BUTTON_UNSTICK:
-            return META_BUTTON_TYPE_UNSTICK;
         default:
             break;
     }
