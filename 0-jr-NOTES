@@ -26,23 +26,23 @@ Notes on hacking compiz's wallpaper plugin:
             -----------------------------------------------------
          it uses the parse code (in bcop.xslt:1349)
             -----------------------------------------------------
-            1349                 <xsl:when test="@type='list'">
-            1350                     <xsl:if test="not (./default[1])">
-            1351                         <xsl:text>    value.set (</xsl:text>
+            1349 <xsl:when test="@type='list'">
+            1350     <xsl:if test="not (./default[1])">
+            1351         <xsl:text>    value.set (</xsl:text>
             -----------------------------------------------------
          which matches because the XML block does not specify a <default>,
          to produce code in wallpaper_options.{cpp,h} suitable for per-image properties, eg,
             -----------------------------------------------------
-            42     // bg_pan
-            43     mOptions[WallpaperOptions::BgPan].setName ("bg_pan", CompOption::                 TypeList);
-            44     value.set (CompOption::TypeFloat, CompOption::Value::Vector (0));
-            45     mOptions[WallpaperOptions::BgPan].set (value);
-            46     mOptions[WallpaperOptions::BgPan].rest ().set (0.0, 1.0, 0.01);
+            42 // bg_pan
+            43 mOptions[WallpaperOptions::BgPan].setName ("bg_pan", CompOption::TypeList);
+            44 value.set (CompOption::TypeFloat, CompOption::Value::Vector (0));
+            45 mOptions[WallpaperOptions::BgPan].set (value);
+            46 mOptions[WallpaperOptions::BgPan].rest ().set (0.0, 1.0, 0.01);
             -----------------------------------------------------
 
         But if you just add a <default>0.5</default> to the XML block above, then this code does not execute, and it produces this wrong code below that does not support per-image properties and leads to a sefgault:
                  // cycle_timeout
-                 mOptions[WallpaperOptions::BgPan].setName ("bg_pan",                CompOption::TypeFloat);
+                 mOptions[WallpaperOptions::BgPan].setName ("bg_pan", CompOption::TypeFloat);
                  mOptions[WallpaperOptions::BgPan].rest ().set (0.0, 0.1, 0.01f);
                  mOptions[WallpaperOptions::BgPan].value().set((float) 0.5);
 
