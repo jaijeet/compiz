@@ -219,7 +219,8 @@ AnnoScreen::drawText (double              x,
 		      cairo_font_weight_t fontWeight,
 		      unsigned short      *fillColor,
 		      unsigned short      *strokeColor,
-		      double              strokeWidth)
+		      double              strokeWidth,
+		      CompRect&           damageRect)
 {
     REGION reg;
     cairo_t *cr = cairoContext ();
@@ -248,6 +249,10 @@ AnnoScreen::drawText (double              x,
 	reg.extents.y1 = y + extents.y_bearing - 2.0;
 	reg.extents.x2 = x + extents.width + 20.0;
 	reg.extents.y2 = y + extents.height;
+	
+	damageRect.setGeometry (x, y + extents.y_bearing - 2.0,
+				extents.width + 20.0,
+				extents.height - extents.y_bearing + 2.0);
 
 	content = true;
     }
@@ -301,6 +306,7 @@ AnnoScreen::draw (CompAction         *action,
     {
 	CompString	tool;
 	unsigned short	*fillColor, *strokeColor;
+	CompRect	damageRect;
 
 	tool = CompOption::getStringOptionNamed (options, "tool", "line");
 
@@ -328,6 +334,8 @@ AnnoScreen::draw (CompAction         *action,
 
 	    drawRectangle (x, y, w, h, fillColor, strokeColor,
 			   strokeWidth);
+	    damageRect.setGeometry (x, y, w, h);
+	    
 	}
 	else if (strcasecmp (tool.c_str (), "ellipse") == 0)
 	{
@@ -338,6 +346,7 @@ AnnoScreen::draw (CompAction         *action,
 
 	    drawEllipse (xc, yc, xr, yr, fillColor, strokeColor,
 			 strokeWidth);
+	    damageRect.setGeometry (xc - xr, yc - yr, 2 * xr, 2 * yr);
 	}
 	else if (strcasecmp (tool.c_str (), "line") == 0)
 	{
@@ -347,6 +356,8 @@ AnnoScreen::draw (CompAction         *action,
 	    double y2 = CompOption::getFloatOptionNamed (options, "y2", 100);
 
 	    drawLine (x1, y1, x2, y2, strokeWidth, fillColor);
+	    damageRect.setGeometry (MIN (x1, x2), MIN (y1, y2),
+				    abs (x1 - x2), abs (y1 - y2) );
 	}
 	else if (strcasecmp (tool.c_str (), "text") == 0)
 	{
@@ -382,8 +393,17 @@ AnnoScreen::draw (CompAction         *action,
 	    double size = CompOption::getFloatOptionNamed (options, "size", 36.0);
 
 	    drawText (x, y, text.c_str (), family.c_str (), size, slant,
-		      weight, fillColor, strokeColor, strokeWidth);
+		      weight, fillColor, strokeColor, strokeWidth, damageRect);
 	}
+	
+	/* Add border width to the damage region */
+	damageRect.setGeometry (damageRect.x () - (strokeWidth / 2),
+				damageRect.y () - (strokeWidth / 2),
+				damageRect.width () + strokeWidth + 1,
+				damageRect.height () + strokeWidth + 1);
+	
+	cScreen->damageRegion (damageRect);
+	gScreen->glPaintOutputSetEnabled (this, true);
     }
 
     return true;
