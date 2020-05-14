@@ -169,13 +169,10 @@ AnnoScreen::drawRectangle (double         x,
 
     if (cr)
     {
-	double  ex1, ey1, ex2, ey2;
-
 	setSourceColor (cr, fillColor);
 	cairo_rectangle (cr, x, y, w, h);
 	cairo_fill_preserve (cr);
 	cairo_set_line_width (cr, strokeWidth);
-	cairo_stroke_extents (cr, &ex1, &ey1, &ex2, &ey2);
 	setSourceColor (cr, strokeColor);
 	cairo_stroke (cr);
 
@@ -195,12 +192,9 @@ AnnoScreen::drawLine (double         x1,
 
     if (cr)
     {
-	double ex1, ey1, ex2, ey2;
-
 	cairo_set_line_width (cr, width);
 	cairo_move_to (cr, x1, y1);
 	cairo_line_to (cr, x2, y2);
-	cairo_stroke_extents (cr, &ex1, &ey1, &ex2, &ey2);
 	cairo_set_operator (cr, CAIRO_OPERATOR_SOURCE);
 	setSourceColor (cr, color);
 	cairo_stroke (cr);
@@ -222,7 +216,6 @@ AnnoScreen::drawText (double              x,
 		      double              strokeWidth,
 		      CompRect&           damageRect)
 {
-    REGION reg;
     cairo_t *cr = cairoContext ();
 
     if (cr)
@@ -241,14 +234,6 @@ AnnoScreen::drawText (double              x,
 	setSourceColor (cr, strokeColor);
 	cairo_stroke (cr);
 	cairo_restore (cr);
-
-	reg.rects    = &reg.extents;
-	reg.numRects = 1;
-
-	reg.extents.x1 = x;
-	reg.extents.y1 = y + extents.y_bearing - 2.0;
-	reg.extents.x2 = x + extents.width + 20.0;
-	reg.extents.y2 = y + extents.height;
 	
 	damageRect.setGeometry (x, y + extents.y_bearing - 2.0,
 				extents.width + 20.0,
