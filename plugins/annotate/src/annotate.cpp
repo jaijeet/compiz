@@ -299,10 +299,10 @@ AnnoScreen::draw (CompAction         *action,
 
     if (cr)
     {
-	const char	*tool;
+	CompString	tool;
 	unsigned short	*fillColor, *strokeColor;
 
-	tool = CompOption::getStringOptionNamed (options, "tool", "line").c_str ();
+	tool = CompOption::getStringOptionNamed (options, "tool", "line");
 
 	cairo_set_operator (cr, CAIRO_OPERATOR_OVER);
 	cairo_set_line_cap (cr, CAIRO_LINE_CAP_ROUND);
@@ -319,7 +319,7 @@ AnnoScreen::draw (CompAction         *action,
 	strokeWidth = CompOption::getFloatOptionNamed (options, "stroke_width",
 						       strokeWidth);
 
-	if (strcasecmp (tool, "rectangle") == 0)
+	if (strcasecmp (tool.c_str (), "rectangle") == 0)
 	{
 	    double x = CompOption::getFloatOptionNamed (options, "x", 0);
 	    double y = CompOption::getFloatOptionNamed (options, "y", 0);
@@ -329,7 +329,7 @@ AnnoScreen::draw (CompAction         *action,
 	    drawRectangle (x, y, w, h, fillColor, strokeColor,
 			   strokeWidth);
 	}
-	else if (strcasecmp (tool, "ellipse") == 0)
+	else if (strcasecmp (tool.c_str (), "ellipse") == 0)
 	{
 	    double xc = CompOption::getFloatOptionNamed (options, "xc", 0);
 	    double yc = CompOption::getFloatOptionNamed (options, "yc", 0);
@@ -339,7 +339,7 @@ AnnoScreen::draw (CompAction         *action,
 	    drawEllipse (xc, yc, xr, yr, fillColor, strokeColor,
 			 strokeWidth);
 	}
-	else if (strcasecmp (tool, "line") == 0)
+	else if (strcasecmp (tool.c_str (), "line") == 0)
 	{
 	    double x1 = CompOption::getFloatOptionNamed (options, "x1", 0);
 	    double y1 = CompOption::getFloatOptionNamed (options, "y1", 0);
@@ -348,25 +348,25 @@ AnnoScreen::draw (CompAction         *action,
 
 	    drawLine (x1, y1, x2, y2, strokeWidth, fillColor);
 	}
-	else if (strcasecmp (tool, "text") == 0)
+	else if (strcasecmp (tool.c_str (), "text") == 0)
 	{
-	    const char          *text, *family;
+	    CompString          text, family;
 	    cairo_font_slant_t  slant;
 	    cairo_font_weight_t weight;
-	    const char          *str;
+	    CompString          str;
 
-	    str = CompOption::getStringOptionNamed (options, "slant", "").c_str ();
+	    str = CompOption::getStringOptionNamed (options, "slant", "");
 
-	    if (strcasecmp (str, "oblique") == 0)
+	    if (strcasecmp (str.c_str (), "oblique") == 0)
 		slant = CAIRO_FONT_SLANT_OBLIQUE;
-	    else if (strcasecmp (str, "italic") == 0)
+	    else if (strcasecmp (str.c_str (), "italic") == 0)
 		slant = CAIRO_FONT_SLANT_ITALIC;
 	    else
 		slant = CAIRO_FONT_SLANT_NORMAL;
 
-	    str = CompOption::getStringOptionNamed (options, "weight", "").c_str ();
+	    str = CompOption::getStringOptionNamed (options, "weight", "");
 
-	    if (strcasecmp (str, "bold") == 0)
+	    if (strcasecmp (str.c_str (), "bold") == 0)
 		weight = CAIRO_FONT_WEIGHT_BOLD;
 	    else
 		weight = CAIRO_FONT_WEIGHT_NORMAL;
@@ -374,15 +374,15 @@ AnnoScreen::draw (CompAction         *action,
 	    double x = CompOption::getFloatOptionNamed (options, "x", 0);
 	    double y = CompOption::getFloatOptionNamed (options, "y", 0);
 
-	    text = CompOption::getStringOptionNamed (options, "text", "").c_str ();
+	    text = CompOption::getStringOptionNamed (options, "text", "");
 
 	    family = CompOption::getStringOptionNamed (options, "family",
-						       "Sans").c_str ();
+						       "Sans");
 
 	    double size = CompOption::getFloatOptionNamed (options, "size", 36.0);
 
-	    drawText (x, y, text, family, size, slant, weight,
-		      fillColor, strokeColor, strokeWidth);
+	    drawText (x, y, text.c_str (), family.c_str (), size, slant,
+		      weight, fillColor, strokeColor, strokeWidth);
 	}
     }
 
