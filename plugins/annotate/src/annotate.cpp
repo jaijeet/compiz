@@ -340,7 +340,7 @@ AnnoScreen::draw (CompAction         *action,
 	    double x2 = CompOption::getFloatOptionNamed (options, "x2", 100);
 	    double y2 = CompOption::getFloatOptionNamed (options, "y2", 100);
 
-	    drawLine (x1, y1, x2, y2, strokeWidth, fillColor);
+	    drawLine (x1, y1, x2, y2, strokeWidth, strokeColor);
 	    damageRect.setGeometry (MIN (x1, x2), MIN (y1, y2),
 				    abs (x1 - x2), abs (y1 - y2) );
 	}
