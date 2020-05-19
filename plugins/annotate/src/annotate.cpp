@@ -380,6 +380,8 @@ AnnoScreen::draw (CompAction         *action,
 	    drawText (x, y, text.c_str (), family.c_str (), size, slant,
 		      weight, fillColor, strokeColor, strokeWidth, damageRect);
 	}
+	else
+	    return true;
 	
 	/* Add border width to the damage region */
 	damageRect.setGeometry (damageRect.x () - (strokeWidth / 2),
