@@ -361,12 +361,9 @@ cps::EventManager::removeWatchFd (CompWatchFdHandle handle)
     w = (*it);
 
     if (w->mExecuting)
-    {
 	w->mForceFail = true;
-	return;
-    }
-
-    w->destroy();
+    else
+	w->destroy();
 
     watchFds.erase (it);
 }
