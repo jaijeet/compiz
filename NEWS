@@ -1,3 +1,20 @@
+Release 0.9.14.1 (2019-11-27 Dmitry Shachnev <mitya57@ubuntu.com>)
+==================================================================
+
+Highlights
+
+- CCSM now supports Python 3.8.
+- Many new translations have been imported from Launchpad.
+- MATE configuration has been removed. See this merge proposal for details:
+  https://code.launchpad.net/~muktupavels/compiz/+git/compiz/+merge/374783.
+
+Bugs Fixed
+
+https://pad.lv/1816629 - ccsm crashed with UnicodeDecodeError on startup.
+https://pad.lv/1843974 - Build failure with GCC 9 because of format-truncation
+                         warning.
+https://pad.lv/1847129 - gtk-window-decorator crashed when using Cairo theme.
+
 Release 0.9.14.0 (2019-02-16 Dmitry Shachnev <mitya57@ubuntu.com>)
 ==================================================================
 

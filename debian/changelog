@@ -1,3 +1,84 @@
+compiz (1:0.9.14.1+20.10.20200514-0ubuntu1) groovy; urgency=medium
+
+  * No-change rebuild against libmetacity3.
+
+ -- Dmitry Shachnev <mitya57@ubuntu.com>  Thu, 14 May 2020 09:04:56 +0000
+
+compiz (1:0.9.14.1+20.10.20200427-0ubuntu1) groovy; urgency=medium
+
+  [ Alberts Muktupāvels ]
+  * ccsm: remove HeaderStyleSet (LP: #1863561)
+  * window-decorator: remove shade, stick and above buttons
+
+ -- Dmitry Shachnev <mitya57@ubuntu.com>  Mon, 27 Apr 2020 10:22:52 +0000
+
+compiz (1:0.9.14.1+20.04.20200211-0ubuntu1) focal; urgency=medium
+
+  * No-change rebuild to pick up cmake 3.16 path.
+
+ -- Dmitry Shachnev <mitya57@ubuntu.com>  Tue, 11 Feb 2020 12:54:26 +0000
+
+compiz (1:0.9.14.1+20.04.20200130-0ubuntu1) focal; urgency=medium
+
+  [ Alberts Muktupāvels ]
+  * Add support for _GNOME_WM_STRUT_AREA.
+
+ -- Dmitry Shachnev <mitya57@ubuntu.com>  Thu, 30 Jan 2020 12:06:21 +0000
+
+compiz (1:0.9.14.1+20.04.20200129-0ubuntu1) focal; urgency=medium
+
+  [ Alberts Muktupāvels ]
+  * Add support for _GTK_WORKAREAS_Dn.
+
+ -- Dmitry Shachnev <mitya57@ubuntu.com>  Wed, 29 Jan 2020 11:42:37 +0000
+
+compiz (1:0.9.14.1+20.04.20200117-0ubuntu2) focal; urgency=medium
+
+  * No-change rebuild to build with python3.8.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 25 Jan 2020 04:25:42 +0000
+
+compiz (1:0.9.14.1+20.04.20200117-0ubuntu1) focal; urgency=medium
+
+  [ Alberts Muktupāvels ]
+  * don't change pkg-config search path (LP: #1859778)
+
+ -- Dmitry Shachnev <mitya57@ubuntu.com>  Fri, 17 Jan 2020 18:25:29 +0000
+
+compiz (1:0.9.14.1+20.04.20191127-0ubuntu1) focal; urgency=medium
+
+  * Bump upstream version number to 0.9.14.1.
+  * Import Spanish, German and Turkish translations from Launchpad.
+
+ -- Dmitry Shachnev <mitya57@ubuntu.com>  Wed, 27 Nov 2019 13:24:31 +0000
+
+compiz (1:0.9.14.0+20.04.20191118-0ubuntu1) focal; urgency=medium
+
+  [ Alberts Muktupāvels ]
+  * gtk-window-decorator: fix crash with Cairo theme (LP: #1847129)
+  * Remove MATE configuration.
+
+  [ Dmitry Shachnev ]
+  * Use GLib.markup_escape_text instead of cgi.escape which was removed
+    in Python 3.8.
+  * Fix build with latest googletest, by using static libraries shipped
+    by distro.
+
+ -- Dmitry Shachnev <mitya57@ubuntu.com>  Mon, 18 Nov 2019 07:01:26 +0000
+
+compiz (1:0.9.14.0+19.10.20190918-0ubuntu2) focal; urgency=medium
+
+  * No-change rebuild to build with python3.8.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 18 Oct 2019 18:38:37 +0000
+
+compiz (1:0.9.14.0+19.10.20190918-0ubuntu1) eoan; urgency=medium
+
+  * Fix build failure with GCC 9 because of format-truncation warning.
+    (LP: #1843974)
+
+ -- Dmitry Shachnev <mitya57@ubuntu.com>  Wed, 18 Sep 2019 13:05:28 +0000
+
 compiz (1:0.9.14.0+19.04.20190223.1-0ubuntu1) disco; urgency=medium
 
   * Import the latest translations from Launchpad.

@@ -1041,38 +1041,121 @@ CompWindow::updateStruts ()
     newStrut.bottom.height = 0;
 
     int result = XGetWindowProperty (screen->dpy (), priv->id,
-				     Atoms::wmStrutPartial,
-				     0L, 12L, false, XA_CARDINAL, &actual, &format,
+				     Atoms::wmStrutArea,
+				     0L, 4L, false, XA_CARDINAL, &actual, &format,
 				     &n, &left, &data);
 
     if (result == Success && data)
     {
 	unsigned long *struts = (unsigned long *) data;
 
-	if (n == 12)
+	if (n == 4)
 	{
+	    int x, y, width, height;
+	    CompRect strut_rect;
+
 	    hasNew = true;
 
-	    newStrut.left.y        = struts[4];
-	    newStrut.left.width    = struts[0];
-	    newStrut.left.height   = struts[5] - newStrut.left.y + 1;
+	    x = struts[0];
+	    y = struts[1];
+	    width = struts[2];
+	    height = struts[3];
 
-	    newStrut.right.width   = struts[1];
-	    newStrut.right.x       = screen->width () - newStrut.right.width;
-	    newStrut.right.y       = struts[6];
-	    newStrut.right.height  = struts[7] - newStrut.right.y + 1;
+	    strut_rect = CompRect (x, y, width, height);
 
-	    newStrut.top.x         = struts[8];
-	    newStrut.top.width     = struts[9] - newStrut.top.x + 1;
-	    newStrut.top.height    = struts[2];
+	    for (unsigned int i = 0; i < screen->outputDevs ().size (); i++)
+	    {
+		CompRect geometry;
 
-	    newStrut.bottom.x      = struts[10];
-	    newStrut.bottom.width  = struts[11] - newStrut.bottom.x + 1;
-	    newStrut.bottom.height = struts[3];
-	    newStrut.bottom.y      = screen->height () - newStrut.bottom.height;
+		geometry = screen->outputDevs ()[i];
+
+		if (geometry.contains (strut_rect))
+		{
+		    if (height > width)
+		    {
+			if (x == geometry.x ())
+			{
+			    newStrut.left.x = x;
+			    newStrut.left.y = y;
+			    newStrut.left.width = width;
+			    newStrut.left.height = height;
+
+			    hasNew = true;
+			}
+			else if (x + width == geometry.x () + geometry.width ())
+			{
+			    newStrut.right.x = x;
+			    newStrut.right.y = y;
+			    newStrut.right.width = width;
+			    newStrut.right.height = height;
+
+			    hasNew = true;
+			}
+		    }
+		    else
+		    {
+			if (y == geometry.y ())
+			{
+			    newStrut.top.x = x;
+			    newStrut.top.y = y;
+			    newStrut.top.width = width;
+			    newStrut.top.height = height;
+
+			    hasNew = true;
+			}
+			else if (y + height == geometry.y () + geometry.height ())
+			{
+			    newStrut.bottom.x = x;
+			    newStrut.bottom.y = y;
+			    newStrut.bottom.width = width;
+			    newStrut.bottom.height = height;
+
+			    hasNew = true;
+			}
+		    }
+		}
+	    }
 	}
 
 	XFree (data);
+    }
+
+    if (!hasNew)
+    {
+	result = XGetWindowProperty (screen->dpy (), priv->id,
+				     Atoms::wmStrutPartial,
+				     0L, 12L, false, XA_CARDINAL, &actual, &format,
+				     &n, &left, &data);
+
+	if (result == Success && data)
+	{
+	    unsigned long *struts = (unsigned long *) data;
+
+	    if (n == 12)
+	    {
+		hasNew = true;
+
+		newStrut.left.y        = struts[4];
+		newStrut.left.width    = struts[0];
+		newStrut.left.height   = struts[5] - newStrut.left.y + 1;
+
+		newStrut.right.width   = struts[1];
+		newStrut.right.x       = screen->width () - newStrut.right.width;
+		newStrut.right.y       = struts[6];
+		newStrut.right.height  = struts[7] - newStrut.right.y + 1;
+
+		newStrut.top.x         = struts[8];
+		newStrut.top.width     = struts[9] - newStrut.top.x + 1;
+		newStrut.top.height    = struts[2];
+
+		newStrut.bottom.x      = struts[10];
+		newStrut.bottom.width  = struts[11] - newStrut.bottom.x + 1;
+		newStrut.bottom.height = struts[3];
+		newStrut.bottom.y      = screen->height () - newStrut.bottom.height;
+	    }
+
+	    XFree (data);
+	}
     }
 
     if (!hasNew)

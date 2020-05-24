@@ -678,6 +678,9 @@ class PrivateScreen :
 			       int           offset,
 			       int           hintSize);
 
+
+	void setWorkareasHint ();
+
 	void setDesktopHints ();
 
 	void setVirtualScreenSize (int hsize, int vsize);

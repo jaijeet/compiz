@@ -29,9 +29,8 @@ from ccm.Conflicts import KeyConflict, ButtonConflict, EdgeConflict
 from ccm.Widgets import CellRendererColor, ModifierSelector, SingleEdgeSelector, KeyGrabber, MatchButton, FileButton, ErrorDialog
 from ccm.Utils import Image, ActionImage, SizedButton, GlobalUpdater, PureVirtualError, SettingKeyFunc, EnumSettingKeyFunc, HasOnlyType, GetSettings, GetAcceleratorName
 
-#from cgi import escape as protect_pango_markup # JR, 2019/11/30
-from html import escape as protect_pango_markup # JR, 2019/11/30
-
+##from cgi import escape as protect_pango_markup # JR, 2019/11/30
+#from html import escape as protect_pango_markup # JR, 2019/11/30
 import locale
 import gettext
 locale.setlocale(locale.LC_ALL, "")
@@ -111,7 +110,7 @@ class Setting(object):
             return
 
         label = Gtk.Label()
-        desc = protect_pango_markup (self.Setting.ShortDesc)
+        desc = GLib.markup_escape_text(self.Setting.ShortDesc)
         style = "%s"
         if self.Setting.Integrated:
             style = "<i>%s</i>"
@@ -967,7 +966,7 @@ class KeySetting (EditableActionSetting):
     def HandleDialogText (self, accel):
         name = self.ReorderKeyString (accel)
         if len (accel) != len (name):
-            accel = protect_pango_markup (accel)
+            accel = GLib.markup_escape_text(accel)
             ErrorDialog (self.Widget.get_toplevel (),
                          _("\"%s\" is not a valid shortcut") % accel)
             return
@@ -1150,7 +1149,7 @@ class ButtonSetting (EditableActionSetting):
 
     def HandleDialogText (self, button):
         def ShowErrorDialog (button):
-            button = protect_pango_markup (button)
+            button = GLib.markup_escape_text(button)
             ErrorDialog (self.Widget.get_toplevel (),
                          _("\"%s\" is not a valid button") % button)
         if button.lower ().strip () in ("", "disabled", "none"):
@@ -1277,7 +1276,7 @@ class ButtonSetting (EditableActionSetting):
                                          buttons = Gtk.ButtonsType.YES_NO,
                                          title = _("Warning"))
 
-            warning.set_markup (GLib.markup_escape_text (_("Using Button1 without modifiers can \
+            warning.set_markup(GLib.markup_escape_text(_("Using Button1 without modifiers can \
 prevent any left click and thus break your configuration. Do you really want \
 to set \"%s\" button to Button1 ?") % self.Setting.ShortDesc))
 
@@ -1331,7 +1330,7 @@ class EdgeSetting (EditableActionSetting):
                 valid = False
                 break
         if not valid:
-            mask = protect_pango_markup (mask)
+            mask = GLib.markup_escape_text(mask)
             ErrorDialog (self.Widget.get_toplevel (),
                          _("\"%s\" is not a valid edge mask") % mask)
             return

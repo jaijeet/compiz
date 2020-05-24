@@ -1788,7 +1788,8 @@ CompScreenImpl::_handleEvent (XEvent *event)
 		w->priv->updateClientFrame ();
 	}
 	else if (event->xproperty.atom == Atoms::wmStrut ||
-		 event->xproperty.atom == Atoms::wmStrutPartial)
+		 event->xproperty.atom == Atoms::wmStrutPartial ||
+		 event->xproperty.atom == Atoms::wmStrutArea)
 	{
 	    w = findWindow (event->xproperty.window);
 	    if (w)

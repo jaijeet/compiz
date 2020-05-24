@@ -33,7 +33,7 @@
 
 struct _GWDThemeCairo
 {
-    GObject       parent;
+    GWDTheme      parent;
 
     decor_color_t title_color[2];
 };
@@ -495,12 +495,6 @@ button_present (decor_t *decor,
             break;
 
         case BUTTON_MENU:
-        case BUTTON_SHADE:
-        case BUTTON_ABOVE:
-        case BUTTON_STICK:
-        case BUTTON_UNSHADE:
-        case BUTTON_UNABOVE:
-        case BUTTON_UNSTICK:
             break;
 
         default:

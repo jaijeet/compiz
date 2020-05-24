@@ -58,6 +58,7 @@ namespace Atoms {
     Atom winDesktop;
 
     Atom workarea;
+    Atom workareas;
 
     Atom desktopViewport;
     Atom desktopGeometry;
@@ -97,6 +98,7 @@ namespace Atoms {
 
     Atom wmStrut;
     Atom wmStrutPartial;
+    Atom wmStrutArea;
 
     Atom wmUserTime;
 
@@ -199,6 +201,7 @@ namespace Atoms {
 	winActive  = XInternAtom (dpy, "_NET_ACTIVE_WINDOW", 0);
 	winDesktop = XInternAtom (dpy, "_NET_WM_DESKTOP", 0);
 	workarea   = XInternAtom (dpy, "_NET_WORKAREA", 0);
+	workareas  = XInternAtom (dpy, "_GTK_WORKAREAS", 0);
 
 	desktopViewport  = XInternAtom (dpy, "_NET_DESKTOP_VIEWPORT", 0);
 	desktopGeometry  = XInternAtom (dpy, "_NET_DESKTOP_GEOMETRY", 0);
@@ -263,6 +266,7 @@ namespace Atoms {
 
 	wmStrut        = XInternAtom (dpy, "_NET_WM_STRUT", 0);
 	wmStrutPartial = XInternAtom (dpy, "_NET_WM_STRUT_PARTIAL", 0);
+	wmStrutArea    = XInternAtom (dpy, "_GNOME_WM_STRUT_AREA", 0);
 
 	wmUserTime = XInternAtom (dpy, "_NET_WM_USER_TIME", 0);
 

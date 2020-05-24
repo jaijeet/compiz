@@ -147,11 +147,14 @@ update_metacity_theme_cb (GWDSettings *settings,
                           gpointer     user_data)
 {
     GWDThemeType type = GWD_THEME_TYPE_CAIRO;
+    GWDTheme *theme;
 
     if (metacity_theme_name != NULL)
         type = GWD_THEME_TYPE_METACITY;
 
-    g_set_object (&gwd_theme, gwd_theme_new (type, settings));
+    theme = gwd_theme_new (type, settings);
+    g_set_object (&gwd_theme, theme);
+    g_object_unref (theme);
 
     gwd_theme_update_titlebar_font (gwd_theme);
 }

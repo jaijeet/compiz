@@ -61,6 +61,7 @@ namespace Atoms {
     extern Atom winDesktop;
 
     extern Atom workarea;
+    extern Atom workareas;
 
     extern Atom desktopViewport;
     extern Atom desktopGeometry;
@@ -100,6 +101,7 @@ namespace Atoms {
 
     extern Atom wmStrut;
     extern Atom wmStrutPartial;
+    extern Atom wmStrutArea;
 
     extern Atom wmUserTime;
 

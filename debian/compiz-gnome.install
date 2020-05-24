@@ -1,4 +1,3 @@
-debian/65compiz_profile-on-session /etc/X11/Xsession.d
 postinst/convert-files/*.convert usr/lib/compiz/migration/
 usr/bin/gtk-window-decorator
 usr/lib/*/compizconfig/backends/libgsettings.so
