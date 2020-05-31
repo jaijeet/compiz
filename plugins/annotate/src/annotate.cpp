@@ -169,13 +169,10 @@ AnnoScreen::drawRectangle (double         x,
 
     if (cr)
     {
-	double  ex1, ey1, ex2, ey2;
-
 	setSourceColor (cr, fillColor);
 	cairo_rectangle (cr, x, y, w, h);
 	cairo_fill_preserve (cr);
 	cairo_set_line_width (cr, strokeWidth);
-	cairo_stroke_extents (cr, &ex1, &ey1, &ex2, &ey2);
 	setSourceColor (cr, strokeColor);
 	cairo_stroke (cr);
 
@@ -195,12 +192,9 @@ AnnoScreen::drawLine (double         x1,
 
     if (cr)
     {
-	double ex1, ey1, ex2, ey2;
-
 	cairo_set_line_width (cr, width);
 	cairo_move_to (cr, x1, y1);
 	cairo_line_to (cr, x2, y2);
-	cairo_stroke_extents (cr, &ex1, &ey1, &ex2, &ey2);
 	cairo_set_operator (cr, CAIRO_OPERATOR_SOURCE);
 	setSourceColor (cr, color);
 	cairo_stroke (cr);
@@ -219,9 +213,9 @@ AnnoScreen::drawText (double              x,
 		      cairo_font_weight_t fontWeight,
 		      unsigned short      *fillColor,
 		      unsigned short      *strokeColor,
-		      double              strokeWidth)
+		      double              strokeWidth,
+		      CompRect&           damageRect)
 {
-    REGION reg;
     cairo_t *cr = cairoContext ();
 
     if (cr)
@@ -240,14 +234,10 @@ AnnoScreen::drawText (double              x,
 	setSourceColor (cr, strokeColor);
 	cairo_stroke (cr);
 	cairo_restore (cr);
-
-	reg.rects    = &reg.extents;
-	reg.numRects = 1;
-
-	reg.extents.x1 = x;
-	reg.extents.y1 = y + extents.y_bearing - 2.0;
-	reg.extents.x2 = x + extents.width + 20.0;
-	reg.extents.y2 = y + extents.height;
+	
+	damageRect.setGeometry (x, y + extents.y_bearing - 2.0,
+				extents.width + 20.0,
+				extents.height - extents.y_bearing + 2.0);
 
 	content = true;
     }
@@ -299,10 +289,11 @@ AnnoScreen::draw (CompAction         *action,
 
     if (cr)
     {
-	const char	*tool;
+	CompString	tool;
 	unsigned short	*fillColor, *strokeColor;
+	CompRect	damageRect;
 
-	tool = CompOption::getStringOptionNamed (options, "tool", "line").c_str ();
+	tool = CompOption::getStringOptionNamed (options, "tool", "line");
 
 	cairo_set_operator (cr, CAIRO_OPERATOR_OVER);
 	cairo_set_line_cap (cr, CAIRO_LINE_CAP_ROUND);
@@ -319,7 +310,7 @@ AnnoScreen::draw (CompAction         *action,
 	strokeWidth = CompOption::getFloatOptionNamed (options, "stroke_width",
 						       strokeWidth);
 
-	if (strcasecmp (tool, "rectangle") == 0)
+	if (strcasecmp (tool.c_str (), "rectangle") == 0)
 	{
 	    double x = CompOption::getFloatOptionNamed (options, "x", 0);
 	    double y = CompOption::getFloatOptionNamed (options, "y", 0);
@@ -328,8 +319,10 @@ AnnoScreen::draw (CompAction         *action,
 
 	    drawRectangle (x, y, w, h, fillColor, strokeColor,
 			   strokeWidth);
+	    damageRect.setGeometry (x, y, w, h);
+	    
 	}
-	else if (strcasecmp (tool, "ellipse") == 0)
+	else if (strcasecmp (tool.c_str (), "ellipse") == 0)
 	{
 	    double xc = CompOption::getFloatOptionNamed (options, "xc", 0);
 	    double yc = CompOption::getFloatOptionNamed (options, "yc", 0);
@@ -338,35 +331,38 @@ AnnoScreen::draw (CompAction         *action,
 
 	    drawEllipse (xc, yc, xr, yr, fillColor, strokeColor,
 			 strokeWidth);
+	    damageRect.setGeometry (xc - xr, yc - yr, 2 * xr, 2 * yr);
 	}
-	else if (strcasecmp (tool, "line") == 0)
+	else if (strcasecmp (tool.c_str (), "line") == 0)
 	{
 	    double x1 = CompOption::getFloatOptionNamed (options, "x1", 0);
 	    double y1 = CompOption::getFloatOptionNamed (options, "y1", 0);
 	    double x2 = CompOption::getFloatOptionNamed (options, "x2", 100);
 	    double y2 = CompOption::getFloatOptionNamed (options, "y2", 100);
 
-	    drawLine (x1, y1, x2, y2, strokeWidth, fillColor);
+	    drawLine (x1, y1, x2, y2, strokeWidth, strokeColor);
+	    damageRect.setGeometry (MIN (x1, x2), MIN (y1, y2),
+				    abs (x1 - x2), abs (y1 - y2) );
 	}
-	else if (strcasecmp (tool, "text") == 0)
+	else if (strcasecmp (tool.c_str (), "text") == 0)
 	{
-	    const char          *text, *family;
+	    CompString          text, family;
 	    cairo_font_slant_t  slant;
 	    cairo_font_weight_t weight;
-	    const char          *str;
+	    CompString          str;
 
-	    str = CompOption::getStringOptionNamed (options, "slant", "").c_str ();
+	    str = CompOption::getStringOptionNamed (options, "slant", "");
 
-	    if (strcasecmp (str, "oblique") == 0)
+	    if (strcasecmp (str.c_str (), "oblique") == 0)
 		slant = CAIRO_FONT_SLANT_OBLIQUE;
-	    else if (strcasecmp (str, "italic") == 0)
+	    else if (strcasecmp (str.c_str (), "italic") == 0)
 		slant = CAIRO_FONT_SLANT_ITALIC;
 	    else
 		slant = CAIRO_FONT_SLANT_NORMAL;
 
-	    str = CompOption::getStringOptionNamed (options, "weight", "").c_str ();
+	    str = CompOption::getStringOptionNamed (options, "weight", "");
 
-	    if (strcasecmp (str, "bold") == 0)
+	    if (strcasecmp (str.c_str (), "bold") == 0)
 		weight = CAIRO_FONT_WEIGHT_BOLD;
 	    else
 		weight = CAIRO_FONT_WEIGHT_NORMAL;
@@ -374,16 +370,27 @@ AnnoScreen::draw (CompAction         *action,
 	    double x = CompOption::getFloatOptionNamed (options, "x", 0);
 	    double y = CompOption::getFloatOptionNamed (options, "y", 0);
 
-	    text = CompOption::getStringOptionNamed (options, "text", "").c_str ();
+	    text = CompOption::getStringOptionNamed (options, "text", "");
 
 	    family = CompOption::getStringOptionNamed (options, "family",
-						       "Sans").c_str ();
+						       "Sans");
 
 	    double size = CompOption::getFloatOptionNamed (options, "size", 36.0);
 
-	    drawText (x, y, text, family, size, slant, weight,
-		      fillColor, strokeColor, strokeWidth);
+	    drawText (x, y, text.c_str (), family.c_str (), size, slant,
+		      weight, fillColor, strokeColor, strokeWidth, damageRect);
 	}
+	else
+	    return true;
+	
+	/* Add border width to the damage region */
+	damageRect.setGeometry (damageRect.x () - (strokeWidth / 2),
+				damageRect.y () - (strokeWidth / 2),
+				damageRect.width () + strokeWidth + 1,
+				damageRect.height () + strokeWidth + 1);
+	
+	cScreen->damageRegion (damageRect);
+	gScreen->glPaintOutputSetEnabled (this, true);
     }
 
     return true;

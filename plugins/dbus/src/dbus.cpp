@@ -495,7 +495,7 @@ DbusScreen::handleActionMessage (DBusConnection                 *connection,
 			switch (dbus_message_iter_get_arg_type (&iter)) {
 			case DBUS_TYPE_BOOLEAN:
 			    {
-				bool tmp;
+				dbus_bool_t tmp;
 				type = CompOption::TypeBool;
 				dbus_message_iter_get_basic (&iter, &tmp);
 				value.set (tmp ? true : false);
@@ -602,7 +602,7 @@ DbusScreen::getOptionValue (DBusMessageIter   *iter,
     switch (type) {
     case CompOption::TypeBool:
 	{
-	    bool b;
+	    dbus_bool_t b;
 	    success = tryGetValueWithType (iter, DBUS_TYPE_BOOLEAN, &b);
 	    if (success)
 		value.set (b ? true : false);
@@ -682,8 +682,8 @@ DbusScreen::getOptionValue (DBusMessageIter   *iter,
 	break;
     case CompOption::TypeBell:
 	{
-	    bool       bell;
-	    CompAction action;
+	    dbus_bool_t bell;
+	    CompAction  action;
 
 	    success = tryGetValueWithType (iter, DBUS_TYPE_BOOLEAN, &bell);
 	    if (success)
@@ -818,7 +818,7 @@ DbusScreen::appendSimpleOptionValue (DBusMessage       *message,
     switch (type) {
     case CompOption::TypeBool:
 	{
-	    bool b = value.b () ? true : false;
+	    dbus_bool_t b = value.b () ? TRUE : FALSE;
 	    dbus_message_append_args (message,
 				      DBUS_TYPE_BOOLEAN, &b,
 				      DBUS_TYPE_INVALID);
@@ -887,7 +887,7 @@ DbusScreen::appendSimpleOptionValue (DBusMessage       *message,
 	break;
     case CompOption::TypeBell:
 	{
-	    bool bell = value.action ().bell () ? true : false;
+	    dbus_bool_t bell = value.action ().bell () ? TRUE : FALSE;
 	    dbus_message_append_args (message,
 				      DBUS_TYPE_BOOLEAN, &bell,
 				      DBUS_TYPE_INVALID);
@@ -955,7 +955,7 @@ DbusScreen::appendListOptionValue (DBusMessage       *message,
 	    break;
 	case CompOption::TypeBool:
 	    {
-		bool b = val.b () ? true : false;
+		dbus_bool_t b = val.b () ? TRUE : FALSE;
 		dbus_message_iter_append_basic (&listIter, sig[0], &b);
 	    }
 	    break;
@@ -1274,17 +1274,17 @@ DbusScreen::handleGetPluginMetadataMessage (DBusConnection *connection,
 
     if (p)
     {
-	bool	   initializedPlugin = true;
-	char	   *shortDesc = NULL;
-	char	   *longDesc = NULL;
-	const char *blankStr = "";
+	dbus_bool_t initializedPlugin = TRUE;
+	char	    *shortDesc = NULL;
+	char	    *longDesc = NULL;
+	const char  *blankStr = "";
 
 	reply = dbus_message_new_method_return (message);
 
 	if (loadedPlugin)
 	{
 	    if (!(*p->vTable->init) (p))
-		initializedPlugin = false;
+		initializedPlugin = FALSE;
 	}
 
 	if (initializedPlugin && p->vTable->getMetadata)

@@ -136,7 +136,8 @@ class AnnoScreen :
 		  cairo_font_weight_t fontWeight,
 		  unsigned short      *fillColor,
 		  unsigned short      *strokeColor,
-		  double              strokeWidth);
+		  double              strokeWidth,
+		  CompRect&           damageRect);
 
         /* Actions */
 
