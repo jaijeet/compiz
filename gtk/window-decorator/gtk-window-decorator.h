@@ -266,7 +266,7 @@ typedef struct _default_frame_references
 } default_frame_references_t;
 
 extern default_frame_references_t default_frames[WINDOW_TYPE_FRAMES_NUM * 2];
-const gchar * window_type_frames[WINDOW_TYPE_FRAMES_NUM];
+extern const gchar * window_type_frames[WINDOW_TYPE_FRAMES_NUM];
 
 extern char *program_name;
 

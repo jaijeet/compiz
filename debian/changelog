@@ -1,3 +1,17 @@
+compiz (1:0.9.14.1+20.10.20200526-0ubuntu3) groovy; urgency=medium
+
+  * Initialize 3 arrays to zero to silence a new gcc-10 warning
+  * Move window_type_frames to extern in the header file, fixing a build
+    failure with gcc-10
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Tue, 28 Jul 2020 11:39:45 +0200
+
+compiz (1:0.9.14.1+20.10.20200526-0ubuntu2) groovy; urgency=medium
+
+  * Rebuild against new libprotobuf23.
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Sun, 26 Jul 2020 10:13:56 +0200
+
 compiz (1:0.9.14.1+20.10.20200526-0ubuntu1) groovy; urgency=medium
 
   [ Daniel Kondor ]
