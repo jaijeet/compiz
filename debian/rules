@@ -60,11 +60,7 @@ override_dh_gencontrol:
 	dh_gencontrol -- -Vcoreabiversion=$(CORE_ABIVERSION)
 
 override_dh_auto_test:
-ifeq ($(DEB_BUILD_ARCH), s390x)
-	-dh_auto_test --no-parallel
-else
 	dh_auto_test --no-parallel
-endif
 
 %:
 	dh $@ --parallel --with python3,translations
