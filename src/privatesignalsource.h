@@ -23,6 +23,9 @@
  * Author: Sam Spilsbury <sam.spilsbury@canonical.com>
  */
 
+#ifndef _COMPIZ_PRIVATESIGNALSOURCE_H
+#define _COMPIZ_PRIVATESIGNALSOURCE_H
+
 #include <boost/function.hpp>
 
 #include <glib.h>
@@ -53,3 +56,5 @@ class CompSignalSource
 	int          mSignal;
 	gint         mSource;
 };
+
+#endif /* _COMPIZ_PRIVATESIGNALSOURCE_H */

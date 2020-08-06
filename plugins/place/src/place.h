@@ -20,6 +20,9 @@
  * 02111-1307, USA.
  */
 
+#ifndef _COMPIZ_PLACE_SRC_PLACE_H
+#define _COMPIZ_PLACE_SRC_PLACE_H
+
 #include <math.h>
 #include <stdlib.h>
 #include <string.h>
@@ -165,3 +168,5 @@ class PlacePluginVTable :
     public:
 	bool init ();
 };
+
+#endif /* _COMPIZ_PLACE_SRC_PLACE_H */

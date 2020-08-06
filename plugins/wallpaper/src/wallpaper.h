@@ -19,6 +19,9 @@
  *
  */
 
+#ifndef _COMPIZ_WALLPAPER_SRC_WALLPAPER_H
+#define _COMPIZ_WALLPAPER_SRC_WALLPAPER_H
+
 #include <X11/Xatom.h>
 #include <X11/extensions/Xrender.h>
 #include <X11/extensions/shape.h>
@@ -166,3 +169,5 @@ class WallpaperPluginVTable :
 
 	bool init ();
 };
+
+#endif /* _COMPIZ_WALLPAPER_SRC_WALLPAPER_H */

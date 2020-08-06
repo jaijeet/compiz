@@ -21,6 +21,9 @@
  * Boston, MA  02110-1301, USA.
  */
 
+#ifndef _COMPIZ_WINRULES_SRC_WINRULES_H
+#define _COMPIZ_WINRULES_SRC_WINRULES_H
+
 #include <core/core.h>
 #include <core/pluginclasshandler.h>
 #include <core/timer.h>
@@ -123,3 +126,5 @@ class WinrulesPluginVTable:
 
 	bool init ();
 };
+
+#endif /* _COMPIZ_WINRULES_SRC_WINRULES_H */

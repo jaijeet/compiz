@@ -23,6 +23,9 @@
  *
  */
 
+#ifndef _COMPIZ_REFLEX_SRC_REFLEX_H
+#define _COMPIZ_REFLEX_SRC_REFLEX_H
+
 #include <core/core.h>
 #include <composite/composite.h>
 #include <opengl/opengl.h>
@@ -110,3 +113,5 @@ class ReflexPluginVTable :
 
 	bool init ();
 };
+
+#endif /* _COMPIZ_REFLEX_SRC_REFLEX_H */

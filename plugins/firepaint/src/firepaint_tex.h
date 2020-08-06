@@ -18,6 +18,9 @@
  *
  **/
 
+#ifndef _COMPIZ_FIREPAINT_SRC_FIREPAINT_TEX_H
+#define _COMPIZ_FIREPAINT_SRC_FIREPAINT_TEX_H
+
 const unsigned char fireTex[4097] = {
   "\0\0\0\0\377\377\377\3\377\377\377\2\377\377\377\5\377\377\377\7\377\377"
   "\377\6\377\377\377\6\377\377\377\12\377\377\377\13\377\377\377\11\377\377"
@@ -221,3 +224,4 @@ const unsigned char fireTex[4097] = {
   "\0\0\0"
 };
 
+#endif /* _COMPIZ_FIREPAINT_SRC_FIREPAINT_TEX_H */

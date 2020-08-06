@@ -23,6 +23,9 @@
  * Author: Danny Baumann <dannybaumann@web.de>
  */
 
+#ifndef _COMPIZ_OBS_SRC_OBS_H
+#define _COMPIZ_OBS_SRC_OBS_H
+
 #include <core/screen.h>
 #include <core/pluginclasshandler.h>
 
@@ -102,3 +105,5 @@ class ObsPluginVTable :
     public:
 	bool init ();
 };
+
+#endif /* _COMPIZ_OBS_SRC_OBS_H */

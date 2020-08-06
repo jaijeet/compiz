@@ -23,6 +23,9 @@
  * Author: David Reveman <davidr@novell.com>
  */
 
+#ifndef _COMPIZ_IMGJPEG_SRC_IMGJPEG_H
+#define _COMPIZ_IMGJPEG_SRC_IMGJPEG_H
+
 #include <string.h>
 #include <ctype.h>
 #include <stdio.h>
@@ -85,3 +88,5 @@ class JpegPluginVTable :
 
 	bool init ();
 };
+
+#endif /* _COMPIZ_IMGJPEG_SRC_IMGJPEG_H */

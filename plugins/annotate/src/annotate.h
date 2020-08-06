@@ -23,6 +23,9 @@
  * Author: David Reveman <davidr@novell.com>
  */
 
+#ifndef _COMPIZ_ANNOTATE_SRC_ANNOTATE_H
+#define _COMPIZ_ANNOTATE_SRC_ANNOTATE_H
+
 #include "annotate_options.h"
 #include <composite/composite.h>
 
@@ -196,3 +199,5 @@ class AnnoPluginVTable :
     public:
 	bool init ();
 };
+
+#endif /* _COMPIZ_ANNOTATE_SRC_ANNOTATE_H */

@@ -23,6 +23,9 @@
  *
  */
 
+#ifndef _COMPIZ_STATICSWITCHER_SRC_STATICSWITCHER_H
+#define _COMPIZ_STATICSWITCHER_SRC_STATICSWITCHER_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -176,3 +179,4 @@ class StaticSwitchPluginVTable :
 	bool init ();
 };
 
+#endif /* _COMPIZ_STATICSWITCHER_SRC_STATICSWITCHER_H */

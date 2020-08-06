@@ -24,6 +24,9 @@
  * This plug-in for Metacity-like workarounds.
  */
 
+#ifndef _COMPIZ_WORKAROUNDS_SRC_WORKAROUNDS_H
+#define _COMPIZ_WORKAROUNDS_SRC_WORKAROUNDS_H
+
 #include <string.h>
 #include <limits.h>
 
@@ -221,3 +224,5 @@ class WorkaroundsPluginVTable :
 
 	bool init ();
 };
+
+#endif /* _COMPIZ_WORKAROUNDS_SRC_WORKAROUNDS_H */

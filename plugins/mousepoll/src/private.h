@@ -20,6 +20,9 @@
  *
  */
 
+#ifndef _COMPIZ_MOUSEPOLL_SRC_PRIVATE_H
+#define _COMPIZ_MOUSEPOLL_SRC_PRIVATE_H
+
 #include <core/core.h>
 #include <core/pluginclasshandler.h>
 #include <core/timer.h>
@@ -78,3 +81,5 @@ class MousepollPluginVTable :
 	bool init ();
 	void fini ();
 };
+
+#endif /* _COMPIZ_MOUSEPOLL_SRC_PRIVATE_H */

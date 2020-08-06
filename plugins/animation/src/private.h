@@ -1,3 +1,6 @@
+#ifndef _COMPIZ_ANIMATION_SRC_PRIVATE_H
+#define _COMPIZ_ANIMATION_SRC_PRIVATE_H
+
 #include <string.h>
 #include <stdlib.h>
 #include <math.h>
@@ -903,3 +906,5 @@ protected:
 		      float               foldMaxAmp);
     bool requiresTransformedWindow () const { return true; }
 };
+
+#endif /* _COMPIZ_ANIMATION_SRC_PRIVATE_H */

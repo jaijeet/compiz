@@ -25,6 +25,9 @@
  *
  */
 
+#ifndef _COMPIZ_WIZARD_INCLUDE_WIZARD_TEX_H
+#define _COMPIZ_WIZARD_INCLUDE_WIZARD_TEX_H
+
 static const unsigned char particleTex[65536] = {
   "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
   "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
@@ -2825,3 +2828,5 @@ static const unsigned char particleTex[65536] = {
   "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
   "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
 };
+
+#endif /* _COMPIZ_WIZARD_INCLUDE_WIZARD_TEX_H */

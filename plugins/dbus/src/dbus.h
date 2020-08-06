@@ -26,6 +26,9 @@
  * Copyright (C) 2009 Sam Spilsbury <smspillaz@gmail.com>
  */
 
+#ifndef _COMPIZ_DBUS_SRC_DBUS_H
+#define _COMPIZ_DBUS_SRC_DBUS_H
+
 #include <core/screen.h>
 #include <core/pluginclasshandler.h>
 
@@ -235,3 +238,5 @@ class DbusPluginVTable :
 
 #define DBUS_SCREEN(s)							       \
      DbusScreen *ds = DbusScreen::get (s)
+
+#endif /* _COMPIZ_DBUS_SRC_DBUS_H */

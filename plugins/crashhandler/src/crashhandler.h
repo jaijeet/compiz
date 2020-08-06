@@ -20,6 +20,9 @@
  *
  */
 
+#ifndef _COMPIZ_CRASHHANDLER_SRC_CRASHHANDLER_H
+#define _COMPIZ_CRASHHANDLER_SRC_CRASHHANDLER_H
+
 #include <core/core.h>
 #include <core/pluginclasshandler.h>
 #include "crashhandler_options.h"
@@ -46,3 +49,5 @@ class CrashPluginVTable :
 
 	bool init ();
 };
+
+#endif /* _COMPIZ_CRASHHANDLER_SRC_CRASHHANDLER_H */

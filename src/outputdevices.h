@@ -22,6 +22,9 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
+#ifndef _COMPIZ_OUTPUTDEVICES_H
+#define _COMPIZ_OUTPUTDEVICES_H
+
 #include <core/output.h>
 #include <core/rect.h>
 #include <core/region.h>
@@ -102,3 +105,5 @@ private:
 
 } // namespace core
 } // namespace compiz
+
+#endif /* _COMPIZ_OUTPUTDEVICES_H */

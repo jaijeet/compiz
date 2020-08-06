@@ -17,6 +17,9 @@
  *
  */
 
+#ifndef _COMPIZ_COPYTEX_SRC_COPYTEX_H
+#define _COMPIZ_COPYTEX_SRC_COPYTEX_H
+
 /*
  * This plugin uses the "copy to texture" taken from Luminocity
  * http://live.gnome.org/Luminocity
@@ -123,3 +126,5 @@ class CopytexPluginVTable :
 	bool init ();
 
 };
+
+#endif /* _COMPIZ_COPYTEX_SRC_COPYTEX_H */

@@ -23,6 +23,9 @@
  * Author: Danny Baumann <dannybaumann@web.de>
  */
 
+#ifndef _COMPIZ_MATECOMPAT_SRC_MATECOMPAT_H
+#define _COMPIZ_MATECOMPAT_SRC_MATECOMPAT_H
+
 #include <core/screen.h>
 #include <core/pluginclasshandler.h>
 
@@ -51,3 +54,5 @@ class MateCompatPluginVTable :
     public:
 	bool init ();
 };
+
+#endif /* _COMPIZ_MATECOMPAT_SRC_MATECOMPAT_H */
