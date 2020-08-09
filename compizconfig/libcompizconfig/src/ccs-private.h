@@ -20,7 +20,7 @@
  */
 
 #ifndef CCS_PRIVATE_H
-#define CSS_PRIVATE_H
+#define CCS_PRIVATE_H
 
 #include <ccs-defs.h>
 
