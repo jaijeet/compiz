@@ -37,14 +37,14 @@ struct _GWDSettingsXPropertyStorage
 
 enum
 {
-    PROP_0,
+    XPROPERTY_STORAGE_PROP_0,
 
-    PROP_SETTINGS,
+    XPROPERTY_STORAGE_PROP_SETTINGS,
 
-    LAST_PROP
+    XPROPERTY_STORAGE_LAST_PROP
 };
 
-static GParamSpec *storage_properties[LAST_PROP] = { NULL };
+static GParamSpec *storage_properties[XPROPERTY_STORAGE_LAST_PROP] = { NULL };
 
 G_DEFINE_TYPE (GWDSettingsXPropertyStorage, gwd_settings_xproperty_storage,
                G_TYPE_OBJECT)
@@ -72,7 +72,7 @@ gwd_settings_xproperty_storage_set_property (GObject      *object,
     storage = GWD_SETTINGS_XPROPERTY_STORAGE (object);
 
     switch (property_id) {
-        case PROP_SETTINGS:
+        case XPROPERTY_STORAGE_PROP_SETTINGS:
             g_return_if_fail (!storage->settings);
             storage->settings = g_value_dup_object (value);
             break;
@@ -93,13 +93,13 @@ gwd_settings_xproperty_storage_class_init (GWDSettingsXPropertyStorageClass *kla
     object_class->dispose = gwd_settings_xproperty_storage_dispose;
     object_class->set_property = gwd_settings_xproperty_storage_set_property;
 
-    storage_properties[PROP_SETTINGS] =
+    storage_properties[XPROPERTY_STORAGE_PROP_SETTINGS] =
         g_param_spec_object ("settings", "GWDSettings", "GWDSettings",
                              GWD_TYPE_SETTINGS,
                              G_PARAM_CONSTRUCT_ONLY | G_PARAM_WRITABLE |
                              G_PARAM_STATIC_STRINGS);
 
-    g_object_class_install_properties (object_class, LAST_PROP,
+    g_object_class_install_properties (object_class, XPROPERTY_STORAGE_LAST_PROP,
                                        storage_properties);
 }
 
