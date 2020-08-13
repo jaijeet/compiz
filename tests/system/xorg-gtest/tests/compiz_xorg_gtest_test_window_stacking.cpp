@@ -83,7 +83,7 @@ namespace
     void SetUserTime (Display *dpy, Window w, Time time)
     {
 	Atom _NET_WM_USER_TIME = XInternAtom (dpy, "_NET_WM_USER_TIME", false);
-	unsigned int value = (unsigned int) time;
+	unsigned long value = (unsigned long) time;
 
 	XChangeProperty (dpy, w,
 			 _NET_WM_USER_TIME,
