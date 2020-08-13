@@ -21,6 +21,9 @@
  *
  */
 
+#ifndef _COMPIZ_SHOWREPAINT_SRC_SHOWREPAINT_H
+#define _COMPIZ_SHOWREPAINT_SRC_SHOWREPAINT_H
+
 #include <math.h>
 #include <string.h>
 
@@ -70,3 +73,5 @@ class ShowrepaintPluginVTable :
 
 	bool init ();
 };
+
+#endif /* _COMPIZ_SHOWREPAINT_SRC_SHOWREPAINT_H */

@@ -1,3 +1,6 @@
+#ifndef _COMPIZ_ANIMATIONPLUS_SRC_PRIVATE_H
+#define _COMPIZ_ANIMATIONPLUS_SRC_PRIVATE_H
+
 #include <string.h>
 #include <stdlib.h>
 #include <math.h>
@@ -194,3 +197,5 @@ class AnimPlusPluginVTable :
 
 	bool init ();
 };
+
+#endif /* _COMPIZ_ANIMATIONPLUS_SRC_PRIVATE_H */

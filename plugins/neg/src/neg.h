@@ -21,6 +21,9 @@
  *
  */
 
+#ifndef _COMPIZ_NEG_SRC_NEG_H
+#define _COMPIZ_NEG_SRC_NEG_H
+
 #include <core/core.h>
 #include <core/pluginclasshandler.h>
 
@@ -95,3 +98,5 @@ class NegPluginVTable :
 
 	bool init ();
 };
+
+#endif /* _COMPIZ_NEG_SRC_NEG_H */

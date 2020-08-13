@@ -26,6 +26,9 @@
  *
  */
 
+#ifndef _COMPIZ_ADDHELPER_SRC_ADDHELPER_H
+#define _COMPIZ_ADDHELPER_SRC_ADDHELPER_H
+
 #include <core/core.h>
 #include <composite/composite.h>
 #include <opengl/opengl.h>
@@ -100,3 +103,5 @@ class AddPluginVTable :
 
 #define ADD_WINDOW(w)							       \
     AddWindow *aw = AddWindow::get (w)
+
+#endif /* _COMPIZ_ADDHELPER_SRC_ADDHELPER_H */

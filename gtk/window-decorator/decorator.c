@@ -32,7 +32,7 @@
 #endif
 
 static void
-draw_window_decoration (decor_t *decor)
+decorator_draw_window_decoration (decor_t *decor)
 {
     gwd_theme_draw_window_decoration (gwd_theme, decor);
 }
@@ -648,7 +648,7 @@ draw_border_shape (Display	   *xdisplay,
     d.width   = width;
     d.height  = height;
     d.active  = TRUE;
-    d.draw    = draw_window_decoration;
+    d.draw    = decorator_draw_window_decoration;
     d.picture = picture;
     d.context = c;
 
@@ -1289,7 +1289,7 @@ update_default_decorations (GdkScreen *screen)
         default_frames[i].d->frame = frame;
         default_frames[i].d->active = i < WINDOW_TYPE_FRAMES_NUM ? TRUE : FALSE;
 
-        default_frames[i].d->draw = draw_window_decoration;
+        default_frames[i].d->draw = decorator_draw_window_decoration;
 	default_frames[i].d->surface = create_native_surface_and_wrap (default_frames[i].d->width,
 	                                                               default_frames[i].d->height,
 	                                                               style_window);

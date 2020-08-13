@@ -33,6 +33,9 @@
  *
  * */
 
+#ifndef _COMPIZ_SHOWDESKTOP_SRC_SHOWDESKTOP_H
+#define _COMPIZ_SHOWDESKTOP_SRC_SHOWDESKTOP_H
+
 #include <core/core.h>
 #include <composite/composite.h>
 #include <opengl/opengl.h>
@@ -268,3 +271,5 @@ class ShowdesktopPluginVTable:
 
 	bool init ();
 };
+
+#endif /* _COMPIZ_SHOWDESKTOP_SRC_SHOWDESKTOP_H */

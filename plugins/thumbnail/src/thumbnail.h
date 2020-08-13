@@ -27,6 +27,8 @@
  *
  */
 
+#ifndef _COMPIZ_THUMBNAIL_SRC_THUMBNAIL_H
+#define _COMPIZ_THUMBNAIL_SRC_THUMBNAIL_H
 
 /* TODO:
 	* - Make Thumbnail it's own class with methods
@@ -200,3 +202,5 @@ class ThumbPluginVTable :
     public:
 	bool init ();
 };
+
+#endif /* _COMPIZ_THUMBNAIL_SRC_THUMBNAIL_H */

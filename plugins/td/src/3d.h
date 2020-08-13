@@ -25,6 +25,9 @@
  *
  */
 
+#ifndef _COMPIZ_TD_SRC_3D_H
+#define _COMPIZ_TD_SRC_3D_H
+
 /** TODO:
   1. Add 3d shadows / projections.
   2. Add an option to select z-order of windows not only by viewports,
@@ -154,3 +157,5 @@ class TdPluginVTable :
     
 	bool init ();
 };
+
+#endif /* _COMPIZ_TD_SRC_3D_H */

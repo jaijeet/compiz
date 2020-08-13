@@ -23,6 +23,9 @@
  * Author: David Reveman <davidr@novell.com>
  */
 
+#ifndef _COMPIZ_FADE_SRC_FADE_H
+#define _COMPIZ_FADE_SRC_FADE_H
+
 #include <core/window.h>
 #include <core/pluginclasshandler.h>
 #include <composite/composite.h>
@@ -117,3 +120,5 @@ class FadePluginVTable :
 
 	bool init ();
 };
+
+#endif /* _COMPIZ_FADE_SRC_FADE_H */

@@ -18,6 +18,9 @@
  *
  */
 
+#ifndef _COMPIZ_SHOWMOUSE_SRC_SHOWMOUSE_TEX_H
+#define _COMPIZ_SHOWMOUSE_SRC_SHOWMOUSE_TEX_H
+
 static const unsigned char starTex[4097] = {
   "\377\377\377\0\377\377\377\0\377\377\377\0\377\377\377\0\360\360\360\0\15"
   "\15\15\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\16\16\16\0\336\336\336\0"
@@ -214,3 +217,4 @@ static const unsigned char starTex[4097] = {
   "\377\377\377\0\377\377\377\0"
 };
 
+#endif /* _COMPIZ_SHOWMOUSE_SRC_SHOWMOUSE_TEX_H */

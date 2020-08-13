@@ -32,6 +32,8 @@
  *
  */
 
+#ifndef _COMPIZ_SHIFT_SRC_SHIFT_H
+#define _COMPIZ_SHIFT_SRC_SHIFT_H
 
 #include <core/core.h>
 #include <core/pluginclasshandler.h>
@@ -323,3 +325,5 @@ class ShiftPluginVTable :
 
 	bool init ();
 };
+
+#endif /* _COMPIZ_SHIFT_SRC_SHIFT_H */

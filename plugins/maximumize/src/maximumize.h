@@ -26,6 +26,9 @@
  * direction as possible without overlapping with other windows.
  */
 
+#ifndef _COMPIZ_MAXIMUMIZE_SRC_MAXIMUMIZE_H
+#define _COMPIZ_MAXIMUMIZE_SRC_MAXIMUMIZE_H
+
 #include <core/core.h>
 #include <core/pluginclasshandler.h>
 
@@ -158,3 +161,4 @@ class MaximumizePluginVTable :
 
 
 
+#endif /* _COMPIZ_MAXIMUMIZE_SRC_MAXIMUMIZE_H */

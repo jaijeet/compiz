@@ -1,3 +1,6 @@
+#ifndef _COMPIZ_ANIMATIONJC_SRC_PRIVATE_H
+#define _COMPIZ_ANIMATIONJC_SRC_PRIVATE_H
+
 #include <string.h>
 #include <stdlib.h>
 #include <math.h>
@@ -230,3 +233,5 @@ public:
     {
     }
 };
+
+#endif /* _COMPIZ_ANIMATIONJC_SRC_PRIVATE_H */

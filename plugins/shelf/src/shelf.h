@@ -32,6 +32,9 @@
  *  - Mouse-over?
  */
 
+#ifndef _COMPIZ_SHELF_SRC_SHELF_H
+#define _COMPIZ_SHELF_SRC_SHELF_H
+
 #include <X11/extensions/shape.h>
 #include <X11/cursorfont.h>
 
@@ -229,3 +232,5 @@ class ShelfPluginVTable :
     public:
 	bool init ();
 };
+
+#endif /* _COMPIZ_SHELF_SRC_SHELF_H */

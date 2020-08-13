@@ -26,6 +26,9 @@
  *
  */
 
+#ifndef _COMPIZ_VPSWITCH_SRC_VPSWITCH_H
+#define _COMPIZ_VPSWITCH_SRC_VPSWITCH_H
+
 #include <core/core.h>
 #include <core/pluginclasshandler.h>
 #include <core/atoms.h>
@@ -134,3 +137,5 @@ class VPSwitchPluginVTable :
 
 	bool init ();
 };	
+
+#endif /* _COMPIZ_VPSWITCH_SRC_VPSWITCH_H */

@@ -50,6 +50,9 @@
  *    - 'Rotate' Button
  */
 
+#ifndef _COMPIZ_FREEWINS_SRC_FREEWINS_H
+#define _COMPIZ_FREEWINS_SRC_FREEWINS_H
+
 #include <core/core.h>
 #include <core/pluginclasshandler.h>
 #include <composite/composite.h>
@@ -585,3 +588,5 @@ class FWPluginVTable :
 
 	bool init ();
 };
+
+#endif /* _COMPIZ_FREEWINS_SRC_FREEWINS_H */

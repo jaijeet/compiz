@@ -18,6 +18,9 @@
  *
  **/
 
+#ifndef _COMPIZ_BENCH_SRC_BENCH_TEX_H
+#define _COMPIZ_BENCH_SRC_BENCH_TEX_H
+
 unsigned char number_data[10][2049] = {
   "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
   "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
@@ -21762,3 +21765,4 @@ static unsigned char image_data[512 * 256 * 4 + 1] = {
   "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
 };
 
+#endif /* _COMPIZ_BENCH_SRC_BENCH_TEX_H */

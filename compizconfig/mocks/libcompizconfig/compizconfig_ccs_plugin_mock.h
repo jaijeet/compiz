@@ -1,3 +1,6 @@
+#ifndef _COMPIZCONFIG_MOCKS_LIBCOMPIZCONFIG_COMPIZCONFIG_CCS_PLUGIN_MOCK_H
+#define _COMPIZCONFIG_MOCKS_LIBCOMPIZCONFIG_COMPIZCONFIG_CCS_PLUGIN_MOCK_H
+
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 
@@ -182,3 +185,5 @@ class CCSPluginGMock :
 };
 
 extern CCSPluginInterface CCSPluginGMockInterface;
+
+#endif /* _COMPIZCONFIG_MOCKS_LIBCOMPIZCONFIG_COMPIZCONFIG_CCS_PLUGIN_MOCK_H */

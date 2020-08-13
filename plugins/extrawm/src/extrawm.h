@@ -19,6 +19,9 @@
  *
  */
 
+#ifndef _COMPIZ_EXTRAWM_SRC_EXTRAWM_H
+#define _COMPIZ_EXTRAWM_SRC_EXTRAWM_H
+
 #include <X11/Xatom.h>
 
 #include <core/core.h>
@@ -114,3 +117,5 @@ class ExtraWMPluginVTable :
 
 	bool init ();
 };
+
+#endif /* _COMPIZ_EXTRAWM_SRC_EXTRAWM_H */

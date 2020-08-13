@@ -22,6 +22,10 @@
  * GNU General Public License for more details.
  *
  */
+
+#ifndef _COMPIZ_TITLEINFO_SRC_TITLEINFO_H
+#define _COMPIZ_TITLEINFO_SRC_TITLEINFO_H
+
 #ifndef _GNU_SOURCE
 #define _GNU_SOURCE
 #endif
@@ -108,3 +112,5 @@ class TitleinfoPluginVTable :
 
 	bool init ();
 };
+
+#endif /* _COMPIZ_TITLEINFO_SRC_TITLEINFO_H */

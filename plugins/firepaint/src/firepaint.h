@@ -23,6 +23,9 @@
  *
  */
 
+#ifndef _COMPIZ_FIREPAINT_SRC_FIREPAINT_H
+#define _COMPIZ_FIREPAINT_SRC_FIREPAINT_H
+
 #include <core/core.h>
 #include <composite/composite.h>
 #include <opengl/opengl.h>
@@ -184,3 +187,5 @@ class FirePluginVTable :
 
 	bool init ();
 };
+
+#endif /* _COMPIZ_FIREPAINT_SRC_FIREPAINT_H */

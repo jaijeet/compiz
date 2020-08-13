@@ -23,6 +23,9 @@
  *
  */
 
+#ifndef _COMPIZ_CUBEADDON_SRC_CUBEADDON_H
+#define _COMPIZ_CUBEADDON_SRC_CUBEADDON_H
+
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
@@ -189,3 +192,5 @@ class CubeaddonPluginVTable :
     public:
 	bool init ();
 };
+
+#endif /* _COMPIZ_CUBEADDON_SRC_CUBEADDON_H */

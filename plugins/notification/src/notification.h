@@ -22,6 +22,9 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
+#ifndef _COMPIZ_NOTIFICATION_SRC_NOTIFICATION_H
+#define _COMPIZ_NOTIFICATION_SRC_NOTIFICATION_H
+
 #include <core/core.h>
 #include <core/pluginclasshandler.h>
 
@@ -55,3 +58,5 @@ class NotificationPluginVTable :
 
 	bool init ();
 };
+
+#endif /* _COMPIZ_NOTIFICATION_SRC_NOTIFICATION_H */

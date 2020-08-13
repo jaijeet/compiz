@@ -19,6 +19,9 @@
  *
  **/
 
+#ifndef _COMPIZ_FADEDESKTOP_SRC_FADEDESKTOP_H
+#define _COMPIZ_FADEDESKTOP_SRC_FADEDESKTOP_H
+
 #include <core/core.h>
 #include <core/pluginclasshandler.h>
 
@@ -100,3 +103,5 @@ class FadedesktopPluginVTable :
 
 	bool init ();
 };
+
+#endif /* _COMPIZ_FADEDESKTOP_SRC_FADEDESKTOP_H */

@@ -23,6 +23,9 @@
  * Author: David Reveman <davidr@novell.com>
  */
 
+#ifndef _COMPIZ_MOVE_SRC_MOVE_H
+#define _COMPIZ_MOVE_SRC_MOVE_H
+
 #include "move_options.h"
 
 #include <core/screen.h>
@@ -149,3 +152,4 @@ class MovePluginVTable :
 	bool init ();
 };
 
+#endif /* _COMPIZ_MOVE_SRC_MOVE_H */

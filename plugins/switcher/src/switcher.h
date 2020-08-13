@@ -25,6 +25,9 @@
  *  - Auboyneau Vincent <ksamak@riseup.net> (size multiplier for A11Y)
  */
 
+#ifndef _COMPIZ_SWITCHER_SRC_SWITCHER_H
+#define _COMPIZ_SWITCHER_SRC_SWITCHER_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -187,3 +190,4 @@ class SwitchPluginVTable :
 };
 
 
+#endif /* _COMPIZ_SWITCHER_SRC_SWITCHER_H */

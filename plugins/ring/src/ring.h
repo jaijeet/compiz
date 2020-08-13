@@ -27,6 +27,9 @@
  *
  */
 
+#ifndef _COMPIZ_RING_SRC_RING_H
+#define _COMPIZ_RING_SRC_RING_H
+
 #include <cmath>
 
 #include <core/atoms.h>
@@ -264,3 +267,5 @@ class RingPluginVTable :
 
 	bool init ();
 };
+
+#endif /* _COMPIZ_RING_SRC_RING_H */

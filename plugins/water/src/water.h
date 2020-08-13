@@ -24,6 +24,9 @@
  *         Frederic Plourde <frederic.plourde@collabora.co.uk>
  */
 
+#ifndef _COMPIZ_WATER_SRC_WATER_H
+#define _COMPIZ_WATER_SRC_WATER_H
+
 #include "water_options.h"
 #include <core/screen.h>
 #include <core/pluginclasshandler.h>
@@ -134,3 +137,4 @@ class WaterPluginVTable :
 	bool init ();
 };
 
+#endif /* _COMPIZ_WATER_SRC_WATER_H */
