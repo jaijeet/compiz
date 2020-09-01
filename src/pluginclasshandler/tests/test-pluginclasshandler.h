@@ -1,3 +1,6 @@
+#ifndef _COMPIZ_PLUGINCLASSHANDLER_TESTS_TEST_PLUGINCLASSHANDLER_H
+#define _COMPIZ_PLUGINCLASSHANDLER_TESTS_TEST_PLUGINCLASSHANDLER_H
+
 #include <core/pluginclasshandler.h>
 #include <core/pluginclasses.h>
 
@@ -73,3 +76,5 @@ public:
 
      compiz::plugin::internal::PluginKey key;
 };
+
+#endif /* _COMPIZ_PLUGINCLASSHANDLER_TESTS_TEST_PLUGINCLASSHANDLER_H */

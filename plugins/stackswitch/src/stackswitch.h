@@ -23,6 +23,9 @@
  *
  */
 
+#ifndef _COMPIZ_STACKSWITCH_SRC_STACKSWITCH_H
+#define _COMPIZ_STACKSWITCH_SRC_STACKSWITCH_H
+
 #include <cmath>
 
 #include <X11/Xatom.h>
@@ -241,3 +244,5 @@ class StackswitchPluginVTable:
 
 	bool init ();
 };
+
+#endif /* _COMPIZ_STACKSWITCH_SRC_STACKSWITCH_H */

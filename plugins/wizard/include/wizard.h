@@ -24,6 +24,9 @@
  *
  */
 
+#ifndef _COMPIZ_WIZARD_INCLUDE_WIZARD_H
+#define _COMPIZ_WIZARD_INCLUDE_WIZARD_H
+
 #include <core/core.h>
 #include <composite/composite.h>
 #include <opengl/opengl.h>
@@ -233,3 +236,5 @@ class WizardPluginVTable :
 };
 
 COMPIZ_PLUGIN_20090315 (wizard, WizardPluginVTable);
+
+#endif /* _COMPIZ_WIZARD_INCLUDE_WIZARD_H */

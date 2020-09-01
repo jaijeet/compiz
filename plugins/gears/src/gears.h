@@ -24,6 +24,9 @@
  *    http://cvsweb.xfree86.org/cvsweb/xc/programs/glxgears/glxgears.c
  */
 
+#ifndef _COMPIZ_GEARS_SRC_GEARS_H
+#define _COMPIZ_GEARS_SRC_GEARS_H
+
 #include <cstdlib>
 #include <cstring>
 #include <cstdio>
@@ -98,3 +101,4 @@ class GearsPluginVTable :
 };
 
 
+#endif /* _COMPIZ_GEARS_SRC_GEARS_H */

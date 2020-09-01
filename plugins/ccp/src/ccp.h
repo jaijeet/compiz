@@ -18,6 +18,9 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+#ifndef _COMPIZ_CCP_SRC_CCP_H
+#define _COMPIZ_CCP_SRC_CCP_H
+
 extern "C"
 {
 #include <string.h>
@@ -73,3 +76,5 @@ class CcpPluginVTable :
 
 	bool init ();
 };
+
+#endif /* _COMPIZ_CCP_SRC_CCP_H */

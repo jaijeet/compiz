@@ -23,6 +23,9 @@
  *
  */
 
+#ifndef _COMPIZ_MBLUR_SRC_MBLUR_H
+#define _COMPIZ_MBLUR_SRC_MBLUR_H
+
 #include <cmath>
 
 #include <core/core.h>
@@ -88,3 +91,5 @@ class MblurPluginVTable :
 
 	bool init ();
 };
+
+#endif /* _COMPIZ_MBLUR_SRC_MBLUR_H */

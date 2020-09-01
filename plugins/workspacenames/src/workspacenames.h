@@ -22,6 +22,9 @@
  *
  */
 
+#ifndef _COMPIZ_WORKSPACENAMES_SRC_WORKSPACENAMES_H
+#define _COMPIZ_WORKSPACENAMES_SRC_WORKSPACENAMES_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -99,3 +102,5 @@ class WorkspacenamesPluginVTable :
 };
 
 COMPIZ_PLUGIN_20090315 (workspacenames, WorkspacenamesPluginVTable);
+
+#endif /* _COMPIZ_WORKSPACENAMES_SRC_WORKSPACENAMES_H */

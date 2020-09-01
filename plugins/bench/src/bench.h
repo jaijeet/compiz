@@ -23,6 +23,9 @@
  *
  **/
 
+#ifndef _COMPIZ_BENCH_SRC_BENCH_H
+#define _COMPIZ_BENCH_SRC_BENCH_H
+
 #include <core/core.h>
 #include <core/timer.h>
 #include <core/pluginclasshandler.h>
@@ -123,3 +126,4 @@ class BenchPluginVTable :
 	bool init ();
 };
 
+#endif /* _COMPIZ_BENCH_SRC_BENCH_H */

@@ -30,6 +30,9 @@
  *
  */
 
+#ifndef _COMPIZ_WIDGET_SRC_WIDGET_H
+#define _COMPIZ_WIDGET_SRC_WIDGET_H
+
 #include <core/core.h>
 #include <core/pluginclasshandler.h>
 #include <core/atoms.h>
@@ -179,3 +182,5 @@ class WidgetPluginVTable :
 
 	bool init ();
 };
+
+#endif /* _COMPIZ_WIDGET_SRC_WIDGET_H */

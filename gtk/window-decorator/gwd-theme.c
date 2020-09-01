@@ -45,14 +45,14 @@ typedef struct
 
 enum
 {
-    PROP_0,
+    THEME_PROP_0,
 
-    PROP_SETTINGS,
+    THEME_PROP_SETTINGS,
 
-    LAST_PROP
+    THEME_LAST_PROP
 };
 
-static GParamSpec *properties[LAST_PROP] = { NULL };
+static GParamSpec *properties[THEME_LAST_PROP] = { NULL };
 
 G_DEFINE_TYPE_WITH_PRIVATE (GWDTheme, gwd_theme, G_TYPE_OBJECT)
 
@@ -270,7 +270,7 @@ gwd_theme_get_property (GObject    *object,
     GWDThemePrivate *priv = gwd_theme_get_instance_private (theme);
 
     switch (property_id) {
-        case PROP_SETTINGS:
+        case THEME_PROP_SETTINGS:
             g_value_set_object (value, priv->settings);
             break;
 
@@ -290,7 +290,7 @@ gwd_theme_set_property (GObject      *object,
     GWDThemePrivate *priv = gwd_theme_get_instance_private (theme);
 
     switch (property_id) {
-        case PROP_SETTINGS:
+        case THEME_PROP_SETTINGS:
             priv->settings = g_value_dup_object (value);
             break;
 
@@ -413,13 +413,13 @@ gwd_theme_class_init (GWDThemeClass *theme_class)
     theme_class->get_button_position = gwd_theme_real_get_button_position;
     theme_class->update_titlebar_font = gwd_theme_real_update_titlebar_font;
 
-    properties[PROP_SETTINGS] =
+    properties[THEME_PROP_SETTINGS] =
         g_param_spec_object ("settings", "GWDSettings", "GWDSettings",
                              GWD_TYPE_SETTINGS,
                              G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY |
                              G_PARAM_STATIC_STRINGS);
 
-    g_object_class_install_properties (object_class, LAST_PROP, properties);
+    g_object_class_install_properties (object_class, THEME_LAST_PROP, properties);
 }
 
 static void

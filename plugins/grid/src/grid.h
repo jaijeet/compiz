@@ -22,6 +22,9 @@
  * Press the tiling keys several times to cycle through some tiling options.
  */
 
+#ifndef _COMPIZ_GRID_SRC_GRID_H
+#define _COMPIZ_GRID_SRC_GRID_H
+
 #include <core/core.h>
 #include <core/atoms.h>
 #include <core/pluginclasshandler.h>
@@ -248,3 +251,5 @@ class GridPluginVTable :
 };
 
 COMPIZ_PLUGIN_20090315 (grid, GridPluginVTable);
+
+#endif /* _COMPIZ_GRID_SRC_GRID_H */

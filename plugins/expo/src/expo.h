@@ -23,6 +23,9 @@
  *
  **/
 
+#ifndef _COMPIZ_EXPO_SRC_EXPO_H
+#define _COMPIZ_EXPO_SRC_EXPO_H
+
 #include <core/core.h>
 #include <core/pluginclasshandler.h>
 
@@ -219,3 +222,5 @@ class ExpoPluginVTable :
 
 	bool init ();
 };
+
+#endif /* _COMPIZ_EXPO_SRC_EXPO_H */

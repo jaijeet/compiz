@@ -504,12 +504,6 @@ FWWindow::setPrepareRotation (float dx,
     }
 }
 
-#define ROTATE_INC freewinsGetRotateIncrementAmount (w->screen)
-#define NEG_ROTATE_INC freewinsGetRotateIncrementAmount (w->screen) *-1
-
-#define SCALE_INC freewinsGetScaleIncrementAmount (w->screen)
-#define NEG_SCALE_INC freewinsGetScaleIncrementAmount (w->screen) *-1
-
 bool
 FWScreen::rotate (CompAction         *action,
 		  CompAction::State  state,

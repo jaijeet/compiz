@@ -210,7 +210,7 @@ allocateLoader (CCSObjectAllocationInterface *ai)
 }
 
 static CCSShraedLibBackendLoaderPrivate *
-allocatePrivate (CCSBackendLoader *loader, CCSObjectAllocationInterface *ai)
+backendLoaderAllocatePrivate (CCSBackendLoader *loader, CCSObjectAllocationInterface *ai)
 {
     CCSShraedLibBackendLoaderPrivate *priv = (*ai->calloc_) (ai->allocator, 1, sizeof (CCSShraedLibBackendLoaderPrivate));
 
@@ -231,7 +231,7 @@ ccsSharedLibBackendLoaderNew (CCSObjectAllocationInterface *ai)
     if (!loader)
 	return NULL;
 
-    CCSShraedLibBackendLoaderPrivate *priv = allocatePrivate (loader, ai);
+    CCSShraedLibBackendLoaderPrivate *priv = backendLoaderAllocatePrivate (loader, ai);
 
     if (!priv)
 	return NULL;

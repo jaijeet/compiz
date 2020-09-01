@@ -708,7 +708,7 @@ ExpoScreen::invertTransformedVertex (const GLScreenPaintAttrib &attrib,
 				     int                       vertex[2])
 {
     GLMatrix sTransform (transform);
-    float    p1[3], p2[3], v[3];
+    float    p1[3] = { 0 } , p2[3] = { 0 }, v[3] = { 0 };
     GLint    viewport[4];
 
     gScreen->glApplyTransform (attrib, output, &sTransform);

@@ -19,6 +19,9 @@
  *
  */
 
+#ifndef _COMPIZ_SPLASH_SRC_SPLASH_H
+#define _COMPIZ_SPLASH_SRC_SPLASH_H
+
 #include <core/core.h>
 #include <core/pluginclasshandler.h>
 
@@ -121,3 +124,5 @@ class SplashPluginVTable :
 
 	bool init ();
 };
+
+#endif /* _COMPIZ_SPLASH_SRC_SPLASH_H */

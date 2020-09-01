@@ -23,6 +23,9 @@
  * Author: David Reveman <davidr@novell.com>
  */
 
+#ifndef _COMPIZ_DECOR_SRC_DECOR_H
+#define _COMPIZ_DECOR_SRC_DECOR_H
+
 #include <boost/shared_ptr.hpp>
 #include <boost/shared_array.hpp>
 #include <boost/make_shared.hpp>
@@ -401,3 +404,4 @@ class DecorPluginVTable :
 	bool init ();
 };
 
+#endif /* _COMPIZ_DECOR_SRC_DECOR_H */

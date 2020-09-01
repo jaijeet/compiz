@@ -25,6 +25,9 @@
  *
  */
 
+#ifndef _COMPIZ_TEXT_SRC_PRIVATE_H
+#define _COMPIZ_TEXT_SRC_PRIVATE_H
+
 #include <core/core.h>
 #include <core/pluginclasshandler.h>
 #include <composite/composite.h>
@@ -114,3 +117,5 @@ class TextPluginVTable :
 	bool init ();
 	void fini ();
 };
+
+#endif /* _COMPIZ_TEXT_SRC_PRIVATE_H */

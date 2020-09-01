@@ -21,6 +21,9 @@
  *
  */
 
+#ifndef _COMPIZ_SCALEFILTER_SRC_SCALEFILTER_H
+#define _COMPIZ_SCALEFILTER_SRC_SCALEFILTER_H
+
 #include <core/core.h>
 #include <core/pluginclasshandler.h>
 
@@ -156,3 +159,5 @@ class ScalefilterPluginVTable :
 
 	bool init ();
 };
+
+#endif /* _COMPIZ_SCALEFILTER_SRC_SCALEFILTER_H */

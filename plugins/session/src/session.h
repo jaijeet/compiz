@@ -23,6 +23,9 @@
  *          Patrick Niklaus
  **/
 
+#ifndef _COMPIZ_SESSION_SRC_SESSION_H
+#define _COMPIZ_SESSION_SRC_SESSION_H
+
 #include <core/core.h>
 #include <core/pluginclasshandler.h>
 
@@ -124,3 +127,5 @@ class SessionPluginVTable :
     public:
 	bool init ();
 };
+
+#endif /* _COMPIZ_SESSION_SRC_SESSION_H */

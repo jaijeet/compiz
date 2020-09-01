@@ -21,6 +21,9 @@
  *
  */
 
+#ifndef _COMPIZ_SHOWMOUSE_SRC_SHOWMOUSE_H
+#define _COMPIZ_SHOWMOUSE_SRC_SHOWMOUSE_H
+
 #include <cmath>
 
 #include <core/core.h>
@@ -184,3 +187,5 @@ class ShowmousePluginVTable :
 {
     bool init ();
 };
+
+#endif /* _COMPIZ_SHOWMOUSE_SRC_SHOWMOUSE_H */

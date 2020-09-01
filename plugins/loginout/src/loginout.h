@@ -19,6 +19,9 @@
  *
  */
 
+#ifndef _COMPIZ_LOGINOUT_SRC_LOGINOUT_H
+#define _COMPIZ_LOGINOUT_SRC_LOGINOUT_H
+
 #include <core/core.h>
 #include <core/pluginclasshandler.h>
 
@@ -113,3 +116,5 @@ class LoginoutPluginVTable :
 
 	bool init ();
 };
+
+#endif /* _COMPIZ_LOGINOUT_SRC_LOGINOUT_H */

@@ -17,6 +17,8 @@
  *
  */
 
+#ifndef _COMPIZ_PUT_SRC_PUT_H
+#define _COMPIZ_PUT_SRC_PUT_H
 
 #include <core/core.h>
 #include <core/pluginclasshandler.h>
@@ -211,3 +213,4 @@ class PutPluginVTable :
 	bool init ();
 };
 
+#endif /* _COMPIZ_PUT_SRC_PUT_H */

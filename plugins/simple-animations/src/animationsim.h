@@ -1,3 +1,6 @@
+#ifndef _COMPIZ_SIMPLE_ANIMATIONS_SRC_ANIMATIONSIM_H
+#define _COMPIZ_SIMPLE_ANIMATIONS_SRC_ANIMATIONSIM_H
+
 #include <string.h>
 #include <stdlib.h>
 #include <math.h>
@@ -403,3 +406,5 @@ class AnimSimPluginVTable:
     public:
 	bool init ();
 };
+
+#endif /* _COMPIZ_SIMPLE_ANIMATIONS_SRC_ANIMATIONSIM_H */

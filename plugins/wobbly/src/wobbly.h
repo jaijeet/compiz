@@ -23,6 +23,9 @@
  * Author: David Reveman <davidr@novell.com>
  */
 
+#ifndef _COMPIZ_WOBBLY_SRC_WOBBLY_H
+#define _COMPIZ_WOBBLY_SRC_WOBBLY_H
+
 /*
  * Spring model implemented by Kristian Hogsberg.
  */
@@ -366,3 +369,5 @@ static int displayPrivateIndex;
 
 #define NUM_OPTIONS(s) (sizeof ((s)->opt) / sizeof (CompOption))
 */
+
+#endif /* _COMPIZ_WOBBLY_SRC_WOBBLY_H */

@@ -26,6 +26,9 @@
  *	    Sam Spilsbury <smspillaz@gmail.com>
  */
 
+#ifndef _COMPIZ_CORE_MODIFIERHANDLER_H
+#define _COMPIZ_CORE_MODIFIERHANDLER_H
+
 #include <core/core.h>
 
 /**
@@ -112,3 +115,5 @@ class ModifierHandler
 	unsigned int    mIgnoredModMask;
 	XModifierKeymap *mModMap;
 };
+
+#endif /* _COMPIZ_CORE_MODIFIERHANDLER_H */

@@ -39,6 +39,9 @@
  *
  */
 
+#ifndef _COMPIZ_EZOOM_SRC_EZOOM_H
+#define _COMPIZ_EZOOM_SRC_EZOOM_H
+
 #include <core/core.h>
 #include <composite/composite.h>
 #include <opengl/opengl.h>
@@ -401,3 +404,5 @@ class ZoomPluginVTable :
 
 	bool init ();
 };
+
+#endif /* _COMPIZ_EZOOM_SRC_EZOOM_H */

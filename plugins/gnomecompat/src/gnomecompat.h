@@ -23,6 +23,9 @@
  * Author: Danny Baumann <dannybaumann@web.de>
  */
 
+#ifndef _COMPIZ_GNOMECOMPAT_SRC_GNOMECOMPAT_H
+#define _COMPIZ_GNOMECOMPAT_SRC_GNOMECOMPAT_H
+
 #include <core/screen.h>
 #include <core/pluginclasshandler.h>
 
@@ -51,3 +54,5 @@ class GnomeCompatPluginVTable :
     public:
 	bool init ();
 };
+
+#endif /* _COMPIZ_GNOMECOMPAT_SRC_GNOMECOMPAT_H */

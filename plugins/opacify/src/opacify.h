@@ -24,6 +24,9 @@
  *
  */
 
+#ifndef _COMPIZ_OPACIFY_SRC_OPACIFY_H
+#define _COMPIZ_OPACIFY_SRC_OPACIFY_H
+
 #include <core/core.h>
 #include <composite/composite.h>
 #include <opengl/opengl.h>
@@ -130,3 +133,5 @@ class OpacifyPluginVTable :
 
 	bool init ();
 }; 
+
+#endif /* _COMPIZ_OPACIFY_SRC_OPACIFY_H */

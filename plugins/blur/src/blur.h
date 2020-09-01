@@ -23,6 +23,9 @@
  * Author: David Reveman <davidr@novell.com>
  */
 
+#ifndef _COMPIZ_BLUR_SRC_BLUR_H
+#define _COMPIZ_BLUR_SRC_BLUR_H
+
 #include <iosfwd>
 #include <boost/shared_ptr.hpp>
 
@@ -261,3 +264,5 @@ class BlurPluginVTable :
 
 	bool init ();
 };
+
+#endif /* _COMPIZ_BLUR_SRC_BLUR_H */

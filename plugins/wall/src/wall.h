@@ -22,6 +22,9 @@
  *
  **/
 
+#ifndef _COMPIZ_WALL_SRC_WALL_H
+#define _COMPIZ_WALL_SRC_WALL_H
+
 #include <core/core.h>
 #include <core/pluginclasshandler.h>
 #include <composite/composite.h>
@@ -207,3 +210,4 @@ class WallPluginVTable :
 	bool init ();
 };
 
+#endif /* _COMPIZ_WALL_SRC_WALL_H */

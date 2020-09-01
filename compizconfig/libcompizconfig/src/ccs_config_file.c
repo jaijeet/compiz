@@ -394,7 +394,7 @@ allocateConfigFile (CCSObjectAllocationInterface *ai)
 }
 
 static CCSIniConfigFilePrivate *
-allocatePrivate (CCSConfigFile *config, CCSObjectAllocationInterface *ai)
+configFileAllocatePrivate (CCSConfigFile *config, CCSObjectAllocationInterface *ai)
 {
     CCSIniConfigFilePrivate *priv = (*ai->calloc_) (ai->allocator, 1, sizeof (CCSIniConfigFilePrivate));
 
@@ -415,7 +415,7 @@ ccsInternalConfigFileNew (CCSObjectAllocationInterface *ai)
     if (!loader)
 	return NULL;
 
-    CCSIniConfigFilePrivate *priv = allocatePrivate (loader, ai);
+    CCSIniConfigFilePrivate *priv = configFileAllocatePrivate (loader, ai);
 
     if (!priv)
 	return NULL;

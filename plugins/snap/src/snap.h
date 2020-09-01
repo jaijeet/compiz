@@ -26,6 +26,9 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
+#ifndef _COMPIZ_SNAP_SRC_SNAP_H
+#define _COMPIZ_SNAP_SRC_SNAP_H
+
 #include <vector>
 
 #include <core/core.h>
@@ -166,3 +169,4 @@ class SnapPluginVTable :
 	bool init ();
 };
 
+#endif /* _COMPIZ_SNAP_SRC_SNAP_H */

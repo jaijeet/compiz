@@ -25,6 +25,9 @@
  *
  */
 
+#ifndef _COMPIZ_TRAILFOCUS_SRC_TRAILFOCUS_H
+#define _COMPIZ_TRAILFOCUS_SRC_TRAILFOCUS_H
+
 #include <core/core.h>
 #include <core/pluginclasshandler.h>
 
@@ -95,3 +98,5 @@ class TrailfocusPluginVTable :
     public:
 	bool init ();
 };
+
+#endif /* _COMPIZ_TRAILFOCUS_SRC_TRAILFOCUS_H */

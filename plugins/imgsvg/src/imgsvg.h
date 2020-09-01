@@ -23,6 +23,9 @@
  * Author: David Reveman <davidr@novell.com>
  */
 
+#ifndef _COMPIZ_IMGSVG_SRC_IMGSVG_H
+#define _COMPIZ_IMGSVG_SRC_IMGSVG_H
+
 #include "imgsvg_options.h"
 
 #include <composite/composite.h>
@@ -170,3 +173,5 @@ class SvgPluginVTable :
 	bool init ();
 	void fini ();
 };
+
+#endif /* _COMPIZ_IMGSVG_SRC_IMGSVG_H */

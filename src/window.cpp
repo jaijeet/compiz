@@ -4848,9 +4848,9 @@ PrivateWindow::getUserTime (Time& time)
     {
 	if (n)
 	{
-	    CARD32 value;
+	    unsigned long value;
 
-	    memcpy (&value, data, sizeof (CARD32));
+	    memcpy (&value, data, sizeof (unsigned long));
 	    retval = true;
 	    time   = (Time) value;
 	}

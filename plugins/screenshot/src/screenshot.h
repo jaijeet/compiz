@@ -23,6 +23,9 @@
  * Author: David Reveman <davidr@novell.com>
  */
 
+#ifndef _COMPIZ_SCREENSHOT_SRC_SCREENSHOT_H
+#define _COMPIZ_SCREENSHOT_SRC_SCREENSHOT_H
+
 #include "screenshot_options.h"
 
 #include <core/screen.h>
@@ -78,3 +81,5 @@ class ShotPluginVTable :
 
 	bool init ();
 };
+
+#endif /* _COMPIZ_SCREENSHOT_SRC_SCREENSHOT_H */

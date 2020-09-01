@@ -68,4 +68,10 @@ if (GSETTINGS_UTIL_FOUND)
     install (TARGETS compizconfig_gsettings_backend
              DESTINATION ${libdir})
 
+    set_source_files_properties (
+        gsettings_util.c
+        PROPERTIES
+        SKIP_UNITY_BUILD_INCLUSION ON
+    )
+
 endif (GSETTINGS_UTIL_FOUND)

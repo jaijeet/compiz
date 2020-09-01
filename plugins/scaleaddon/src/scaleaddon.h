@@ -28,6 +28,9 @@
  *
  */
 
+#ifndef _COMPIZ_SCALEADDON_SRC_SCALEADDON_H
+#define _COMPIZ_SCALEADDON_SRC_SCALEADDON_H
+
 #include <cmath>
 #include <cstring>
 #include <X11/Xatom.h>
@@ -159,3 +162,5 @@ class ScaleAddonPluginVTable :
     public:
 	bool init ();
 };
+
+#endif /* _COMPIZ_SCALEADDON_SRC_SCALEADDON_H */

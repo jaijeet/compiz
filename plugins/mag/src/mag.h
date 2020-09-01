@@ -20,6 +20,9 @@
  *
  */
 
+#ifndef _COMPIZ_MAG_SRC_MAG_H
+#define _COMPIZ_MAG_SRC_MAG_H
+
 #include <cmath>
 
 #include <core/core.h>
@@ -178,3 +181,5 @@ static const char *fisheyeFpString =
 
     "END";
 #endif
+
+#endif /* _COMPIZ_MAG_SRC_MAG_H */

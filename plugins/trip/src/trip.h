@@ -24,6 +24,9 @@
  *
  */
 
+#ifndef _COMPIZ_TRIP_SRC_TRIP_H
+#define _COMPIZ_TRIP_SRC_TRIP_H
+
 #include <cmath>
 
 #include <core/core.h>
@@ -190,3 +193,5 @@ static const char *rippleFpString =
     "TEX result.color, t1, texture[0], %s;"
 
     "END";
+
+#endif /* _COMPIZ_TRIP_SRC_TRIP_H */

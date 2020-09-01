@@ -21,6 +21,9 @@
  *
  **/
 
+#ifndef _COMPIZ_RESIZEINFO_SRC_RESIZEINFO_H
+#define _COMPIZ_RESIZEINFO_SRC_RESIZEINFO_H
+
 #include <core/core.h>
 #include <core/pluginclasshandler.h>
 
@@ -144,3 +147,5 @@ class InfoPluginVTable :
 
 	bool init ();
 };
+
+#endif /* _COMPIZ_RESIZEINFO_SRC_RESIZEINFO_H */

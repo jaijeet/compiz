@@ -23,6 +23,9 @@
  * Author: Danny Baumann <dannybaumann@web.de>
  */
 
+#ifndef _COMPIZ_COMMANDS_SRC_COMMANDS_H
+#define _COMPIZ_COMMANDS_SRC_COMMANDS_H
+
 #include "commands_options.h"
 
 #include "core/plugin.h"
@@ -49,3 +52,5 @@ class CommandsPluginVTable :
 
 	bool init ();
 };
+
+#endif /* _COMPIZ_COMMANDS_SRC_COMMANDS_H */

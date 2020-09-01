@@ -227,3 +227,9 @@ install (
 )
 
 enable_coverage_report( TARGETS compiz )
+
+set_source_files_properties (
+    outputdevices_x11.cpp
+    PROPERTIES
+    SKIP_UNITY_BUILD_INCLUSION ON
+)
