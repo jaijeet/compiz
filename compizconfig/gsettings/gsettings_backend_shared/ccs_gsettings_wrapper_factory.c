@@ -27,11 +27,6 @@
 #include "ccs_gsettings_interface_wrapper.h"
 
 /* CCSGSettingsWrapperFactory implementation */
-typedef struct _CCSGSettingsWrapperFactoryPrivate CCSGSettingsWrapperFactoryPrivate;
-struct _CCSGSettingsWrapperFactoryPrivate
-{
-};
-
 static void
 ccsGSettingsWrapperDefaultImplFree (CCSGSettingsWrapperFactory *wrapperFactory)
 {
@@ -78,17 +73,8 @@ ccsGSettingsWrapperFactoryDefaultImplNew (CCSObjectAllocationInterface *ai)
     if (!wrapperFactory)
 	return NULL;
 
-    CCSGSettingsWrapperFactoryPrivate *priv = (*ai->calloc_) (ai->allocator, 1, sizeof (CCSGSettingsWrapperFactoryPrivate));
-
-    if (!priv)
-    {
-	(*ai->free_) (ai->allocator, wrapperFactory);
-	return NULL;
-    }
-
     ccsObjectInit (wrapperFactory, ai);
     ccsObjectAddInterface (wrapperFactory, (const CCSInterface *) &ccsGSettingsWrapperFactoryInterface, GET_INTERFACE_TYPE (CCSGSettingsWrapperFactoryInterface));
-    ccsObjectSetPrivate (wrapperFactory, (CCSPrivate *) priv);
 
     ccsGSettingsWrapperFactoryRef (wrapperFactory);
 
