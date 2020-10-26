@@ -1,3 +1,9 @@
+compiz (1:0.9.14.1+20.10.20200813-0ubuntu2) hirsute; urgency=medium
+
+  * No-change rebuild to build with python3.9 as supported.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 26 Oct 2020 10:56:28 +0100
+
 compiz (1:0.9.14.1+20.10.20200813-0ubuntu1) groovy; urgency=medium
 
   * Use unsigned long for getting/setting _NET_WM_USER_TIME property, to
