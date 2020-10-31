@@ -1,3 +1,9 @@
+compiz (1:0.9.14.1+20.10.20200813-0ubuntu3) hirsute; urgency=medium
+
+  * Build-depend on python3-dev instead of python3-all-dev.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 31 Oct 2020 11:03:40 +0100
+
 compiz (1:0.9.14.1+20.10.20200813-0ubuntu2) hirsute; urgency=medium
 
   * No-change rebuild to build with python3.9 as supported.
