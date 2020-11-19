@@ -1,3 +1,9 @@
+compiz (1:0.9.14.1+20.10.20200813-0ubuntu4) hirsute; urgency=medium
+
+  * No-change rebuild to build with python3.9 as default.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 19 Nov 2020 18:31:18 +0100
+
 compiz (1:0.9.14.1+20.10.20200813-0ubuntu3) hirsute; urgency=medium
 
   * Build-depend on python3-dev instead of python3-all-dev.
