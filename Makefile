@@ -16,6 +16,7 @@ build:
      -DBUILD_METACITY=On \
      -DBUILD_KDE4=Off \
      -DCOMPIZ_BUILD_TESTING=Off \
+	 -DCMAKE_CFLAGS=-I/usr/include/python3.9 \
      -DCOMPIZ_WERROR=Off \
      -DCOMPIZ_DEFAULT_PLUGINS="composite,opengl,decor,resize,place,move,compiztoolbox,staticswitcher,regex,animation,wall,ccp" && make $(MAKEOPTS))
 .PHONY: build
