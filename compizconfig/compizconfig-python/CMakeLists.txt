@@ -5,12 +5,11 @@ set (CMAKE_PROJECT_NAME compizconfig-python)
 execute_process (COMMAND uname -p OUTPUT_VARIABLE PROC_ARCH)
 string (REPLACE "\n" "" PROC_ARCH ${PROC_ARCH})
 
-find_package (PythonInterp 3.0 REQUIRED)
-find_package (PythonLibs 3.0 REQUIRED)
+find_package (Python3 COMPONENTS Interpreter Development REQUIRED)
 
 set (COMPIZCONFIG_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/compizconfig/libcompizconfig/include)
 
-set (PY_VERSION "${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}")
+set (PY_VERSION "${Python3_VERSION_MAJOR}.${Python3_VERSION_MINOR}")
 set (PY_BUILD_DIR lib.linux-${PROC_ARCH}-${PY_VERSION})
 set (PY_SCRIPTS_DIR scripts-${PY_VERSION})
 set (PY_COMPIZCONFIG_SRC ${CMAKE_CURRENT_BINARY_DIR}/compizconfig.c)
@@ -30,7 +29,7 @@ file (READ ${CMAKE_SOURCE_DIR}/VERSION COMPIZ_RELEASE_VERSION LIMIT 12 OFFSET 0)
 string (STRIP ${COMPIZ_RELEASE_VERSION} COMPIZ_RELEASE_VERSION)
 set (VERSION ${COMPIZ_RELEASE_VERSION})
 
-include_directories (${PYTHON_INCLUDE_DIRS}
+include_directories (${Python3_INCLUDE_DIRS}
 		     ${COMPIZCONFIG_INCLUDE_DIRS})
 
 # cython generates code that does type-punning, this trips
@@ -59,10 +58,10 @@ set_target_properties (compizconfig_python_module
 		       compizconfig)
 
 target_link_libraries (compizconfig_python_module
-		       ${PYTHON_LIBRARIES}
+		       ${Python3_LIBRARIES}
 		       compizconfig)
 
-set (UNINSTALL_COMMAND "${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/setup.py uninstall --prefix=${CMAKE_INSTALL_PREFIX} --version=${VERSION}")
+set (UNINSTALL_COMMAND "${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/setup.py uninstall --prefix=${CMAKE_INSTALL_PREFIX} --version=${VERSION}")
 
 compiz_add_code_to_uninstall_target (${UNINSTALL_COMMAND} ${CMAKE_CURRENT_BINARY_DIR})
 
@@ -82,16 +81,16 @@ install (TARGETS compizconfig_python_module
 
 install (CODE
 	 "message (\"Installing python files\")
-	  execute_process (COMMAND cmake -DPY_EXECUTABLE=${PYTHON_EXECUTABLE} -DSETUP=${CMAKE_CURRENT_SOURCE_DIR}/setup.py -DPREFIX=${CMAKE_INSTALL_PREFIX} -DWDIR=${CMAKE_CURRENT_BINARY_DIR} -DVERSION=${VERSION} -P ${compiz_SOURCE_DIR}/compizconfig/cmake/exec_setup_py_with_destdir.cmake)")
+	  execute_process (COMMAND cmake -DPY_EXECUTABLE=${Python3_EXECUTABLE} -DSETUP=${CMAKE_CURRENT_SOURCE_DIR}/setup.py -DPREFIX=${CMAKE_INSTALL_PREFIX} -DWDIR=${CMAKE_CURRENT_BINARY_DIR} -DVERSION=${VERSION} -P ${compiz_SOURCE_DIR}/compizconfig/cmake/exec_setup_py_with_destdir.cmake)")
 
 if (COMPIZ_BUILD_TESTING)
 
         find_program (BASH_EXECUTABLE bash)
-	mark_as_advanced (FORCE PYTHON_EXECUTABLE)
+	mark_as_advanced (FORCE Python3_EXECUTABLE)
 
 	file (GLOB PYTHON_TESTS "tests/test_*.py")
 
-        if (PYTHON_EXECUTABLE AND
+        if (Python3_EXECUTABLE AND
             BASH_EXECUTABLE)
 		set (MOCK_XML_SRC ${CMAKE_CURRENT_SOURCE_DIR}/tests/mock.xml)
 		set (MOCK_XML_FILE ${CMAKE_CURRENT_BINARY_DIR}/mock.xml)
@@ -116,9 +115,9 @@ if (COMPIZ_BUILD_TESTING)
                                   COMMAND ${BASH_EXECUTABLE}
                                   ${CMAKE_SOURCE_DIR}/tests/util/run_with_ld_library_path.sh
                                   ${CMAKE_BINARY_DIR}/compizconfig/libcompizconfig/src
-                                  ${PYTHON_EXECUTABLE} ${PYTHON_TEST_FILE})
+                                  ${Python3_EXECUTABLE} ${PYTHON_TEST_FILE})
 		endforeach (PYTHON_TEST_FILE)
-        endif (PYTHON_EXECUTABLE AND
+        endif (Python3_EXECUTABLE AND
                BASH_EXECUTABLE)
 
 endif (COMPIZ_BUILD_TESTING)
