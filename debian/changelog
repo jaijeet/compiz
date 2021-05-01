@@ -1,3 +1,12 @@
+compiz (1:0.9.14.1+21.10.20210501-0ubuntu1) impish; urgency=medium
+
+  * Remove unused empty private structs.
+  * Update FSF addresses. (LP: #1923481)
+  * Build the compizconfig Python extension using distutils. Bump
+    required CMake version to 3.17 to make this possible. (LP: #1926046)
+
+ -- Dmitry Shachnev <mitya57@ubuntu.com>  Sat, 01 May 2021 17:29:43 +0000
+
 compiz (1:0.9.14.1+20.10.20200813-0ubuntu4) hirsute; urgency=medium
 
   * No-change rebuild to build with python3.9 as default.
