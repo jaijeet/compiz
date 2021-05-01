@@ -38,12 +38,6 @@
 #include <ccs_backend_loader_interface.h>
 #include <ccs_backend_loader.h>
 
-typedef struct _CCSShraedLibBackendLoaderPrivate CCSShraedLibBackendLoaderPrivate;
-
-struct _CCSShraedLibBackendLoaderPrivate
-{
-};
-
 static void *
 openBackend (const char *backend)
 {
@@ -209,20 +203,6 @@ allocateLoader (CCSObjectAllocationInterface *ai)
     return loader;
 }
 
-static CCSShraedLibBackendLoaderPrivate *
-backendLoaderAllocatePrivate (CCSBackendLoader *loader, CCSObjectAllocationInterface *ai)
-{
-    CCSShraedLibBackendLoaderPrivate *priv = (*ai->calloc_) (ai->allocator, 1, sizeof (CCSShraedLibBackendLoaderPrivate));
-
-    if (!priv)
-    {
-	freeAndFinalizeLoader (loader, ai);
-	return NULL;
-    }
-
-    return priv;
-}
-
 CCSBackendLoader *
 ccsSharedLibBackendLoaderNew (CCSObjectAllocationInterface *ai)
 {
@@ -231,12 +211,6 @@ ccsSharedLibBackendLoaderNew (CCSObjectAllocationInterface *ai)
     if (!loader)
 	return NULL;
 
-    CCSShraedLibBackendLoaderPrivate *priv = backendLoaderAllocatePrivate (loader, ai);
-
-    if (!priv)
-	return NULL;
-
-    ccsObjectSetPrivate (loader, (CCSPrivate *) (priv));
     ccsObjectAddInterface (loader, (const CCSInterface *) &ccsSharedLibBackendLoaderInterface,
 			   GET_INTERFACE_TYPE (CCSBackendLoaderInterface));
     ccsObjectRef (loader);
