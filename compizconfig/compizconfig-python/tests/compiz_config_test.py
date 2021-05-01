@@ -1,8 +1,8 @@
 import os
 import sys
-import subprocess
+from distutils.util import get_platform
 
-arch = subprocess.Popen (["uname", "-p"], stdout=subprocess.PIPE).communicate ()[0][:-1]
+arch = get_platform()
 
 os.environ["G_SLICE"] = "always-malloc"
 os.environ["COMPIZ_METADATA_PATH"] = "compizconfig/compizconfig-python/"
@@ -11,7 +11,7 @@ os.environ["XDG_CONFIG_HOME"] = "compizconfig/libcompizconfig/config"
 os.environ["LIBCOMPIZCONFIG_BACKEND_PATH"] = "compizconfig/libcompizconfig/backend/"
 os.environ["XDG_DATA_DIRS"] = "generated/"
 
-sys.path.insert (0, "compizconfig/compizconfig-python")
+sys.path.insert (0, "compizconfig/compizconfig-python/build/lib.%s-%s.%s" % (arch, *sys.version_info[:2]))
 
 import unittest
 import compizconfig

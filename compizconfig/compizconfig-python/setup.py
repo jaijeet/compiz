@@ -4,6 +4,8 @@ from distutils.command.build import build as _build
 from distutils.command.install import install as _install
 from distutils.command.install_data import install_data as _install_data
 from distutils.command.sdist import sdist as _sdist
+from distutils.extension import Extension
+from Cython.Build import cythonize
 import os
 import subprocess
 import sys
@@ -145,6 +147,11 @@ setup (
   license          = "GPL",
   maintainer       = "Guillaume Seguin",
   maintainer_email = "guillaume@segu.in",
+  ext_modules      = cythonize([
+                         Extension("compizconfig", ["compizconfig.pyx"],
+                                   libraries=["compizconfig"],
+                                   library_dirs=["../libcompizconfig/src"])
+                     ]),
   cmdclass         = {"uninstall" : uninstall,
                       "install" : install,
                       "install_data" : install_data,
