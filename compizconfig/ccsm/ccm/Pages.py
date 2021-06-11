@@ -33,6 +33,8 @@ from ccm.Conflicts import PluginConflict
 from ccm.Utils import gtk_process_events, getScreens, Image, PrettyButton, Label, NotFoundBox, GlobalUpdater, CategoryKeyFunc, GroupIndexKeyFunc, PluginKeyFunc, GetSettings, GetAcceleratorName
 from ccm.Widgets import ClearEntry, PluginView, GroupView, SelectorButtons, ScrolledList, Popup, KeyGrabber, AboutDialog, PluginWindow
 
+##from cgi import escape as protect_pango_markup # JR, 2019/11/30
+#from html import escape as protect_pango_markup # JR, 2019/11/30
 import os
 
 import locale

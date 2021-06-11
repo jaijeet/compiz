@@ -26,6 +26,7 @@
 #include "gtk-window-decorator.h"
 #include "gwd-settings.h"
 
+// const gchar * window_type_frames[WINDOW_TYPE_FRAMES_NUM]; // JR 2020/05/24; moved from gtk-window-decorator.h to fix compilation error:  /usr/bin/ld: CMakeFiles/gtk-window-decorator.dir/blurprops.c.o:(.bss+0x0): multiple definition of `window_type_frames'; CMakeFiles/gtk-window-decorator.dir/gtk-window-decorator.c.o:(.data.rel.local+0xa0): first defined here
 static void
 wnck_draw_window_decoration (decor_t *decor)
 {

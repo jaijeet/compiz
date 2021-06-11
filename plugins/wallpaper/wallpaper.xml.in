@@ -31,27 +31,47 @@
 					<_long>The image positioning if defined above.</_long>
 					<type>int</type>
 					<min>0</min>
-					<max>4</max>
+					<max>7</max>
 					<desc>
 						<value>0</value>
-						<_name>Scale and Crop</_name>
+						<_name>Scale and Crop to Fill keeping Aspect</_name>
 					</desc>
 					<desc>
 						<value>1</value>
-						<_name>Scaled</_name>
-					</desc>
+						<_name>Scale X Y to Fill ignoring Aspect</_name>
+					</desc> 
 					<desc>
 						<value>2</value>
-						<_name>Centered</_name>
+						<_name>Center</_name>
 					</desc>
 					<desc>
 						<value>3</value>
-						<_name>Tiled</_name>
+						<_name>Tile</_name>
 					</desc>
 					<desc>
 						<value>4</value>
-						<_name>Center Tiled</_name>
+						<_name>Center Tile</_name>
 					</desc>
+					<desc>
+						<value>5</value>
+						<_name>Fit to Screen keeping Aspect</_name>
+					</desc>
+					<desc>
+						<value>6</value>
+						<_name>Tile after Fit to Screen</_name>
+					</desc>
+					<desc>
+						<value>7</value>
+						<_name>Center Tile after Fit to Screen</_name>
+					</desc>
+				</option>
+				<option name="bg_pan" type="list">
+					<_short>Pan value</_short>
+					<_long>Pan value for Scale/Crop w aspect: 0=left, 0.5=center, 1=right</_long>
+                    <type>float</type>
+					<min>0.0</min>
+					<max>1.0</max>
+                    <precision>0.01</precision>
 				</option>
 				<option name="bg_fill_type" type="list">
 					<_short>Background Fill Type</_short>

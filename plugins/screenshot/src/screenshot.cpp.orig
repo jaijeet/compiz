@@ -434,10 +434,10 @@ namespace
 	    compLogMessage ("screenshot", CompLogLevelWarn, "glReadPixels failed");
 	}
 
-	if (success)
+	if (!success)
 	    success =
 		launchApplicationAndTakeScreenshot (alternativeApplication,
-						    path);
+						    directory);
 
 	return success;
 

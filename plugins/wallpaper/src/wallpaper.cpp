@@ -19,8 +19,9 @@
  * GNU General Public License for more details.
  *
  */
-
+ 
 #include "wallpaper.h"
+#include <iostream>
 
 COMPIZ_PLUGIN_20090315 (wallpaper, WallpaperPluginVTable);
 
@@ -232,6 +233,7 @@ WallpaperScreen::updateBackgrounds ()
     GET_OPTION (BgFillType);
     GET_OPTION (BgColor1);
     GET_OPTION (BgColor2);
+    GET_OPTION (BgPan);
 #undef GET_OPTION
 
     if (!((cBgImagePos.size ()  == cBgImage.size ()) &&
@@ -254,10 +256,11 @@ WallpaperScreen::updateBackgrounds ()
 	backgroundsPrimary[i].image    = cBgImage[i].s ();
 	backgroundsPrimary[i].imagePos = cBgImagePos[i].i ();
 	backgroundsPrimary[i].fillType = cBgFillType[i].i ();
-	memcpy (backgroundsPrimary[i].color1, cBgColor1[i].c (),
-		4 * sizeof(unsigned short));
-	memcpy (backgroundsPrimary[i].color2, cBgColor2[i].c (),
-		4 * sizeof(unsigned short));
+	memcpy(backgroundsPrimary[i].color1, cBgColor1[i].c (), 4 * sizeof(unsigned short));
+	memcpy(backgroundsPrimary[i].color2, cBgColor2[i].c (), 4 * sizeof(unsigned short));
+	backgroundsPrimary[i].panValue = cBgPan[i].f(); // segfaults here, why?
+	//backgroundsPrimary[i].panValue = 0.5;
+
 
 	initBackground (&backgroundsPrimary[i]);
     }
@@ -444,9 +447,9 @@ WallpaperWindow::drawBackgrounds (const GLMatrix            &transform,
     tmpMatrixList[0] = back->fillTexMatrix[0];
 
     if (back->fillType == WallpaperOptions::BgFillTypeVerticalGradient)
-	tmpMatrixList[0].yy /= (float) screen->height () / 2.0;
+	    tmpMatrixList[0].yy /= (float) screen->height () / 2.0;
     else if (back->fillType == WallpaperOptions::BgFillTypeHorizontalGradient)
-	tmpMatrixList[0].xx /= (float) screen->width () / 2.0;
+	    tmpMatrixList[0].xx /= (float) screen->width () / 2.0;
 
     gWindow->glAddGeometry (tmpMatrixList, screen->region (),
 			    (mask & PAINT_WINDOW_TRANSFORMED_MASK) ?
@@ -470,7 +473,12 @@ WallpaperWindow::drawBackgrounds (const GLMatrix            &transform,
 	vb->begin ();
 	tmpMatrixList[0] = back->imgTex[0]->matrix ();
 
-	if (back->imagePos == WallpaperOptions::BgImagePosScaleAndCrop)
+    // float pan = ws->optionGetBgPan();
+    // float pan = cBgPan;
+    // float pan = 0.5;
+    float pan = back->panValue;
+
+	if (back->imagePos == WallpaperOptions::BgImagePosScaleAndCropToFillKeepingAspect)
 	{
 	    s1 = (float) screen->width () / back->imgSize.width ();
 	    s2 = (float) screen->height () / back->imgSize.height ();
@@ -481,18 +489,19 @@ WallpaperWindow::drawBackgrounds (const GLMatrix            &transform,
 	    tmpMatrixList[0].yy /= s1;
 
 	    x = (screen->width () - ((int)back->imgSize.width () * s1)) / 2.0;
-	    tmpMatrixList[0].x0 -= x * tmpMatrixList[0].xx;
+	    tmpMatrixList[0].x0 -= 2*pan*x * tmpMatrixList[0].xx;
 	    y = (screen->height () - ((int)back->imgSize.height () * s1)) / 2.0;
-	    tmpMatrixList[0].y0 -= y * tmpMatrixList[0].yy;
+	    tmpMatrixList[0].y0 -= 2*pan*y * tmpMatrixList[0].yy;
+        
 	}
-	else if (back->imagePos == WallpaperOptions::BgImagePosScaled)
+	else if (back->imagePos == WallpaperOptions::BgImagePosScaleXYToFillIgnoringAspect)
 	{
 	    s1 = (float) screen->width () / back->imgSize.width ();
 	    s2 = (float) screen->height () / back->imgSize.height ();
 	    tmpMatrixList[0].xx /= s1;
 	    tmpMatrixList[0].yy /= s2;
 	}
-	else if (back->imagePos == WallpaperOptions::BgImagePosCentered)
+	else if (back->imagePos == WallpaperOptions::BgImagePosCenter)
 	{
 	    x = (screen->width () - (int)back->imgSize.width ()) / 2;
 	    y = (screen->height () - (int)back->imgSize.height ()) / 2;
@@ -506,19 +515,56 @@ WallpaperWindow::drawBackgrounds (const GLMatrix            &transform,
 
 	    reg = CompRegion (tmpRect);
 	}
-
-	if (back->imagePos == WallpaperOptions::BgImagePosTiled ||
-	    back->imagePos == WallpaperOptions::BgImagePosCenterTiled)
+	else if (back->imagePos == WallpaperOptions::BgImagePosFitToScreenKeepingAspect)
 	{
-	    if (back->imagePos == WallpaperOptions::BgImagePosCenterTiled)
+        // scale 
+	    s1 = (float) screen->width() / back->imgSize.width();
+	    s2 = (float) screen->height() / back->imgSize.height();
+
+	    s1 = MIN(s1, s2);
+
+	    tmpMatrixList[0].xx /= s1;
+	    tmpMatrixList[0].yy /= s1;
+
+        // center
+	    x = (screen->width() - ((int)back->imgSize.width() * s1)) / 2.0;
+	    y = (screen->height() - ((int)back->imgSize.height() * s1)) / 2.0;
+	    tmpMatrixList[0].x0 -= x * tmpMatrixList[0].xx;
+	    tmpMatrixList[0].y0 -= y * tmpMatrixList[0].yy;
+
+        /* blacken the rest of the screen? */
+	    tmpRect.setLeft(MAX(0, x)); 
+	    tmpRect.setTop(MAX(0, y)); 
+	    tmpRect.setRight(MIN(screen->width(), x + back->imgSize.width()*s1));
+	    tmpRect.setBottom(MIN(screen->height(), y + back->imgSize.height()*s1));
+	    reg = CompRegion(tmpRect);
+	}
+
+	if (back->imagePos == WallpaperOptions::BgImagePosTile ||
+	    back->imagePos == WallpaperOptions::BgImagePosCenterTile ||
+        back->imagePos == WallpaperOptions::BgImagePosTileAfterFitToScreen ||
+        back->imagePos == WallpaperOptions::BgImagePosCenterTileAfterFitToScreen)
+	{
+
+	    if (back->imagePos == WallpaperOptions::BgImagePosTileAfterFitToScreen || back->imagePos == WallpaperOptions::BgImagePosCenterTileAfterFitToScreen) {
+            
+            // scale to fit
+	        s1 = (float) screen->width() / back->imgSize.width();
+	        s2 = (float) screen->height() / back->imgSize.height();
+
+	        s1 = MIN(s1, s2);
+        } else 
+        s1 = 1;
+
+	    if (back->imagePos == WallpaperOptions::BgImagePosCenterTile || back->imagePos == WallpaperOptions::BgImagePosCenterTileAfterFitToScreen)
 	    {
-		x = (screen->width () - (int)back->imgSize.width ()) / 2;
-		y = (screen->height () - (int)back->imgSize.height ()) / 2;
+		x = (screen->width () - (int) (back->imgSize.width ()*s1)) / 2;
+		y = (screen->height () - (int) (back->imgSize.height ()*s1)) / 2;
 
 		if (x > 0)
-		    x = (x % (int)back->imgSize.width ()) - (int)back->imgSize.width ();
+		    x = (x % (int) (back->imgSize.width()*s1)) - (int) (back->imgSize.width()*s1);
 		if (y > 0)
-		    y = (y % (int)back->imgSize.height ()) - (int)back->imgSize.height ();
+		    y = (y % (int) (back->imgSize.height()*s1)) - (int) (back->imgSize.height()*s1);
 	    }
 	    else
 	    {
@@ -533,22 +579,26 @@ WallpaperWindow::drawBackgrounds (const GLMatrix            &transform,
 		{
 		    tmpMatrixList[0] = back->imgTex[0]->matrix ();
 
+	        if (back->imagePos == WallpaperOptions::BgImagePosTileAfterFitToScreen || back->imagePos == WallpaperOptions::BgImagePosCenterTileAfterFitToScreen) {
+	        tmpMatrixList[0].xx /= s1;
+	        tmpMatrixList[0].yy /= s1;
+            }
+
 		    tmpMatrixList[0].x0 -= xi * tmpMatrixList[0].xx;
 		    tmpMatrixList[0].y0 -= y * tmpMatrixList[0].yy;
 
 		    tmpRect.setLeft (MAX (0, xi));
 		    tmpRect.setTop (MAX (0, y));
-		    tmpRect.setRight (MIN (screen->width (), xi + back->imgSize.width ()));
-		    tmpRect.setBottom (MIN (screen->height (),
-						y + back->imgSize.height ()));
+		    tmpRect.setRight (MIN (screen->width (), xi + back->imgSize.width()*s1));
+		    tmpRect.setBottom (MIN (screen->height (), y + back->imgSize.height()*s1));
 
 		    reg = CompRegion (tmpRect);
 
 		    gWindow->glAddGeometry (tmpMatrixList, reg, region);
 
-		    xi += (int)back->imgSize.width ();
+		    xi += (int)back->imgSize.width()*s1;
 		}
-		y += (int)back->imgSize.height ();
+		y += (int)back->imgSize.height()*s1;
 	    }
 	}
 	else
@@ -639,6 +689,8 @@ WallpaperScreen::WallpaperScreen (CompScreen *screen) :
     optionSetBgImageNotify    (boost::bind (&WallpaperScreen::
 				wallpaperBackgroundsChanged, this, _1, _2));
     optionSetBgImagePosNotify (boost::bind (&WallpaperScreen::
+				wallpaperBackgroundsChanged, this, _1, _2));
+    optionSetBgPanNotify (boost::bind (&WallpaperScreen::
 				wallpaperBackgroundsChanged, this, _1, _2));
     optionSetBgFillTypeNotify (boost::bind (&WallpaperScreen::
 				wallpaperBackgroundsChanged, this, _1, _2));

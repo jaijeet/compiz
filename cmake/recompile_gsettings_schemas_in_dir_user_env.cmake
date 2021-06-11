@@ -15,9 +15,9 @@ endif (${USERNAME} STREQUAL "root")
 
 find_program (GLIB_COMPILE_SCHEMAS glib-compile-schemas)
 
-if (GLIB_COMPILE_SCHEMAS)
-
-    message ("-- Recompiling GSettings schemas in ${SCHEMADIR}")
-    execute_process (COMMAND ${GLIB_COMPILE_SCHEMAS} ${SCHEMADIR})
-
-endif (GLIB_COMPILE_SCHEMAS)
+#if (GLIB_COMPILE_SCHEMAS)
+#
+#    message ("-- Recompiling GSettings schemas in ${SCHEMADIR}")
+#    execute_process (COMMAND ${GLIB_COMPILE_SCHEMAS} ${SCHEMADIR})
+#
+#endif (GLIB_COMPILE_SCHEMAS)

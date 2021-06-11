@@ -27,6 +27,8 @@ from gi.repository import GObject
 import weakref
 
 from ccm.Constants import ImageNone, ImagePlugin, ImageCategory, ImageThemed, ImageStock, DataDir, IconDir
+##from cgi import escape as protect_pango_markup # JR, 2019/11/30
+#from html import escape as protect_pango_markup # JR, 2019/11/30
 import operator
 
 import locale

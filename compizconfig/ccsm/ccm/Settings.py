@@ -29,6 +29,8 @@ from ccm.Conflicts import KeyConflict, ButtonConflict, EdgeConflict
 from ccm.Widgets import CellRendererColor, ModifierSelector, SingleEdgeSelector, KeyGrabber, MatchButton, FileButton, ErrorDialog
 from ccm.Utils import Image, ActionImage, SizedButton, GlobalUpdater, PureVirtualError, SettingKeyFunc, EnumSettingKeyFunc, HasOnlyType, GetSettings, GetAcceleratorName
 
+##from cgi import escape as protect_pango_markup # JR, 2019/11/30
+#from html import escape as protect_pango_markup # JR, 2019/11/30
 import locale
 import gettext
 locale.setlocale(locale.LC_ALL, "")

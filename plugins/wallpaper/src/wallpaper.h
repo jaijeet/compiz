@@ -43,6 +43,7 @@ class WallpaperBackground
 	int                   fillType;
 	unsigned short        color1[4];
 	unsigned short        color2[4];
+    float                 panValue;
 
 	GLTexture::List       imgTex;
 	CompSize              imgSize;

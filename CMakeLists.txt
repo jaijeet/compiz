@@ -19,6 +19,7 @@ set (CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${COMPIZ_CMAKE_MODULE_PATH})
 
 include (CTest)
 include (GNUInstallDirs)
+include_directories (/usr/include/python3.9)
 
 set (MEMORYCHECK_COMMAND_OPTIONS --trace-children=yes)
 set (MEMORYCHECK_SUPPRESSIONS_FILE ${CMAKE_SOURCE_DIR}/tests/experimental-memcheck/compiz.supp CACHE FILEPATH "" FORCE)
