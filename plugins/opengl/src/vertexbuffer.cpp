@@ -563,9 +563,9 @@ int PrivateVertexBuffer::render (const GLMatrix              *projection,
 
     for (int i = nTextures - 1; i >= 0; i--)
     {
-	char name[10];
+	char name[19];
 
-	snprintf (name, 10, "texCoord%d", i);
+	snprintf (name, 19, "texCoord%d", i);
 	texCoordIndex[i] = tmpProgram->attributeLocation (name);
 
 	(*GL::enableVertexAttribArray) (texCoordIndex[i]);
@@ -573,7 +573,7 @@ int PrivateVertexBuffer::render (const GLMatrix              *projection,
 	(*GL::vertexAttribPointer) (texCoordIndex[i], 2, GL_FLOAT, GL_FALSE, 0, 0);
 	(*GL::bindBuffer) (GL::ARRAY_BUFFER, 0);
 
-	snprintf (name, 9, "texture%d", i);
+	snprintf (name, 18, "texture%d", i);
 	tmpProgram->setUniform (name, i);
     }
 
