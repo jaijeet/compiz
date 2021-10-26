@@ -1,3 +1,9 @@
+compiz (1:0.9.14.1+22.04.20211026-0ubuntu1) jammy; urgency=medium
+
+  * Increase string buffer size to fix GCC format-truncation error.
+
+ -- Dmitry Shachnev <mitya57@ubuntu.com>  Tue, 26 Oct 2021 15:43:43 +0000
+
 compiz (1:0.9.14.1+21.10.20210501-0ubuntu1) impish; urgency=medium
 
   * Remove unused empty private structs.
