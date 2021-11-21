@@ -1122,7 +1122,7 @@ BlurScreen::fboPrologue ()
 void
 BlurScreen::fboEpilogue ()
 {
-    oldDrawFramebuffer->bind ();
+    fbo->rebind (oldDrawFramebuffer);
 
     fbo->tex ()->enable (GLTexture::Good);
     //GL::generateMipmap (fbo->tex ()->target ());
@@ -1465,7 +1465,8 @@ BlurWindow::updateDstTexture (const GLMatrix &transform,
 	    /* We have to bind it in order to get a status */
 	    GLFramebufferObject *old = bScreen->fbo->bind();
 	    bool status = bScreen->fbo->checkStatus ();
-	    old->bind();
+
+	    bScreen->fbo->rebind (old);
 
 	    if (!status)
 		compLogMessage ("blur", CompLogLevelError,
