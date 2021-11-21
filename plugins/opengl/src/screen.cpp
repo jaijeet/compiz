@@ -372,7 +372,59 @@ class BufferAgeFrameProvider :
 	Display *mDisplay;
 	GLXDrawable mDrawable;
 };
+#else
+class BufferAgeFrameProvider :
+    public FrameProvider
+{
+    public:
 
+        BufferAgeFrameProvider (Display     *disp,
+                                EGLSurface   drawable) :
+            mDisplay (disp),
+            mDrawable (drawable)
+        {
+        }
+
+        unsigned int getCurrentFrame ()
+        {
+            EGLint age = 0;
+            eglQuerySurface (eglGetDisplay (mDisplay),
+                                 mDrawable,
+                                 EGL_BUFFER_AGE_EXT,
+                                 &age);
+            return (unsigned int) age;
+        }
+
+        void useCurrentFrame ()
+        {
+        }
+
+        void endFrame ()
+        {
+        }
+
+        void invalidateAll ()
+        {
+        }
+
+        bool providesPersistence ()
+        {
+            return true;
+        }
+
+        bool alwaysPostprocess ()
+        {
+            return false;
+        }
+
+    private:
+
+        Display    *mDisplay;
+        EGLSurface mDrawable;
+};
+#endif
+
+#ifndef USE_GLES
 namespace compiz
 {
 namespace opengl
