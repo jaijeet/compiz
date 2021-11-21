@@ -781,6 +781,13 @@ GLScreen::glInitContext (XVisualInfo *visinfo)
 	return false;
     }
 
+    if (strstr (eglExtensions, "EGL_EXT_buffer_age"))
+    {
+        compLogMessage ("opengl", CompLogLevelInfo,
+                        "EGL_EXT_buffer_age is supported");
+        GL::bufferAge = true;
+    }
+
 // work around efika supporting GL_BGRA directly instead of via this extension
 #ifndef GL_BGRA
     if (!strstr (glExtensions, "GL_EXT_texture_format_BGRA8888"))
