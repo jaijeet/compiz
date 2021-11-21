@@ -2722,15 +2722,18 @@ PrivateGLScreen::updateRenderMode ()
 void
 PrivateGLScreen::updateFrameProvider ()
 {
-#ifndef USE_GLES
-    const Window outputWindow = CompositeScreen::get (screen)->output ();
-
     if (GL::fboEnabled)
     {
 	if (GL::bufferAge)
 	{
+#ifndef USE_GLES
+	    const Window outputWindow = CompositeScreen::get (screen)->output ();
 	    FrameProvider::Ptr back (new BufferAgeFrameProvider (screen->dpy (),
 								 outputWindow));
+#else
+	    FrameProvider::Ptr back (new BufferAgeFrameProvider (screen->dpy (),
+								 surface));
+#endif
 	    FrameProvider::Ptr scratch (new PostprocessFrameProvider (scratchFbo.get ()));
 	    OptionalPostprocessFrameProvider::PostprocessRequired ppReq
 		    (boost::bind (&PrivateGLScreen::postprocessRequiredForCurrentFrame,
@@ -2748,14 +2751,18 @@ PrivateGLScreen::updateFrameProvider ()
     else
     {
 	if (GL::bufferAge)
+	{
+#ifndef USE_GLES
+	    const Window outputWindow = CompositeScreen::get (screen)->output ();
 	    frameProvider.reset (new BufferAgeFrameProvider (screen->dpy (),
 								   outputWindow));
+#else
+	    frameProvider.reset (new BufferAgeFrameProvider (screen->dpy (), surface));
+#endif
+	}
 	else
 	    frameProvider.reset (new UndefinedFrameProvider ());
     }
-#else
-    frameProvider.reset (new PostprocessFrameProvider (scratchFbo.get ()));
-#endif
 }
 
 void
