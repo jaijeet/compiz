@@ -1,3 +1,16 @@
+compiz (1:0.9.14.1+22.04.20211217-0ubuntu1) jammy; urgency=medium
+
+  [ Daniel Kondor ]
+  * core: EventManager::removeWatchFd() should remove the watch from the
+    Glib::MainContext (LP: #1879975)
+
+  [ Sam Spilsbury ]
+  * blur: Set precision level in fragment shader in GL_ES case.
+  * Enable EGL_EXT_buffer_age on USE_GLES where it is advertised.
+  * blur: Use GLFramebufferObject::rebind with the returned framebuffer.
+
+ -- Dmitry Shachnev <mitya57@ubuntu.com>  Fri, 17 Dec 2021 12:06:09 +0000
+
 compiz (1:0.9.14.1+22.04.20211026-0ubuntu1) jammy; urgency=medium
 
   * Increase string buffer size to fix GCC format-truncation error.
