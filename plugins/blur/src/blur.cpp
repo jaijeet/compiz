@@ -1041,7 +1041,10 @@ BlurScreen::loadFilterProgram (int numITC)
 
     SamplerInfo info (getSamplerInfoForSize (*screen));
 
-    str << "varying vec2 vTexCoord0;\n"\
+    str << "#ifdef GL_ES\n"
+	   "precision mediump float;\n"
+	   "#endif\n"
+	   "varying vec2 vTexCoord0;\n"
 	   "uniform sampler2D texture0;\n";
 
     if (maxTemp - 1 > (numTexop + (numTexop - numITC)) * 2)
