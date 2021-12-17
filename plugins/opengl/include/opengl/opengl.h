@@ -44,7 +44,9 @@
  * to GLX_BACK_BUFFER_AGE_EXT but this is the token as defined
  * in the spec (https://www.opengl.org/registry/specs/EXT/glx_buffer_age.txt)
  */
+#ifndef GLX_BACK_BUFFER_AGE_EXT
 #define GLX_BACK_BUFFER_AGE_EXT 0x20F4
+#endif
 
 #endif
 

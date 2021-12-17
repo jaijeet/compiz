@@ -372,7 +372,59 @@ class BufferAgeFrameProvider :
 	Display *mDisplay;
 	GLXDrawable mDrawable;
 };
+#else
+class BufferAgeFrameProvider :
+    public FrameProvider
+{
+    public:
 
+        BufferAgeFrameProvider (Display     *disp,
+                                EGLSurface   drawable) :
+            mDisplay (disp),
+            mDrawable (drawable)
+        {
+        }
+
+        unsigned int getCurrentFrame ()
+        {
+            EGLint age = 0;
+            eglQuerySurface (eglGetDisplay (mDisplay),
+                                 mDrawable,
+                                 EGL_BUFFER_AGE_EXT,
+                                 &age);
+            return (unsigned int) age;
+        }
+
+        void useCurrentFrame ()
+        {
+        }
+
+        void endFrame ()
+        {
+        }
+
+        void invalidateAll ()
+        {
+        }
+
+        bool providesPersistence ()
+        {
+            return true;
+        }
+
+        bool alwaysPostprocess ()
+        {
+            return false;
+        }
+
+    private:
+
+        Display    *mDisplay;
+        EGLSurface mDrawable;
+};
+#endif
+
+#ifndef USE_GLES
 namespace compiz
 {
 namespace opengl
@@ -727,6 +779,13 @@ GLScreen::glInitContext (XVisualInfo *visinfo)
 			"GL_OES_EGL_image is missing");
 	screen->handleCompizEvent ("opengl", "fatal_fallback", o);
 	return false;
+    }
+
+    if (strstr (eglExtensions, "EGL_EXT_buffer_age"))
+    {
+        compLogMessage ("opengl", CompLogLevelInfo,
+                        "EGL_EXT_buffer_age is supported");
+        GL::bufferAge = true;
     }
 
 // work around efika supporting GL_BGRA directly instead of via this extension
@@ -2663,15 +2722,18 @@ PrivateGLScreen::updateRenderMode ()
 void
 PrivateGLScreen::updateFrameProvider ()
 {
-#ifndef USE_GLES
-    const Window outputWindow = CompositeScreen::get (screen)->output ();
-
     if (GL::fboEnabled)
     {
 	if (GL::bufferAge)
 	{
+#ifndef USE_GLES
+	    const Window outputWindow = CompositeScreen::get (screen)->output ();
 	    FrameProvider::Ptr back (new BufferAgeFrameProvider (screen->dpy (),
 								 outputWindow));
+#else
+	    FrameProvider::Ptr back (new BufferAgeFrameProvider (screen->dpy (),
+								 surface));
+#endif
 	    FrameProvider::Ptr scratch (new PostprocessFrameProvider (scratchFbo.get ()));
 	    OptionalPostprocessFrameProvider::PostprocessRequired ppReq
 		    (boost::bind (&PrivateGLScreen::postprocessRequiredForCurrentFrame,
@@ -2689,14 +2751,18 @@ PrivateGLScreen::updateFrameProvider ()
     else
     {
 	if (GL::bufferAge)
+	{
+#ifndef USE_GLES
+	    const Window outputWindow = CompositeScreen::get (screen)->output ();
 	    frameProvider.reset (new BufferAgeFrameProvider (screen->dpy (),
 								   outputWindow));
+#else
+	    frameProvider.reset (new BufferAgeFrameProvider (screen->dpy (), surface));
+#endif
+	}
 	else
 	    frameProvider.reset (new UndefinedFrameProvider ());
     }
-#else
-    frameProvider.reset (new PostprocessFrameProvider (scratchFbo.get ()));
-#endif
 }
 
 void
