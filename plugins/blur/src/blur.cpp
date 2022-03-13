@@ -1041,7 +1041,10 @@ BlurScreen::loadFilterProgram (int numITC)
 
     SamplerInfo info (getSamplerInfoForSize (*screen));
 
-    str << "varying vec2 vTexCoord0;\n"\
+    str << "#ifdef GL_ES\n"
+	   "precision mediump float;\n"
+	   "#endif\n"
+	   "varying vec2 vTexCoord0;\n"
 	   "uniform sampler2D texture0;\n";
 
     if (maxTemp - 1 > (numTexop + (numTexop - numITC)) * 2)
@@ -1122,7 +1125,7 @@ BlurScreen::fboPrologue ()
 void
 BlurScreen::fboEpilogue ()
 {
-    oldDrawFramebuffer->bind ();
+    fbo->rebind (oldDrawFramebuffer);
 
     fbo->tex ()->enable (GLTexture::Good);
     //GL::generateMipmap (fbo->tex ()->target ());
@@ -1465,7 +1468,8 @@ BlurWindow::updateDstTexture (const GLMatrix &transform,
 	    /* We have to bind it in order to get a status */
 	    GLFramebufferObject *old = bScreen->fbo->bind();
 	    bool status = bScreen->fbo->checkStatus ();
-	    old->bind();
+
+	    bScreen->fbo->rebind (old);
 
 	    if (!status)
 		compLogMessage ("blur", CompLogLevelError,

@@ -1,3 +1,37 @@
+compiz (1:0.9.14.1+22.04.20211217-0ubuntu1) jammy; urgency=medium
+
+  [ Daniel Kondor ]
+  * core: EventManager::removeWatchFd() should remove the watch from the
+    Glib::MainContext (LP: #1879975)
+
+  [ Sam Spilsbury ]
+  * blur: Set precision level in fragment shader in GL_ES case.
+  * Enable EGL_EXT_buffer_age on USE_GLES where it is advertised.
+  * blur: Use GLFramebufferObject::rebind with the returned framebuffer.
+
+ -- Dmitry Shachnev <mitya57@ubuntu.com>  Fri, 17 Dec 2021 12:06:09 +0000
+
+compiz (1:0.9.14.1+22.04.20211026-0ubuntu1) jammy; urgency=medium
+
+  * Increase string buffer size to fix GCC format-truncation error.
+
+ -- Dmitry Shachnev <mitya57@ubuntu.com>  Tue, 26 Oct 2021 15:43:43 +0000
+
+compiz (1:0.9.14.1+21.10.20210501-0ubuntu1) impish; urgency=medium
+
+  * Remove unused empty private structs.
+  * Update FSF addresses. (LP: #1923481)
+  * Build the compizconfig Python extension using distutils. Bump
+    required CMake version to 3.17 to make this possible. (LP: #1926046)
+
+ -- Dmitry Shachnev <mitya57@ubuntu.com>  Sat, 01 May 2021 17:29:43 +0000
+
+compiz (1:0.9.14.1+20.10.20200813-0ubuntu4) hirsute; urgency=medium
+
+  * No-change rebuild to build with python3.9 as default.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 19 Nov 2020 18:31:18 +0100
+
 compiz (1:0.9.14.1+20.10.20200813-0ubuntu3) hirsute; urgency=medium
 
   * Build-depend on python3-dev instead of python3-all-dev.

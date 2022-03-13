@@ -1,2 +1,2 @@
-usr/lib/*/*/compizconfig.so
-usr/lib/*/dist-packages/compizconfig_python*
+usr/lib/python3/dist-packages/compizconfig.*.so
+usr/lib/python3/dist-packages/compizconfig_python*
